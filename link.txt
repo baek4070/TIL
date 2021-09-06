@@ -1,0 +1,11 @@
+https://ko.wikipedia.org/wiki/URL
+
+//url설명
+
+https://developer.mozilla.org/
+
+//mozilla
+
+https://namu.wiki/w/%EB%8F%84%EB%A9%94%EC%9D%B8
+
+//domain
