@@ -1,0 +1,41 @@
+<!-- html_list.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>list</title>
+</head>
+<body>
+    <!-- unorder list 순서가 없는 목록
+        type 속성을 이용해서 기호를 지정 따로 지정이 없으면 기본값은 disc i|a|A|i|I|disc|circle|square
+    -->
+    <ul type="square">
+        <li>진라면</li>
+        <li type="circle">신라면</li>
+        <li>불닭볶음면</li>
+        <li>짜파게티</li>
+    </ul>
+    <H3>인기 게임 순위</H3>
+    <!-- 기본값은 1, start 30부터 시작-->
+    <ol type="1" start="30">
+        <li>LOL</li>
+        <li>POE</li>
+        <li>고급시계2</li>
+        <li>
+            RPG
+            <ol>
+                <li>로스트 아크</li>
+                <li>wow</li>
+                <li>블소</li>
+            </ol>
+        </li>
+    </ol>
+    <!-- definition list(정의형 목록) -->
+    <dl>
+        <!-- 설명할 대상 -->
+        <dt>정의 단어</dt>
+        <!-- 설명 -->
+        <dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis placeat, quia veniam sit vel nihil animi unde voluptates quo corrupti illo asperiores, modi quis, consequatur similique magnam beatae facere delectus!</dd>
+    </dl>
+</body>
+</html>

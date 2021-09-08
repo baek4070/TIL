@@ -1,0 +1,160 @@
+<!-- html_table.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>table</title>
+</head>
+<body>
+    <!-- 테두리선 border , 외각선 공간 cellspacing -->
+    <table border="3" cellspacing="0">
+        <!-- 따로 thead , tbody, tfoot 으로 감싸지않아도 자동으로 tbody로 적용 -->
+        <tr>
+            <!-- 가운데정렬 굵게 -->
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>이메일</th>
+        </tr>
+        <tr>
+            <!-- 데이터 최고 너비 기준으로 적용, 좌측정렬 -->
+            <td>1</td>
+            <td>백인광</td>
+            <td>01046534070</td>
+            <td>baek4070@gmail.com</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>인광</td>
+            <td>0246545223</td>
+            <td>baek400@naver.com</td>
+        </tr>
+    </table>
+    <!-- thead,tbody,tfoot 으로 나눠 놓은것 확인 -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>자유게시판</th>
+            </tr>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>언제 배송되나요..</td>
+                <td>최기근</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>오늘 배송되나요..</td>
+                <td>홍길동</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>[1][2][3][4][5][다음]</th>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- 열병합 colspan , 행병합 rowspan -->
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- 한개의 th가 3개의 열을 차지한다 -->
+                <th colspan="3">자유게시판</th>
+            </tr>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>언제 배송되나요..</td>
+                <td>최기근</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>오늘 배송되나요..</td>
+                <td>홍길동</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3">[1][2][3][4][5][다음]</th>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- tfoot,tbody,thead 순서가 뒤죽박죽 되어도 정의해놓은대로 나오는것 확인 -->
+    <table border="1">
+        <tfoot>
+            <tr>
+                <th colspan="3">[1][2][3][4][5][다음]</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>언제 배송되나요..</td>
+                <td>최기근</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>오늘 배송되나요..</td>
+                <td>홍길동</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th colspan="3">자유게시판</th>
+            </tr>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+            </tr>
+        </thead>
+    </table>
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- 한개의 th가 3개의 열을 차지한다 -->
+                <th colspan="3">자유게시판</th>
+            </tr>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>언제 배송되나요..</td>
+                <td>최기근</td>
+                <!--
+                    행간의 병합은 rowspan으로 병합이되는데 해당 영역안에서만 병합이 가능하다
+                    rowspan 3을 줫는데 2만 적용된것 확인
+                -->
+                <td rowspan="3">비고</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>오늘 배송되나요..</td>
+                <td>홍길동</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3">[1][2][3][4][5][다음]</th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
