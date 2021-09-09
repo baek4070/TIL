@@ -1,0 +1,65 @@
+<!-- html/test_form.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>form</title>
+</head>
+<body>
+    <!--action 기본값은 현재페이지
+        method 기본값은 GET 
+        action="test_code.html"-->
+    <form method="GET">
+        <!--required 필수값 : 입력이 안되있으면 입력하라함
+            autofocus 바로 커서를 옮겨줌-->
+        <input type="text" name="id" required autofocus/> <br/>
+        <input type="text" name="temp1" disabled/><br/>
+        <input type="text" name="temp2" readonly/><br/>
+        <!-- placeholder 입력값 힌트 -->
+        <input type="password" name="pw" placeholder="비밀번호작성"/> <br/>
+        <hr/>
+        <!-- label 문자형태의 컨텐츠를 감싸는 역할, 입력태그와 동작이 동일하게 만들어준다 -->
+        <label>
+            <input type="checkbox" name="accept" />동의 하시겠습니까?
+        </label>
+        <br/>
+        <br/>
+        <!-- name 값이 같으면 정보를 &으로 일시로 전달받음 -->
+        <input type="checkbox" name="dogs" value="jindo"/>진도개
+        <input type="checkbox" name="dogs" value="poodle"/>푸들
+        <input type="checkbox" name="dogs" value="poong"/>풍산개
+        <br/>
+        <!-- radio 는 다수중에 하나만 선택가능 -->
+        <input type="radio" name="car" value="아반떼"/> 아반떼
+        <!-- checked 속성을 넣으면 체크된 상태로 출력 -->
+        <input type="radio" name="car" value="k3" checked/> k3<br/>
+        <hr/>
+        <h2>file 선택</h2>
+        <!-- 
+            accept= image/* 확장자가 이미지인것만 보여줌 
+            대분류/소분류
+            /* 모든 파일
+            multiple : 다중 선택 가능
+        -->
+        <input type="file" accept="image/*" multiple/> <br/>
+        <!-- fieldset 영역에 단락지정 -->
+        <fieldset>
+            <!-- legend : fieldset의 제목을 나타냄  -->
+            <legend>SELECT BOX</legend>
+            <select name="fruits" >
+                <option value="orange">오랜지</option>
+                <option value="apple">사과</option>
+                <option value="banana">바나나</option>
+            </select>
+            
+            <select multiple>
+                <option value="오랜지">오랜지</option>
+                <option value="사과">사과</option>
+                <option value="낑깡">낑깡</option>
+                <option value="한라봉">한라봉</option>
+            </select>
+        </fieldset>
+        <input type="submit" /> 
+    </form>
+</body>
+</html>

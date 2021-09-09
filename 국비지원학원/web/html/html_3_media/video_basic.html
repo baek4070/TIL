@@ -1,0 +1,24 @@
+<!-- video_basic.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>video</title>
+</head>
+<body>
+    <!-- 크지를 지정하지 않으면 원상의 원래 크기대로 출력됨 , 크기만 지정해도 화면 비율에 맞게 높이도 지정됨-->
+    <video controls autoplay width="500" muted>
+        <source src="../../media/Wildlife.mp4"
+        type="video/mp4"/>
+        <source src="../../media/Wildlife.webm"
+        type="video/webm"/>
+    </video>
+        <!-- 영상을 찾을수 없으면 poster 를 이용해 이미지로 출력 ,썸네일로도 사용가능-->
+    <video controls autoplay width="500" muted poster="http://placehold.it/640x360">
+        <source src="../../../media/Wildlife.mp4"
+        type="video/mp4"/>
+        <source src="../../../media/Wildlife.webm"
+        type="video/webm"/>
+    </video>
+</body>
+</html>
