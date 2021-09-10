@@ -13,7 +13,10 @@
         <!--required 필수값 : 입력이 안되있으면 입력하라함
             autofocus 바로 커서를 옮겨줌-->
         <input type="text" name="id" required autofocus/> <br/>
-        <input type="text" name="temp1" disabled/><br/>
+        <!-- 입력태그에 값을 변경하거나 작성하는걸 막아주는 기능 
+            disabled : 사용하지 않는것,입력 양식으로 제외 되기때문에 서버에 데이터 전달이 안됨
+            readonly : 읽기전용-->
+        <input type="text" name="temp1" disabled value="template"/><br/>
         <input type="text" name="temp2" readonly/><br/>
         <!-- placeholder 입력값 힌트 -->
         <input type="password" name="pw" placeholder="비밀번호작성"/> <br/>
@@ -25,6 +28,7 @@
         <br/>
         <br/>
         <!-- name 값이 같으면 정보를 &으로 일시로 전달받음 -->
+        <!-- name 이 구분자가 되고 value 값을 전송받음 -->
         <input type="checkbox" name="dogs" value="jindo"/>진도개
         <input type="checkbox" name="dogs" value="poodle"/>푸들
         <input type="checkbox" name="dogs" value="poong"/>풍산개
@@ -46,6 +50,7 @@
         <fieldset>
             <!-- legend : fieldset의 제목을 나타냄  -->
             <legend>SELECT BOX</legend>
+            <!-- 마찬가지로 name : 구분자 value: 전달되는 데이터 -->
             <select name="fruits" >
                 <option value="orange">오랜지</option>
                 <option value="apple">사과</option>
@@ -58,7 +63,58 @@
                 <option value="낑깡">낑깡</option>
                 <option value="한라봉">한라봉</option>
             </select>
+
+            <select name="hobby">
+                <!-- optgroup 목록을 만들어줌 -->
+                <optgroup label="game">
+                    <option value="lol">lol</option>
+                    <option value="겔러그">겔러그</option>
+                    <option value="로아">로아</option>
+                </optgroup>
+                <optgroup label="study">
+                    <option value="자바">자바</option>
+                    <option value="html">html</option>
+                    <option value="css">css</option>
+                </optgroup>
+            </select>
         </fieldset>
+        <br/>
+        <hr/>
+        <!--
+        text는 줄바꿈이 안되는 대신 textarea는 사용자가 줄바꿈 가능
+        cols, rows 로 워드의 갯수 크기로 창크기 설정가능 
+        컨텐츠 에 입력하면 그것이 value 가 된다
+        -->
+        <textarea name="content" cols="100" rows="10">templete</textarea>
+        <br/>
+        <br/>
+        <fieldset>
+            <legend>HTML 5 특수 입력 양식</legend>
+            <!-- required 속성값을 넣으면 이메일 형식(xxxx@xxx.xxx)으로 작성되었는지 까지 확인함 -->
+            이메일 : <input type="email" name="email" required/>
+            <br/>
+            <!-- 선택한 날짜의 데이터를 전달받을수 있는 양식 -->
+            날짜 : <input type="date" name="regdate" />
+            <br/>
+            <!-- 숫자가 아닌 다른값은 입력이 불가능 -->
+            숫자 : <input type="number" name="age" />
+            <br/>
+            <!--
+                기본설정 50으로 시작, 0~100까지 값을 가짐, 조절가능
+                min 과 max로 최소값 최대값 을 설정할수 있다
+                value 로 초기값 설정
+            -->
+            슬라이드 : <input type="range" name="score" min="-50" max="200" value="0" />
+            <br/>
+            <input type="hidden" name="hidden" value="password" />
+            <!-- 자체적인 기능은 없으나 자바스크립트로 이벤트 처리할때 주로 사용된다 -->
+            <input type="button" value="버튼1"/>
+            <!-- 다른 속성값을 주지않으면 무조건 submit 기능이 디폴트 -->
+            <button>버튼2</button>
+            <button type="button">버튼3</button>
+        </fieldset>
+
+
         <input type="submit" /> 
     </form>
 </body>
