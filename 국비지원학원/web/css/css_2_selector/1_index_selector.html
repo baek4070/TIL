@@ -1,0 +1,48 @@
+<!-- css_2_selector/1_index_selector.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        h1{
+            color:red;
+        }
+        /* * : 전역 선택자로 모든 태그를 지정, 우선순위가 가장 낮음 순서 상관없이 h1은 red로 출력됨 */
+        *{
+            color: greenyellow;
+        }
+
+        /* 
+            id    =   #
+            class =   .
+        */
+        #bg{
+            background-color: skyblue;
+        }
+
+        #color{
+            color:gray;
+        }
+
+        .size{
+            /* 글자 크기 */
+            font-size: 50px;
+        }
+
+        .color{
+            color: skyblue;
+        }
+        h2{
+            color:hotpink;
+        }
+    </style>
+</head>
+<body>
+    <h1>type 선택자</h1>
+    <h2 id="bg">ID 선택자 1</h2>
+    <h2 id="color">ID 선택자 2</h2>
+    <h2 id="color bg">ID 선택자 3</h2>
+    <h2 id="color" class="size color">CLASS ID 선택자</h2>
+</body>
+</html>
