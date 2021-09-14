@@ -1,0 +1,86 @@
+<!-- 2_attr_selector.html -->
+<!-- attribute = 속성 -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>attribute</title>
+    <style>
+        /* 내부 스타일 시트 css 주석*/
+        input[type]{
+            color: red;
+        }
+        /* input 태그들 중에 type 속성 값이 password 인 태그 */
+        input[type="password"]{
+            color: blue;
+            background-color: skyblue;
+        }
+        /* input 태그들 중에 type이 text고 사용할 준비(포커스) 상태가 된 태그 요소 */
+        input[type="text"]:focus{
+            color: skyblue;
+            background-color: pink;
+            outline-color: aqua;
+            outline-style: dotted;
+            outline-width: 1mm;
+        }
+        /* value 값이 aaa 인 input 태그만 지정 */
+        input[value="aaa"]{
+            color: white;
+            background-color: black;
+        }
+        /* href 속성값을 가진 a 태그위로 마우스 커서가 올라 왔을때 */
+        a[href]:hover{
+            color: red;
+        }
+        /* href 속성값이 naver로 시작하는 a 태그 */
+        a[href ^= "naver"]:hover{
+            color: slateblue;
+        }
+        /* href 속성값이 .net 으로 끝나는 a 태그 */
+        a[href $=".net"]:hover{
+            color: green;
+        }
+        /* href 속성값에 naver라는 단어가 포함 또는 완성이 되어있는 a태그 */
+        a[href *= "naver"]:hover{
+            color: black;
+        }
+        /* Activer 상태 (활성화 - click이 된 상태)일떄의 선택자 */
+        h2:active{
+            color: tomato;
+            background-color: turquoise;
+        }
+        h2:hover{
+            color: blue;
+            /* 마우스 커서의 모양을 변경 */
+            cursor: text;
+            cursor: pointer;
+            cursor: zoom-in;
+            cursor: zoom-out;
+            cursor: copy;
+        }
+    </style>
+</head>
+<body>
+    <h1>반응 선택자 && 속성 선택자</h1>
+    <input type="text" placeholder="이곳은 아이디 작성공간" />
+    <br/>
+    <input type="text" value="aaa" />
+    <br/>
+    <input type="text" value="bbb" />
+    <br/>
+    <input type="password" value="ccc" />
+    <br/>
+    <a href="naver.com">네이버</a>
+    <a href="http://naver.com">네이버</a>
+    <a href="daum.net" target="_blank">다음</a>
+    <br/>
+    <hr/>
+    <!-- h2{Acitve state selector}*6 -->
+    <h2>Acitve state selector</h2>
+    <h2>Acitve state selector</h2>
+    <h2>Acitve state selector</h2>
+    <h2>Acitve state selector</h2>
+    <h2>Acitve state selector</h2>
+    <h2>Acitve state selector</h2>
+</body>
+</html>
