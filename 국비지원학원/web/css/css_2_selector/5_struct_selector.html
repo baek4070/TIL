@@ -1,0 +1,105 @@
+<!-- 5_struct_selector.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        /* 중간에 공백이 없으면 div이면서 id값이 wrap인 녀석을 찾아들어가는것 , 공백이 있으면 자손*/
+        div#wrap{
+            /* 너비 폭 */
+            width: 260px;
+            /* 높이 */
+            height: 300px;
+            /* 배경 색상 */
+            background-color: skyblue;
+            overflow: hidden;
+            /* overflow: scroll; */
+        }
+
+        .box{
+            width:30px;
+            height:30px;
+            /* 외곽선, 외곽선이 증가하면 전체 사이즈도 증가함 */
+            /* 선두께 선모양 선색상 */
+            border:1px solid black;
+            /* 블럭 속성을 inline 속성으로 변경? */
+            float:left;
+            /* 박스 기준으로 바깥쪽 */
+            margin: 0 2px 5px 0;
+            /* 박스 기준으로 안쪽 */
+            padding-left: 3px;
+        }
+        /* 첫번째 자식 */
+        .box:first-child{
+            color:red;
+        }
+        /* 마지막 자식 */
+        .box:last-child{
+            color: blue;
+        }
+        /* (2)번째 자식 */
+        .box:nth-child(2){
+            color: yellow;
+        }
+        .box:nth-child(7n){
+            color:red;
+        }
+        .box:nth-child(7n-1){
+            color: blue;
+        }
+        /* 2의 배수 : 짝수 */
+        .box:nth-child(2n){
+            color: white;
+        }
+        /* 2의 배수 -1 : 홀수 */
+        .box:nth-child(2n-1){
+            color: blue;
+        }
+        /* odd : 홀수 */
+        .box:nth-child(odd){
+            color: red;
+        }
+        /* even : 짝수 */
+        .box:nth-child(even){
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- div#wrap>div.box{$$}*31 -->
+    <div id="wrap">
+        <div class="box">01</div>
+        <div class="box">02</div>
+        <div class="box">03</div>
+        <div class="box">04</div>
+        <div class="box">05</div>
+        <div class="box">06</div>
+        <div class="box">07</div>
+        <div class="box">08</div>
+        <div class="box">09</div>
+        <div class="box">10</div>
+        <div class="box">11</div>
+        <div class="box">12</div>
+        <div class="box">13</div>
+        <div class="box">14</div>
+        <div class="box">15</div>
+        <div class="box">16</div>
+        <div class="box">17</div>
+        <div class="box">18</div>
+        <div class="box">19</div>
+        <div class="box">20</div>
+        <div class="box">21</div>
+        <div class="box">22</div>
+        <div class="box">23</div>
+        <div class="box">24</div>
+        <div class="box">25</div>
+        <div class="box">26</div>
+        <div class="box">27</div>
+        <div class="box">28</div>
+        <div class="box">29</div>
+        <div class="box">30</div>
+        <div class="box">31</div>
+    </div>
+</body>
+</html>
