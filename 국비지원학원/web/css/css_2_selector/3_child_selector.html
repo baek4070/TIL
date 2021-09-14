@@ -1,0 +1,32 @@
+<!-- 3_child_selector.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>CHILD SELECTOR</title>
+    <style>
+        .header div h1{
+            color: pink;
+        }
+
+        .header h1{
+            background-color: skyblue;
+            color: red;
+        }
+
+        .header > h1{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.header>h1{lorem ipsum} -->
+    <div class="header">
+        <h1>lorem ipsum</h1>
+        <!-- div#nav>h1{navigation} -->
+        <div id="nav">
+            <h1>navigation</h1>
+        </div>
+    </div>
+</body>
+</html>

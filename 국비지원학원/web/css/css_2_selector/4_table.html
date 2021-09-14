@@ -1,0 +1,31 @@
+<!-- 4_table.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        /* tbody 가 없으면 안됨 !!! 브라우저가 자동으로 tbody를 넣습니다 */
+        table > tbody > tr > td {
+            /* 문자 가운데 정렬(수평) */
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- table[border="1"]>(tr>td*3)*2 -->
+    <table border="1">
+        <tr>
+            <td>좋아하는 과일</td>
+            <td>싫어하는 과일</td>
+            <td>기타</td>
+        </tr>
+        <tr>
+            <td>오렌지</td>
+            <td>포도</td>
+            <td>사과</td>
+        </tr>
+    </table>
+</body>
+</html>
