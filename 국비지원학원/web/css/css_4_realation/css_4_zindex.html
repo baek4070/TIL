@@ -1,1 +1,50 @@
 <!-- css_4_zindex.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        /* zindex를 통하여 겹쳐있는 순서를 조정할수있다 */
+        div{
+            position:absolute
+        }
+        .index1{
+            width:100px;
+            height: 100px;
+            background-color: red;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+        .index2{
+            width: 100px;
+            height: 200px;
+            background-color: skyblue;
+            top: 40px;
+            left: 40px;
+            z-index: 5;
+        }
+        .index3{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            top: 60px;
+            left: 60px;
+            z-index: 7;
+        }
+        .index4{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="index1"></div>
+    <div class="index2">
+        <div class="index4"></div>
+    </div>
+    <div class="index3"></div>
+</body>
+</html>
