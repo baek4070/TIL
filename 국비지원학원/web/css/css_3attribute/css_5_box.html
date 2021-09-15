@@ -1,0 +1,49 @@
+<!-- css_5_box.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .box_model{
+            /* 외곽 선 두께 */
+            border-width: 2px;
+            /* 외곽선 색 */
+            border-color: black;
+            /* 외곽선 모양 */
+            border-style: dotted;
+            width: 300px;
+            height: 100px;
+            /* 외곽선을 컨텐츠에 포함 */
+            box-sizing: border-box;
+            padding: 50px;
+            margin: 30px;
+        }
+
+        .box_model_2{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            background-color: pink;
+            /* 외곽선에 라운드 처리 */
+            border-radius: 5px 10px 15px 30px;
+            border-radius: 10px 20px;
+            border-radius: 50px;
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box_model">
+        <div>Hello CSS</div>
+    </div>
+
+    <div class="box_model_2">
+        <div>RADIUS</div>
+    </div>
+</body>
+</html>
