@@ -1,0 +1,63 @@
+<!-- css_2_float.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        *{
+            margin:0;
+        }
+        header,aside,section,footer{
+            border:1px solid black;
+        }
+        main{
+            width: 900px;
+            margin:0 auto;
+        }
+        header{
+            width: 898px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        aside{
+            float: right;
+            width: 148px;
+            height: 400px;
+        }
+        .left{
+            float: left;
+            background-color: skyblue;
+        }
+        .right{
+            float: right;
+            background-color: pink;
+        }
+        
+        section{
+            float: left;
+            height: 400px;
+            width: 598px;
+            background-color: skyblue;
+        }
+
+        footer{
+            /* 기존 float 속성에 영향을 받지않겠다 */
+            clear: both;
+            width: 898px;
+            height: 100px;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header></header>
+        <aside class="left"></aside>
+        <section></section>
+        <aside class="right"></aside>
+        <footer></footer>
+    </main>
+</body>
+</html>
