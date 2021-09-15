@@ -34,9 +34,13 @@
             z-index: 7;
         }
         .index4{
+            top:70px;
+            left:70px;
             width: 100px;
             height: 100px;
             background-color: black;
+            /* 자식요소의 z-index는 3차원의 부모요소를 뛰어넘을수 없다, 항상 부모보다 위에 */
+            z-index:10000;
         }
     </style>
 </head>
