@@ -1,0 +1,48 @@
+<!-- css_4_realation/css_1_display -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        h1{
+            background-color: skyblue;
+            margin-bottom: 30px;
+            width: 250px;
+            height: 250px;
+        }
+
+        h1{
+            display:inline;
+            display: inline-block;
+
+        }
+        /* displat : inline, block, inline-block */
+        /* displat : none, flex */
+        h2{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        .none{
+            /* 요소를 제외 */
+            display: none;
+        }
+
+        .hidden{
+            /* 보여주기 */
+            visibility: visible;
+            /* 숨기기 */
+            visibility: hidden;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>BLOCK요소</h1>
+    <h1>BLOCK요소</h1>
+    <h2 class="none">BLOCK요소</h2>
+    <h2 class="hidden">BLOCK요소</h2>
+    <h2>BLOCK요소</h2>
+</body>
+</html>
