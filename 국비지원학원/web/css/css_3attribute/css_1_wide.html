@@ -1,0 +1,39 @@
+<!-- css_3_attribute/css_1_wide.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        /* div는 블럭 요소이기때문에 공간을가지고 */
+        .place{
+            /* 디폴트 값 블럭 */
+            display: inline;
+            /* 좌에서 우로 쌓이되 크기를가짐 */
+            display: inline-block;
+            background-color: yellow;
+            /* 너비 / 폭 */
+            width: 500px;
+            /* 높이 */
+            height: 500px;
+        }
+        /* span은 인라인 요소이기때문에 높이와 너비를 주어도 공간을 안가지는걸 확인 */
+        span{
+            /* 디폴트 값 인라인 */
+            display: block;
+            width: 500px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="place">
+        <span>PLACE</span>
+    </div>
+    <div class="place">
+        PLACE2
+    </div>
+    <div>PLACE3</div>
+</body>
+</html>
