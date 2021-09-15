@@ -1,0 +1,90 @@
+<!-- css_3_text.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        h2{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            /* hidden / scroll / auto */
+            overflow: scroll;
+        }
+
+        h2.normal{
+            /* 
+            기본값
+            부모 속성에서 컨텐츠 크기가 더 커지면 줄을 바꿔서 출력
+             */
+            white-space: normal;
+        }
+
+        h2.pre{
+            /* 들여쓰기, 공백, 줄바꿈을 그대로 표현  */
+            white-space: pre;
+        }
+        h2.pre-line{
+            /* 들여쓰기, 다중 공백을 제외 하고 범위를 벗어나면 자동으로 문서의 줄바꿈을 표현 */
+            white-space: pre-line;
+        }
+        h2.pre-wrap{
+            /* 들여쓰기,줄바꿈을 그대로 표현 해주는데 부모의 너비를 벗어나지 않음 */
+            white-space: pre-wrap;
+        }
+        h2.nowrap{
+            /* 줄바꿈을 하지않고 그대로 표현 부모의 크기를 벗어나서 한줄로 표현 자동줄바꿈을 하지 않음*/
+            white-space: nowrap;
+            /*
+            overflow:auto,hidden,scroll
+            white-space:nowrap 에서만 동작
+            */
+            /* 내부 컨텐츠가 벗어 났을때 표현 방식 */
+            /* clip은 기본 */
+            text-overflow: clip;
+            /* 벗어난 컨텐츠를 말줄임 형태로 출력 */
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="normal">
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </h2>
+    <h2 class="pre">
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </h2>
+    <h2 class="pre-line">
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </h2>
+    <h2 class="pre-wrap">
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </h2>
+    <h2 class="nowrap">
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </h2>
+    <div>
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </div>
+    <hr/>
+    <!-- 미리 정의된 형식(preformatted) -->
+    <pre>
+        BLOCK 요소 길게~~~~
+        표현~~~~~
+        하자~~~~~
+    </pre>
+</body>
+</html>
