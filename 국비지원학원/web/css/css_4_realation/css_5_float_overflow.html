@@ -1,0 +1,69 @@
+<!-- css_5_float_overflow.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        body{
+            width: 980px;
+            margin: 0 auto;
+        }
+
+        header{
+            width: 100%;
+            background-color: pink;
+        }
+
+        aside{
+            width:15%;
+        }
+
+        section{
+            float: left;
+            width:70%;
+            background-color:skyblue;
+        }
+
+        footer{
+            width: 100%;
+            background-color: blue;
+        }
+
+        .left{
+            float: left;
+            background-color: yellow;
+        }
+
+        .right{
+            float: right;
+        }
+        .wrap{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod a laudantium tenetur libero voluptatibus deleniti quia aspernatur labore magni mollitia, est alias aliquam maxime. Magnam consequatur nihil praesentium sint blanditiis!
+    </header>
+    <div class="wrap">
+        <aside class="left">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident sed natus totam dicta earum rerum consequuntur neque voluptatem fugiat quos! Minus accusantium adipisci vitae doloremque non perspiciatis, assumenda sint fugiat?
+        </aside>
+        <section>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi earum, dolorum excepturi dolor autem accusamus, rerum sequi aspernatur fuga assumenda provident quas illo. Distinctio, debitis! At, aperiam! Harum assumenda beatae porro similique animi laudantium tempore debitis ipsa, et magni, qui minus maxime adipisci tenetur blanditiis aspernatur mollitia quo iusto possimus dolore dolorem rem nihil! Sed ab similique doloribus omnis, nihil tenetur nostrum accusantium adipisci! Magni quae quibusdam nobis at, vero consequuntur tempora facere earum magnam adipisci voluptas saepe mollitia, molestias culpa beatae odit eaque ipsum! Ex, perferendis facere id hic in facilis. Maiores cupiditate similique reprehenderit itaque. Veniam, repellat consectetur.
+        </section>
+        <aside class="right">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum iusto suscipit neque temporibus dolores esse modi dolor iste earum voluptatibus odit cumque voluptate repellendus aliquid aperiam, enim molestiae natus? Reiciendis.
+        </aside>
+    </div>
+    <footer>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium dolor in ex eum, fugit harum, voluptas architecto suscipit omnis hic nisi et magnam nostrum inventore dolorum? Laudantium doloribus quisquam itaque!
+    </footer>
+</body>
+</html>
