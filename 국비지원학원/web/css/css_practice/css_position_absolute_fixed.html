@@ -1,0 +1,47 @@
+<!-- css_position_absolute_fixed.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        body{margin-top: 0;}
+        #box1{
+            position: absolute;
+            width:500px;
+            height:200px;
+            background-color: gray;
+            z-index: 10;
+        }
+        #position_absolute_parent{
+            /* 부모가 relative 하면 자식 top 속성이 부모기준 */
+            /* position: relative; */
+            width:500px;
+            height:300px;
+            background-color:yellow;
+            z-index: 9;
+        }
+        #position_absolute_child{
+            position: absolute;
+            width:200px;
+            height: 200px;
+            background-color: blue;
+            /* 마진 병합현상이 안일어남 */
+            /* margin-top: 100px; */
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="position_absolute_parent">
+        <div id="position_absolute_child"></div>
+    </div>
+    <br/>
+    <div id="box2"></div>
+    <div id="position_fixed_parent">
+        <div id="position_fixed_child"></div>
+    </div>
+    <div id="box3"></div>
+</body>
+</html>
