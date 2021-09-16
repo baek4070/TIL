@@ -1,0 +1,70 @@
+<!-- css_6_animation/css_1_animation.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        .anim{
+            width:100px;
+            height: 100px;
+            background-color: skyblue;
+            opacity: 1;
+            /* keyframes 이름 */
+            animation-name: changeOpacity;
+            /* 반복 횟수 */
+            animation-iteration-count: 3;
+            animation-iteration-count: infinite;
+            /* 시간 */
+            animation-duration: 3s;
+
+            animation-timing-function: ease;
+            /*
+            진행순서
+            nomal : 기본값 정해진 순서대로 진행
+            reverse : 반대순서
+            alternate : 정해진 순서대로 진행 한 후 반대순서로 진행
+            alternate-reverse : 반대로 진행한후 정해진 순서대로 다시 진행
+            */
+            animation-direction: alternate;
+            animation-delay: 0.5s;
+            /* 한번에 퉁치기 */
+            animation: changeOpacity 3s infinite ease alternate;
+        }
+
+        .anim:hover{
+            animation: changeStyle 3s infinite linear alternate;
+        }
+
+        @keyframes changeOpacity{
+            from{
+                opacity: 1;
+            }
+
+            to{
+                opacity: 0;
+            }
+        }
+
+        @keyframes changeStyle{
+            0%{
+                width:100px;
+            }
+
+            50%{
+                width:300px;
+                background-color: red;
+            }
+
+            100%{
+                width:200px;
+                background-color: pink;
+                transform:rotate(360deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="anim"></div>
+</body>
+</html>
