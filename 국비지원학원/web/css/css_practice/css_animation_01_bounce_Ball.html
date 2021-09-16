@@ -1,0 +1,54 @@
+<!-- css_animation_01.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .intro {
+            width: 100%;
+            height: 1600px;
+        }
+        .ground {
+            position: static;
+            width: 100%;
+            height: 1100px;
+            background-color: black;
+            border: 1px solid black;
+        }
+        .airspace {
+            position:relative;
+            width: 100%;
+            height: 500px;
+        }
+        .ball {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 15px;
+            margin: 40px 0 0 15px;
+            animation: ballBounce 2500ms ease-in infinite alternate;
+        }
+        @keyframes ballBounce{
+            0%{ 
+                top: 100px;
+            }
+            100%{
+                top: 430px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <div class="airspace">
+            <div class="ball"></div>
+        </div>
+        <div class="ground"></div>
+    </div>
+            </body>
+            </html>
