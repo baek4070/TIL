@@ -1,0 +1,32 @@
+<!-- css_practice/css_position_static.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        #position_static_parent{
+            width: 500px;
+            /* 부모의 높이를 주석처리하면 static 속상값은 자식의 높이값이 부모에 영향을줌, 즉 2차원 특징을 가지고 있다*/
+            /* height: 500px; */
+            background-color: yellow;
+        }
+        
+        #position_static_child{
+            position: static;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            /* 자식의 마진을 부모도 적용받는 마진 병합 현상 , static 속성과 margin_top을 함께 사용할때 */
+            margin-top: 100px;
+            /* top은 사용해도 적용안됨 */
+            /* top: 100px; */
+        }
+    </style>
+</head>
+<body>
+    <div id="position_static_parent">
+        <div id="position_static_child"></div>
+    </div>
+</body>
+</html>
