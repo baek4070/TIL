@@ -1,0 +1,78 @@
+<!-- css_animation_03_jump_ball.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        *{
+            margin-top: 0;
+        }
+        .intro{
+            position: relative;
+            width: 100%;
+            height: 1600px;
+        }
+
+        .ball{
+            position: absolute;
+            width:50px;
+            height:50px;
+            border: 1px solid black;
+            border-radius: 25px;
+            background-color: skyblue;
+        }
+
+        .ball1{
+            left: 0px;
+            animation: ballJump 1s ease-in-out infinite alternate;
+        }
+
+        .ball2{
+            left: 60px;
+            animation: ballJump 1s ease-in-out infinite alternate;
+            animation-delay: 100ms;
+        }
+        
+        .ball3{
+            left: 120px;
+            animation: ballJump 1s ease-in-out infinite alternate;
+            animation-delay: 200ms;
+        }
+        
+        .ball4{
+            left: 180px;
+            animation: ballJump 1s ease-in-out infinite alternate;
+            animation-delay: 300ms;
+        }
+        
+        .ball5{
+            left: 240px;
+            animation: ballJump 1s ease-in-out infinite alternate;
+            animation-delay: 400ms;
+        }
+        @keyframes ballJump{
+            0%{
+                top: 0;
+                opacity: 0.3;
+            }
+            75%{
+                top: 200px;
+            }
+            100%{
+                top:170px;
+                opacity: 1;
+            }
+        }
+        </style>
+</head>
+<body>
+    <div class="intro">
+        <div class="ball ball1"></div>
+        <div class="ball ball2"></div>
+        <div class="ball ball3"></div>
+        <div class="ball ball4"></div>
+        <div class="ball ball5"></div>
+    </div>
+</body>
+</html>
