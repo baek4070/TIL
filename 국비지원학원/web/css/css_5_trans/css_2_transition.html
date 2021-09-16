@@ -1,0 +1,36 @@
+<!-- css_2_transition.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>Transition</title>
+    <style>
+        /* 
+        cdd 속성을 변경할때 시간차를 두고 속도를 조절하는 방법을 제공
+        */
+        .trans{
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+
+            transition-property: width, height, background-color;
+            transition-duration: 3000ms;
+            /* 시간 표현을 어떻게 할건지 지정 */
+            transition-timing-function: steps(3,end);
+            /* 지연시간 */
+            transition-delay: 2s ;
+            /* 넓이는 1초동안 높이는 2초동안 배경은 2초동안 리니어하게 2초 딜레이를 가짐  */
+            transition: width 1s, height 2s, background-color 2s linear 2s;
+        }
+        
+        .trans:hover{
+            width: 600px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="trans"></div>
+</body>
+</html>
