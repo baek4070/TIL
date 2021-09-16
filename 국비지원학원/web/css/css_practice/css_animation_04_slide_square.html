@@ -1,0 +1,29 @@
+<!-- css_animation_04_slide_square.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        body{
+            position: relative;
+        }
+
+        .square {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: squareMoving 1s ease-in-out infinite alternate;
+        }
+        @keyframes squareMoving{
+            0%{left: 0px}
+            50%{left: 100px;}
+            100%{left: 200px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="square"></div>
+</body>
+</html>
