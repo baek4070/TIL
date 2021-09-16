@@ -4,6 +4,29 @@
 <head>
     <meta charset="utf-8"/>
     <title></title>
+    <style>
+        #box1{
+            width:500px;
+            height:200px;
+            background-color:gray;
+        }
+        #position_relative_parent{
+            width:500px;
+            /* 자식속성이 부모의 높이에 영향을줌 */
+            /* height: 500px; */
+            background-color: yellow;
+        }
+        #position_relative_child{
+            position: relative;
+            width: 200px;
+            height:200px;
+            background-color: blue;
+            /* 부모 자식간 마진병합 현상 */
+            /* margin-top: 100px */
+            /* top 사용가능 */
+            top: 100px;
+        }
+    </style>
 </head>
 <body>
     <div id="box1"></div>
