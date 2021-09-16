@@ -1,0 +1,64 @@
+<!-- css_5_trans/css_1_transform.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        .original{
+            width:300px;
+            height: 300px;
+            background: url(../../img/transform_rotate.png);
+            border: 1px solid black;
+        }
+        /*
+            transform(변형)은 좌표공간을 변형함으로써 일반적인 문서 흐름을 방해하지 않고 콘텐츠의 형태와 위치를 변경한다.
+
+            박스 모델에 따라 배치된 용소만 적용 가능
+        (display:block)
+        */
+        /* 적용도니 요소를 주어진 각도 만큼 시계 방향이나 반시계 방향으로 회전 */
+        .rotate{
+            /* x축을 기준으로 45도 만큼 회전 */
+            transform: rotateX(45deg);
+            /* y축을 기준으로 45도 만큼 회전 */
+            transform: rotateY(45deg);
+        }
+        /* 적용된 요소의 크기를 주어진 배율만큼 늘리거나 줄임 */
+        .scale:active{
+            transform: scaleX(2);
+            transform: scaleY(2);
+            /* 두개 동시에 ~ */
+            transform: scale(2,2);
+        }
+        /* 현재 위치에서 적용된 요소를 주어진 x축과 y축의 거리만큼 이동 */
+        .translate:active{
+            /* x축으로 100px 만큼 이동 */
+            transform: translateX(100px);
+            transform: translateY(100px);
+        }
+        .translate:hover{
+            transform: translate(100px,200px);
+        }
+        /* 적용된 요소를 주어진 각도 만큼 x,y축 방향으로 기울임 */
+        .skew{
+            width: 300px;
+            height: 400px;
+            background-color: skyblue;
+            background-image: url(../../img/transform_skew.png);
+            margin-left: 100px;
+            transform: skewX(45deg);
+            transform: skewY(45deg);
+            transform: skew(10deg,20deg);
+        }
+        </style>
+    </head>
+<body>
+    <!-- div.original*5 -->
+    <div class="original"></div>
+    <div class="original rotate"></div>
+    <div class="original scale"></div>
+    <div class="original translate"></div>
+    <div class="original skew"></div>
+</body>
+</html>
