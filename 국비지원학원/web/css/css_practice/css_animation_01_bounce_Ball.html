@@ -29,21 +29,31 @@
             width: 30px;
             height: 30px;
             background-color: red;
+            /*3. 50%로 주는게 계산할필요도없고 직관적임 */
             border-radius: 15px;
             margin: 40px 0 0 15px;
-            animation: ballBounce 2500ms ease-in infinite alternate;
+            /* 6. bottom 으로 잡으면 ease-in 에서 ease-out로 변경 */
+            animation: ballBounce 2500ms ease-out infinite alternate;
         }
         @keyframes ballBounce{
+            /* 4. 한사이클로 돌리면 alternate 할필요 없음 */
+            /* 5. bottom 을 주면 편하게 %계산이 되는데 top을 잡으니까 100% 때 공간을 넘어감*/
             0%{ 
-                top: 100px;
+                /* top: 100px; */
+                bottom: 0%;
             }
             100%{
-                top: 430px;
+                /* top: 430px; */
+                bottom: 50%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 
+        1. 일단 너무 많이 요소 생성함 다지우거나 
+        2. 땅을 표현할건지 아닌지에 따라 다르긴함
+    -->
     <div class="intro">
         <div class="airspace">
             <div class="ball"></div>
