@@ -1,0 +1,58 @@
+<!-- flex_2_display.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .wrap{
+            background-color: #eeeeee;
+            margin: 0 auto;
+            width:500px;
+            display:flex;
+            flex-flow: row nowrap;
+            /* 전체 크기에서 자식이 중앙으로 잡혀있다 */
+            align-items: center;
+        }
+
+        .item{
+            width: 50px;
+            height: 50px;
+        }
+        /* 기본적으로 order라는 속성값을 가지고 있다 숫자가 작을수록 앞에 배치, 기본값은 0, 같으면 순서대로 */
+        .item01{
+            background-color: rgba(1, 43, 51, 0.966);
+            /* 다른 요소를 제외한 남은공간을 차지하는 속성 들어간 숫자의 배율로 공간을 차지 */
+            flex-grow: 1;
+            order: 1;
+            
+        }
+        .item02{
+            background-color: rgb(56, 36, 104);
+            flex-grow: 2;
+            /* align-self : 특정 자식요소만 정렬하는것 */
+            align-self: flex-start;
+        }
+        .item03{
+            background-color: rgba(122, 45, 99, 0.938);
+            /* flex-grow: 3; */
+            order: -1;
+        }
+        </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item item01">01</div>
+        <div class="item item02">02</div>
+        <div class="item item03">03</div>
+    </div>
+
+    <!-- flexboxfroggy.com -->
+</body>
+</html>
