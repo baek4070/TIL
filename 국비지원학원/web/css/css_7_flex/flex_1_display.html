@@ -1,0 +1,83 @@
+<!-- css_7_flex/flex_1_display.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        * {
+            height: 100%;
+        }
+
+        .wrapper{
+            background-color: #dddddd;
+            height: 100%;
+            /* 기본적으로 행으로 쌓고 왼쪽부터 오른쪽으로 쌓임 부모크기 작아지면 자식도 작아짐 */
+            display: flex;
+            /*
+            row : 요소들을 텍스트의 방향과 동일하게 정렬
+            row-reverse : 텍스트의 반대 방향으로 정렬
+            column : 요소들을 위에서 아래로 정렬
+            column-reverse : 요소들을 아래에서 위로 정렬
+            기본값은 row x축 (행으로 표현) 
+            중심축을 y축으로 변경
+            */
+            /* flex-direction: column; */
+            flex-direction: row-reverse;
+            flex-direction: column-reverse;
+            flex-direction: row;
+            
+            /* 
+            flex-wrap : 기본값은 nowrap 너비나(row)나 높이(column)의 크기를 압축함에 따라 줄바꿈을 진행하지 않음
+            wrap : item을 감싸서 범위를 벗어나면 자동으로 줄바꿈
+             */
+            flex-wrap: wrap;
+            /* direction, wrap 속성을 한번에 표현 */
+            flex-flow: row-reverse wrap;
+            /* item 정렬 - flex-start 기본값 */
+            justify-content: flex-start;
+            justify-content: flex-end;
+            /* 중앙으로 정렬 */
+            justify-content: center;
+            /* 컨텐츠간의 간격을 일정하게  */
+            justify-content: space-between;
+            /* 동일하게 공간을 좌우여백을 일정하게 보여줌 */
+            justify-content: space-around;
+            /* flex-flow: row nowrap; */
+            /* 교차축 */
+            align-items: flex-end;
+            align-items: center;
+
+            /* align-content: flex-start; */
+            /* wrap 상태일때 줄을 어떻게 할건지 */
+            align-content: stretch;
+        }
+
+        .item{
+            width: 80px;
+            height:80px;
+            border:1px solid black;
+            /* text-align: center;
+            line-height: 80px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.wrapper>div.item.item$${$$}*10 -->
+    <div class="wrapper">
+        <div class="item item01">01</div>
+        <div class="item item02">02</div>
+        <div class="item item03">03</div>
+        <div class="item item04">04</div>
+        <div class="item item05">05</div>
+        <div class="item item06">06</div>
+        <div class="item item07">07</div>
+        <div class="item item08">08</div>
+        <div class="item item09">09</div>
+        <div class="item item10">10</div>
+    </div>
+</body>
+</html>
