@@ -5,18 +5,21 @@
     <meta charset="utf-8"/>
     <title></title>
     <style>
-        body{
-            position: relative;
-        }
+        /* body에 relative 포지션 줄필요 없음 */
 
-        .square {
-            position: absolute;
+        div {
+            /* absolute 할필요 x relative 2차원 충분 */
+            position: relative;
             width: 100px;
             height: 100px;
             background-color: red;
-            animation: squareMoving 1s ease-in-out infinite alternate;
+            /* animation 구현 방식이 다르긴한데 사용해보면서 답을 찾는게 중요한듯 , 
+            function timing 이 모호한 느낌이있음*/
+            animation: squareMoving 1s infinite ease-in-out alternate;
         }
         @keyframes squareMoving{
+            /* 0-50-100 짧긴하나 */
+            /* 0-25-50-75-100 이 직관적일수도 있음 */
             0%{left: 0px}
             50%{left: 100px;}
             100%{left: 200px;}
@@ -24,6 +27,7 @@
     </style>
 </head>
 <body>
-    <div class="square"></div>
+    <!-- 굳이 클래스값 줄필요x  -->
+    <div></div>
 </body>
 </html>
