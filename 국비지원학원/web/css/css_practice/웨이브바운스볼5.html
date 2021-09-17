@@ -1,0 +1,86 @@
+<!-- 웨이브바운스볼5.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        .ball{
+            width:50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: skyblue;
+            border: 1px solid black;
+            float: left;
+            /* inlin-block은 옆의 크기의 영향을 받기때문에 이상하게 떨어짐 해보면 신기함 */
+            /* display: inline-block; */
+            margin: 0 2px;
+            margin: 180px 2px;
+            animation: bounceBallTop 1s infinite ease-in-out alternate;
+            animation: bounceBallBottom 1s infinite ease-in-out alternate;
+        }
+        .ball:hover{
+            background-color: pink;
+            /*
+                animation-playstate 애니메이션 진행 상태 제어 
+                running : 진행
+                paused : 일시정지
+             */
+            animation-play-state: paused;
+            cursor: wait;
+        }
+        .ball:nth-child(1){
+            animation-delay: 0.1s;
+        }
+        .ball:nth-child(2){
+            animation-delay: 0.2s;
+        }
+        .ball:nth-child(3){
+            animation-delay: 0.3s;
+        }
+        .ball:nth-child(4){
+            animation-delay: 0.4s;
+        }
+        .ball:nth-child(5){
+            animation-delay: 0.5s;
+        }
+
+        @keyframes bounceBallTop{
+            0%{
+                margin: 0px 2px;
+                opacity: 0.2;
+            }
+            70%{
+                margin: 200px 2px;
+                opacity: 0.7;
+            }
+            100%{
+                margin: 180px 2px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceBallBottom{
+            0%{
+                margin: 180px 2px;
+                opacity: 1;
+            }
+            30%{
+                margin: 200px 2px;
+                opacity: 0.7;
+            }
+            100%{
+                margin: 0px 2px;
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+</body>
+</html>
