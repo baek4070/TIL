@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <title></title>
     <style>
+        /*2. 공간 정의 해줄필요 없었음 */
         *{
             margin-top: 0;
         }
@@ -13,42 +14,41 @@
             width: 100%;
             height: 1600px;
         }
-
+        /*3. 마찬가지 공간 정의 필요없음 */
         .ball{
             position: absolute;
             width:50px;
             height:50px;
             border: 1px solid black;
+            /*4. 50%로 주는게 더직관적이고 계산할 필요없음 */
             border-radius: 25px;
             background-color: skyblue;
-        }
-
-        .ball1{
-            left: 0px;
+            /*5. 애니메이션 모아두면 됨 */
             animation: ballJump 1s ease-in-out infinite alternate;
+        }
+        /* 6.클래스 이렇게 할필요없고 :nth-child() 이거 쓰면됨 */
+        .ball1{
+            /* 7.이렇게 각자 값을 매기기보다 float로 그냥 정렬하는게 더낮다 그리고 전체 마진으로 띄우면 됨 , 단 지금은 3차원을 줫기때문에 이렇게 해야함 */
+            left: 0px;
         }
 
         .ball2{
             left: 60px;
-            animation: ballJump 1s ease-in-out infinite alternate;
             animation-delay: 100ms;
         }
         
         .ball3{
             left: 120px;
-            animation: ballJump 1s ease-in-out infinite alternate;
             animation-delay: 200ms;
         }
         
         .ball4{
             left: 180px;
-            animation: ballJump 1s ease-in-out infinite alternate;
             animation-delay: 300ms;
         }
         
         .ball5{
             left: 240px;
-            animation: ballJump 1s ease-in-out infinite alternate;
             animation-delay: 400ms;
         }
         @keyframes ballJump{
@@ -67,6 +67,7 @@
         </style>
 </head>
 <body>
+    <!-- 1.position 분할 하지않아도 되고 class 2개씩 만들필요는 없었음 -->
     <div class="intro">
         <div class="ball ball1"></div>
         <div class="ball ball2"></div>
