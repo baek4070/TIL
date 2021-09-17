@@ -12,6 +12,7 @@
             position: relative;
             width: 100%;
             height: 500px;
+            /* 4.display 속성은 안배운거니 더 편리하다는것만 일단 알고 있을것  */
         }
         .child {
             width: 80px;
@@ -24,6 +25,7 @@
             margin-top: -11px;
             animation: koreateRotating 2s linear infinite alternate;
         }
+        /* 3. 이거 네이밍도 좀 애매한듯 */
         @keyframes koreateRotating{
             from{
                 transform: rotateY(0deg);
@@ -36,6 +38,8 @@
     </style>
 </head>
 <body>
+    <!-- 1. class 네이밍을 너무 못함 좀더 생각하고 지을것 -->
+    <!-- 2. 기본적으로 부모에 position relative를 주고 편하게 중앙정렬 하자는 생각은 강사님과 같음 -->
     <div class="parent">
         <div class="child"> KOREATE </div>
     </div>
