@@ -1,0 +1,57 @@
+<!-- css_8_ex/css_8_ex.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        /* 가상화 선택자는 클래스 선택자보다 조금더 우선순위를 가진다 */
+        :root{
+            /* 특정한 값들을 페이지내에 공통적으로 사용하자는것 */
+            --text-content-collor:rgb(153, 0, 255);
+            --text-content-size:20px;
+            --text-heading-size:30px;
+        }
+
+        .box{
+            color:var(--text-content-collor);
+            font-size: var(--text-heading-size);
+        }
+
+        .child_box{
+            font-size: var(--text-content-size);
+        }
+        /* ul>li.new>a 태그 이전에 가상 요소 추가 */
+        /* 입력태그, 이미지 태그는 가상 선택자 적용 불가 */
+        ul>li.new>a:before{
+            background-color: greenyellow;
+            color: white;
+            margin-right: 10px;
+            content: "new"
+        }
+        ul>li.new>a:after{
+            background-color: skyblue;
+            color: white;
+            margin-right: 10px;
+            content: "AFTER"
+        }
+    </style>
+</head>
+<body>
+    <!-- 특정 요소 앞뒤에 가상의 태그요소를 추가해주는것 -->
+    <h1>::before ::after</h1>
+    <div>
+        <ul>
+            <li class="new"><a href="">게시물 - 1</a></li>
+            <li><a href="">게시물 - 2</a></li>
+            <li><a href="">게시물 - 3</a></li>
+        </ul>
+    </div>
+    <div class="box">
+        BoxContent
+        <div class="child_box">
+            child Content
+        </div>
+    </div>
+</body>
+</html>
