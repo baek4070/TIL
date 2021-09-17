@@ -1,0 +1,125 @@
+<!-- 실습3.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        html {
+            width: 100%;
+            height:100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            color: whitesmoke;
+        }
+
+        main{
+            position: relative;
+            width: 90%;
+            height: 90%;
+            margin: 5% 5% 5% 5%;
+        }
+
+        header, section, article, nav, aside, footer{
+            border: 1px solid gray;
+        }
+
+        header{
+            width: 100%;
+            height: 13%;
+            background-color: skyblue;
+            margin-bottom: 2%;
+            
+        }
+
+        nav{
+            position: static;
+            float: left;
+            width: 20%;
+            height: 70%;
+            background-color: pink;
+            box-sizing: border-box;
+            margin-right: 2%;
+            
+        }
+
+        section{
+            position: relative;
+            float: left;
+            width: 56%;
+            height: 70%;
+            background-color: palegreen;
+            box-sizing: border-box;
+            margin-right: 2%;
+            margin-bottom: 2%;
+        }
+
+        aside{
+            float: right;
+            width: 20%;
+            height: 70%;
+            background-color: pink;
+            box-sizing: border-box;
+        }
+
+        footer{
+            clear: both;
+            width: 100%;
+            height: 13%;
+            background-color: skyblue;
+        }
+
+        article{
+            margin: 15% 10% 15% 10%;
+            position: absolute;
+            width: 80%;
+            height: 55%;
+            background-color: gray;
+            overflow: auto;
+        }
+
+        li {
+            position: static;
+            list-style: none;
+            color: black;
+        }
+
+        li:hover{
+            color: whitesmoke
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <br/>header
+        </header>
+        <nav>
+            <br/>nav
+            <ul>
+                <li>menu-1</li>
+                <li>menu-2</li>
+                <li>menu-3</li>
+            </ul>
+        </nav>
+        <section>
+            <br/>section
+            <article>
+                article<br/><br/>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure, perferendis non quis voluptates aliquid ex. Accusantium autem rem aperiam aliquid voluptatibus laudantium placeat doloremque, esse, nisi vitae cumque suscipit repudiandae.
+            </article>
+        </section>
+        <aside>
+            <br/>aside
+        </aside>
+        <footer>
+            <br/>footer
+        </footer>
+    </main>
+</body>
+</html>
