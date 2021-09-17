@@ -1,0 +1,40 @@
+<!-- 튀어오르는공.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        #ball{
+            position: absolute;
+            width:20px;
+            height:20px;
+            background-color: red;
+            border-radius: 50%;
+            bottom: 0;
+            animation-name: bounce;
+            animation-duration:5s;
+            animation-iteration-count: infinite;
+
+            /* animation-timing-function: ease-in-out;
+            animation-direction: alternate; */
+
+            /* animation: bounce 1s ease-in infinite alternate; */
+        }
+        
+        @keyframes bounce{
+            from, to{
+                bottom:0;
+                animation-timing-function:ease-out;
+            }
+            50%{
+                bottom:200px;
+                animation-timing-function:ease-in ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+</body>
+</html>
