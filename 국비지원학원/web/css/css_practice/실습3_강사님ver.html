@@ -1,0 +1,99 @@
+<!-- 실습3_강사님ver -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        body {
+            color: white;
+        }
+        #wrapper{
+            width:900px;
+            min-height:300px;
+            margin:0 auto;
+        }
+
+        header, footer, nav, aside, section {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 5px
+        }
+
+        header{
+            background-color:skyblue;
+        }
+
+        nav, aside{
+            width:100px;
+            background-color: pink;
+        }
+
+        footer{
+            background-color:skyblue;
+            clear: both;
+        }
+
+        article{
+            width: 90%;
+            background-color: gray;
+            margin-left: 20px;
+        }
+        section{
+            width: 604px;
+            background-color: lightgreen;
+        }
+
+        nav, section, aside{
+            float: left;
+            height: 500px;
+        }
+
+        nav ul{
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li{
+            text-align:center;
+            color: black;
+        }
+
+        nav ul li:hover{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <p>header</p>
+        </header>
+        <main>
+            <nav>
+                <p>nav</p>
+                <ul>
+                    <li>menu-1</li>
+                    <li>menu-2</li>
+                    <li>menu-3</li>
+                </ul>
+            </nav>
+            <section>
+                <p>section</p>
+                <article>
+                    <p>
+                        article
+                    </p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga est ab, distinctio nihil iste reiciendis repudiandae, expedita ipsa hic necessitatibus repellendus, quod earum dolorum nulla. Laudantium, aspernatur doloribus soluta aliquam eius reiciendis sint a tempore voluptatibus officiis rerum inventore fugiat. Alias voluptas quas esse, veritatis nesciunt quisquam aliquam ab quasi suscipit porro deserunt nostrum neque temporibus dicta? Modi dolores totam repellendus porro adipisci! Similique consequatur laborum eligendi nisi, perferendis cum facere, exercitationem harum ullam non impedit. Ipsum mollitia eos eius architecto et quos dignissimos temporibus quam, corrupti obcaecati. Et alias est non porro minima optio doloribus, repudiandae tempora tempore tenetur.</p>
+                </article>
+            </section>
+            <aside>
+                <p>aside</p>
+            </aside>
+            <footer>
+                <p>footer</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
