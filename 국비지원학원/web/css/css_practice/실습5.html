@@ -4,6 +4,77 @@
 <HEAD>
 <TITLE> FLEX </TITLE>
 <META charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+		}
+
+		#wrap{
+			border:1px solid red;
+			width:96%;
+			margin:0 auto;
+			display: flex;
+			flex-direction: column;
+			height: 920px;
+			justify-content: space-between;
+		}
+
+		header{
+			height:100px;
+			display:flex;
+			align-items:center;
+			justify-content: center;
+		}
+
+		footer{
+			background-color: #000;
+		}
+
+		footer p{
+			color:#eee;
+			text-align:center;
+			line-height: 200px;
+		}
+		
+		#menu1,#menu2,#menu3,#menu4,#menu5{
+			border: 1px solid black;
+			box-sizing: border-box;
+			height: 300px;
+			width: 33%;
+			background-size: cover;
+			background-position: center;
+		}
+
+		#menu5{
+			width:66.5%;
+		}
+
+		#menus{
+			height: 610px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-content: space-between;
+		}
+
+		#menu1{
+			background-image: url(../../0917_html_css_실습/실습자료/img/dish1.jpg);
+		}
+		#menu2{
+			background-image: url(../../0917_html_css_실습/실습자료/img/dish2.jpg);
+		}
+		#menu3{
+			background-image: url(../../0917_html_css_실습/실습자료/img/dish3.jpg);
+		}
+		#menu4{
+			background-image: url(../../0917_html_css_실습/실습자료/img/dish4.jpg);
+		}
+		#menu5{
+			background-image: url(../../0917_html_css_실습/실습자료/img/dish5.jpg);
+		}
+	</style>
 </HEAD>
 <BODY>
 	<div id="wrap">
@@ -28,7 +99,7 @@
 			<p>솔로의 식탁</p>
 		</footer>
 	</div>
- </BODY>
+</BODY>
 </HTML>
 <script>
 </script>
