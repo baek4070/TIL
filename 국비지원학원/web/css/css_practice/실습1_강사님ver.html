@@ -1,0 +1,45 @@
+<!-- 실습1_강사님ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        .box {
+            list-style: none;
+            background-color: gray;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        .box ul li{
+            float: left;
+            color: white;
+            width: 199.5px;
+            text-align: center;
+            padding: 20px 0;
+            border-right: 1px solid black;
+        }
+
+        .box ul li:last-child{
+            border-right: none;
+        }
+
+        .box ul li:hover{
+            color: gray;
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.box>ul>(li{menu-$})*4 -->
+    <div class="box">
+        <ul>
+            <li>menu-1</li>
+            <li>menu-2</li>
+            <li>menu-3</li>
+            <li>menu-4</li>
+        </ul>
+    </div>
+</body>
+</html>
