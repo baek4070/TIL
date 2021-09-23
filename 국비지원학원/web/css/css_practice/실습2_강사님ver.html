@@ -1,0 +1,46 @@
+<!-- 실습2_강사님ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>:hover 활용</title>
+    <style>
+        #img{
+            width:100px;
+            height:140px;
+            background-image:url(../../0917_html_css_실습/실습자료/img/back.png);
+            background-size:100px 140px;
+        }
+
+        #img:hover{
+            background-image: url(../../0917_html_css_실습/실습자료/img/spade.png);
+            background-size: 100px 140px;
+            background-size: 100% 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        /* 
+            background-size 속성값들
+            auto 원래 배경이미지 크기만큼 표시(기본값)
+            contain 지정한 요소안에 배경 이미지가 다 들어오도록 이미지를 확대 축소
+            cover 지정한 요소를 다 덮도록 배경이미지를 확대/축소
+            크기 값 너비, 높이 값을 지정
+            백분율 지정한 요소를 기준으로 백분율 값을 지정
+        */
+    </style>
+</head>
+<body>
+    <h3>:hover 활용</h3>
+    <hr/>
+    <table>
+        <tr>
+            <td>마우스를 올리면 카드의 앞면이 보인다.</td>
+            <td>
+                <div id=img></div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
