@@ -84,95 +84,6 @@
 웹 페이지의 레이아웃을 구성할 때 가장 중요
 
 - width, height : 글자를 감싸는 영역의 크기를 지정
-- margin : 테두리와 다른 태그의 간격을 지정
-- padding : 테두리와 글자 사이의 간격을 지정
-- 테두리 속성
-    * border-width : 테두리의 두께를 지정하는 속성
-    * border-style : 테두리의 형태를 지정하는 속성
-    * border-radius : CSS3에서 추가된 속성, 테두리가 둥근 사각형이나 원을 표현
-
-## display 속성
-
-- none : 태그를 화면에서 감추기
-- block : 태그를 블록 형식으로 지정
-- inline : 태그를 인라인 형식으로 지정
-- inline-block : 태그를 인라인-블록 형식으로 지정
-
-## 배경속성
-
-- background-image : 배경 이미지 지정
-- background-size : 배경 이미지의 크기 지정
-- background-repeat : 배경 이미지의 반복 형태 지정
-    * repeat : 이미지를 패턴처럼 표시
-    * repeat-x 를 입력하면  x축 방향으로 이미지 반복
-    * repeat-y 를 입력하면 y축 방향으로 이미지 반복
-- background-attachment : 배경 이미지의 부착 형태 지정
-- background-position : 배경 이미지의 위치 지정
-    * background-position : 키워드;
-    * background-position : x축 위치;
-    * background-position : x축 위치 y축 위치;
-- background : 한번에 모든 배경 속성 입력
-
-## 글자 속성
-
-- font-size 속성 : 글자 크기를 지정하는 속성
-- font-family 속성 : 글꼴을 지정 속성
-- generic-family 글꼴 : 다국적 사용자 대상용 글꼴
-- font-style 과 font-weight 속성 : 글자의 두께와 기울기를 조정하는 속성
-- text-align 속성 : 정렬
-- text-decoration 속성
-
-## 위치 속성
-
-절대 위치 좌표 : 요소의 X 좌표와 Y 좌표를 설정해 절대 위치를 지정
-
-상대 위치 좌표 : 요서를 입력한 순서에 따른 상대 위치를 지정
-
-- position 속성
-    * static : 상대 위치 좌표 설정
-    * relative : 초기 위치에서 상하좌우로 이동
-    * absolute : 정대 위치 좌표 설정
-    * fixed : 화면을 기준으로 절대 위치 좌표 설정
-- z-index 속성 : 숫자가 클수록 앞에 위치
-- 위치 속성 공식
-- overflow 속성 : 내부의 요소가 부모의 범위를 벗어날 때 요소를 처리하는 방법
-
-## float 속성
-
-- left : 태그를 왼쪽에 붙이기
-- right : 태그를 오른쪽에 붙이기
-
-## 그림자 속성
-
-- text-shadow 속성 : 글자에 그림자를 부여
-- box-shadow 속성 : 박스에 그림자를 부여
-- CSS3 Generator 사용 : box-shadow와 text-shadow 속성을 쉽게 생성 가능
-
-## 그레이디언트
-
-- 그레이디언트 : 두 가지 이상의 색상을 혼합하는 채색 기능
-- CSS3 이전의 웹은 그레이디언트를 지워하지 않아 background-image 을 사용함
-- 선형 그레이디언트 : linear-gradient () 함수에 선형 그레이디언트가 진행될 각도와 색상 블록을 입력
-- 원형 그레이디언트 : radial-gradient() 함수를 사용
-
-## CSS3 단위
-
-- 키워드 단위 : W3C에서 미리 정의한 단어, 키워드를 입력하면 키워드에 해당하는 스타일이 자동으로 적용
-- 크기 단위
-    * % : 기본 크기 기준으로 상대적인 크기, 초기 100%
-    * em : 배수를 나타내는 단위 1em=1배=100%
-    * px : 크기를 절대적으로 지정
-- 색상단위
-    * rgb(red, green, blue) : RGB 색상단위 , 0부터 255 까지 입력
-    * rgba(red, green, blue, alpha) : RGBA 색상 단위, RGB 색상값에 투명도 alpha 값을 추가 0은 완전투명 1은 완전불투명
-    * #000000 : HEX 코드 단위, RGB 색상단위를 짧게 입력하는 방법 16진수
-- URL 단위 : 이미지나 글꼴 파일을 불러올 때 사용
-
-## 박스 속성
-
-웹 페이지의 레이아웃을 구성할 때 가장 중요
-
-- width, height : 글자를 감싸는 영역의 크기를 지정
 - margin : 테두리와 다른 태그의 간격을 지정. top, right, bottom ,left 순으로
 - padding : 테두리와 글자 사이의 간격을 지정
 - 테두리 속성
@@ -218,13 +129,18 @@
 상대 위치 좌표 : 요서를 입력한 순서에 따른 상대 위치를 지정
 
 - position 속성
-    * static : 상대 위치 좌표 설정
-    * relative : 초기 위치에서 상하좌우로 이동
-    * absolute : 정대 위치 좌표 설정
-    * fixed : 화면을 기준으로 절대 위치 좌표 설정
+    * static : 상대 위치 좌표 설정 , 2차원 요소, 형제들간 절대안겹침
+    * relative : 초기 위치에서 상하좌우로 이동,2차원 요소,3차원 요소, 
+    * absolute : 절대 위치 좌표 설정, 3차원 요소
+        1. 부모 자식 간에 발생하는 마진병합이 일어나지 않음
+        2. 부모가 높이를 갖고 있지 않을 경우 자식의 높이가 부모에게 영향을 주지 못함
+        3. top, right, bottom, left 속성이 적용됨
+        4. 부모의 position 상태에 따라 좌표기준점이 달라짐
+    * fixed : 화면을 기준으로 절대 위치 좌표 설정, 3차원 요소
+        1. absolute 와 기본적으로 같지만 화면에 고정되냐 안되냐차이
 - z-index 속성 : 숫자가 클수록 앞에 위치
 - 위치 속성 공식
-- overflow 속성 : 내부의 요소가 부모의 범위를 벗어날 때 요소를 처리하는 방법
+- overflow 속성 : 내부의 요소가 부모의 범위를 벗어날 때 요소를 처리하는 방법, overflow: hidden 을써서 부모가 자식까지 감싸게(?) 처리
 
 ## float 속성
 
@@ -237,6 +153,27 @@
 - box-shadow 속성 : 박스에 그림자를 부여
 - CSS3 Generator 사용 : box-shadow와 text-shadow 속성을 쉽게 생성 가능
 
+## 변형 과 전환 속성 과 애니메이션
+
+- transform
+    * 좌표공간을 변형함으로써 콘텐츠의 형태와 위치를 변경한다
+    * 박스 모델에 따라 배치된 용소만 적용 가능
+    * rotate : 적용된 요소를 주어진 각도만큼 시계혹은 반시계방향 회전
+    * scale : 적용된 요소의 크기를 주어진 배율만큼 늘리거나 줄임
+    * translate : 현재 위치에서 적용된 요소를 주어진 x축과 y축 거리만큼 이동
+    * skew : 적용된 요소를 주어진 각도만큼 축 기준으로 기울임
+- transition
+    * css 속성을 변경할때 시간차를 두고 속도를 조절하는 방법을 제공
+    * transition-property : 변경 요소
+    * transition-duration : 소요 시간
+    * transition-timing-function : 시간의 표현방법
+        - linear
+        - ease(in, out)
+        - step(s, start, end)
+    * transition-delay :  지연시간
+    * transition: width 1s, height 2s linear 2s // 뭐 이런식으로 사용가능
+- animation
+
 ## 그레이디언트
 
 - 그레이디언트 : 두 가지 이상의 색상을 혼합하는 채색 기능
@@ -244,9 +181,6 @@
 - 선형 그레이디언트 : linear-gradient () 함수에 선형 그레이디언트가 진행될 각도와 색상 블록을 입력
 - 원형 그레이디언트 : radial-gradient() 함수를 사용
 
-## CSS3 응용과 레이아웃
-
-## CSS3 관계형 박스모델
 
 ## 그리드
 
@@ -265,3 +199,17 @@
 - 분기점을 선정하는 방법
     * 미디어 쿼리가 도입되는 지점을 breakpoints 라고 한다
 - mobile first 반응형 디자인 : 가장 작은 뷰로 시작해서 뷰포트의 크기 확대에 맞춰 조판을 추가하는것
+
+## 효율적인 CSS 작성 방법론
+
+- ID, Class, Tag, Universal 규칙으로 분류
+- 스타일 엔진은 키셀렉터로 부터 시작하여 왼쪽으로 이동하면서 엘리먼트가 규칙에 적합한지 확인하는 규칙 필터링을 따른다
+- 즉 주어진 엘리먼트가 적합한지 확인하는데 고려해야할 규칙의 수가 적을수록 성능이 좋아지는것
+- universal 규칙을 피하라
+- ID 규칙에 쓸모없는 태그나 클래스를 붙이지 말라.
+    * 예외: 여러가지 다른 스타일을 위해 ID가 지정된 엘리먼트의 class가 동적으로 바뀌고 이 class가 ID가 지정되지 않은 다른 엘리먼트와 공유될경우 클래스 선택자가 필요함
+- Class 규칙에 쓸모없는 태그를 붙이지 말라
+- 가장 명확한 규칙을 적용하라
+- 자손 선택자를 피하라
+- 상속을 사용하라ㅁ
+- margin은 한뱡향으로만 사용하자 (겹침현상)
