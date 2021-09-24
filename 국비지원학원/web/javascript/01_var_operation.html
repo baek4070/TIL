@@ -53,6 +53,30 @@
         // 계산 우선순위 체크해볼것
         result = 10 + 20 *3;
         document.write("<h2>"+result+"</h2>");
+        // type 비교 브라우저 개발자도구 console 창 확인 
+        var a = 100;
+        var b = "100";
+        console.log(typeof(a));
+        console.log(typeof(b));
+        bool = (a == b);
+        console.log("bool : " + bool);
+
+        bool = (a===b);
+        console.log("bool === : " + bool);
+
+        /*
+            논리 연산자
+            | == shift + \
+            !  , || , &&
+        */
+        bool = !bool;
+        console.log("!bool : " + bool);
+
+        bool = (10 > 100) || (10 == 10);
+        console.log("(10 > 100) || (10 == 10) : " + bool);
+        
+        bool = (10 > 100) && (10 == 10);
+        console.log("(10 > 100) && (10 == 10) : " + bool);
     </script>
 </head>
 <body>
