@@ -1,0 +1,39 @@
+<!-- 05_iteration_while.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // 변수 i 선언 10으로 초기화
+        var i = 10;
+        while( i > 1 ){
+            i--;
+            document.write(i+"<br/>"); // 왜 1이 출력되는지 한번 생각해보자
+        }
+
+        var j = 0;
+        while(true){
+            j++;
+            if(j > 100){
+                break;
+            }
+            document.write(j+"<br/>");
+        }
+
+        var isLogin = true;
+        while(isLogin){
+            var id = prompt("아이디를 입력해주세요 >");
+            var pw = prompt("비밀번호를 입력해주세요 >");
+            if(id == "id001" && pw == "pw001"){
+                alert("입력완료");
+                isLogin = false;
+            }else{
+                alert("정보가 일치하지 않습니다. 다시 입력 해주세요");
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
