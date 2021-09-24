@@ -1,0 +1,61 @@
+<!-- 02_control_if_window.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        var a = 10;
+        var b = 20;
+
+        if (a > b) {
+            window.alert("a가 b 보다 큽니다.");
+        }else if(a == b) {
+            alert("a와 b는 값이 동일합니다.");
+        }else{
+            alert("a가 b보다 작습니다.");
+        }
+
+
+        var conform_test = confirm("2000만원을 결제하시겠습니까?");
+        console.log("confirm_test : " + conform_test);
+        if(conform_test){
+            alert("확인");
+        }else{
+            alert("취소");
+        }
+        
+        var x, y, input;
+        input = prompt("정수를 입력해 주세요.","정수로 작성");
+        console.log(input);
+        x = input;
+        input = prompt("정수를 입력해 주세요.","정수로 작성");
+        y = input;
+
+        if (!isNaN(x) && ! isNaN(y)) {
+            console.log("수치로 변환가능");
+            x = parseInt(x); // num 타입으로 변환시켜줌
+            y = parseInt(y);
+            document.write(x+y);
+        }
+        /*
+        if(!isNaN(input)){
+            console.log("input 은 수치형임");
+            x = input;
+            input = prompt("정수를 입력해주세요.");
+            if(!isNaN(input)){
+
+                y = input;
+                var result = x + y;
+                document.write(result);
+
+            }
+        }else{
+            console.log("input 은 수치형이 아님");
+        }
+        */
+    </script>
+</head>
+<body>
+</body>
+</html>
