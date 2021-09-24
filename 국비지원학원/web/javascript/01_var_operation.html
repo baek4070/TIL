@@ -74,9 +74,57 @@
 
         bool = (10 > 100) || (10 == 10);
         console.log("(10 > 100) || (10 == 10) : " + bool);
-        
+
         bool = (10 > 100) && (10 == 10);
         console.log("(10 > 100) && (10 == 10) : " + bool);
+
+        /*
+            복합 연산자
+            +=, -=, *=, /=, %=
+            산술연산과 함께 대입연산이 이루어 지는 연산자
+            일정한 패턴으로 값이 연산될때 자주 사용
+        */
+
+        var i = 1;
+        i = i + 1;
+        console.log("i : " + i);
+        i += 1;
+        console.log("i : " + i);
+
+        /*
+            증감 연산자(단항연산자)
+            --      ,       ++
+            1씩 감소 , 1씩 증가
+        */
+        i--; // i -= 1; i= i-1;
+        console.log("i : " + i);
+        // i == 2
+        var d = i++;
+        console.log("d : " + d);
+        console.log("i : " + i);
+        // d == 2 , i == 3
+        d = ++i;
+        console.log("d : " + d);
+        console.log("i : " + i);
+        // d == 4 , i == 4
+
+        result = 10 / 0;
+        console.log(result);
+        // 대문자로 써야함 Infinity
+        console.log((10/0) == Infinity);
+
+        var text = "hello";
+        console.log(text + 5); // 5가 자동으로 문자열 됨 
+        console.log(text / 5); // nan  not a number
+        var bool = isNaN(text); // 수치형이면 false를 반환 수치형이아니면 true를 반환
+        console.log("bool : " + bool);
+
+        text = '10';
+
+        console.log(text / 5);
+        bool + isNaN(text);
+        console.log("bool : " + bool);
+        console.log(text+5); // 문자열+숫자 = 문자열
     </script>
 </head>
 <body>
