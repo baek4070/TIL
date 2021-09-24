@@ -1,0 +1,59 @@
+<!-- 03_control_switch.hmlt -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+
+        var grade = prompt("성적을 입력하시오 > ", " A - F 사이의 한 문자로 작성");
+        // 스위치문은 === 비교 임 
+        switch(grade){
+            case "A" :
+                alert("잘했어요!")
+                break;
+            case "B" :
+                alert("좋은 점수군요!")
+                break;
+            case "C" :
+                alert("괜찮은 점수군요")
+                break;
+            case "D" :
+                alert("좀 더 노력 하세요!")
+                break;
+            case "F" :
+                alert("나가 !")
+                break;
+            default :
+                alert("일치하는 값이 존재하지 않습니다.");
+        }
+
+        var month = prompt("월을 입력하세요.","1~12 숫자로");
+        var days;
+        var year = 2021;
+        // 사용자에 입력받는건 전부다 문자열이다 ! 
+        switch(month){
+            case '1' : case '3' : case '5' : case '5' : case '7' : case '8' : case '10' : case '12' :  
+                days=31;
+                break;
+            case '4' : case '6' : case '9' : case '11' : 
+                days = 30;
+                break;
+            case '2' :
+                if(((year % 4 ==0) && !(year % 100== 0))||year % 400 == 0){
+                    // 윤년
+                    days=29;
+                }else{
+                    // 평년
+                    days=28;
+                }
+                break;
+            default : alert("존재하지 않는 월입니다.")
+        }
+
+        alert(month+"월은 "+days+"일입니다.");
+    </script>
+</head>
+<body>
+</body>
+</html>
