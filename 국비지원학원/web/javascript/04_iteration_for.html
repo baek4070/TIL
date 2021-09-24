@@ -14,6 +14,14 @@
         for(var i = 6; i > 0; i--){
             document.write("<h"+i+">"+i+"</h"+i+">")
         }
+
+        for(var i=0; i<=10; i+=2){
+            if(i == 6){
+                // continue; // 바로 다음 반복으로 복귀, 아래 내용 무시
+                break; // break와 가장 가까이있는 반복문 종료
+            }
+            document.write(i+"<br/>");
+        }
     </script>
 </head>
 <body>
