@@ -1,0 +1,30 @@
+<!-- 05_20210924_homework.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        var input;
+        var keynumber = 51, i = 1;
+        var isQuiz = false;
+        while (!isQuiz){
+            input = prompt("1~100 까지의 정수를 입력해 주세요")
+            if (input == keynumber) {
+                alert("성공입니다 추측횟수 : "+ i);
+                isQuiz = true;
+            }else if(input < keynumber) {
+                alert("낮습니다 추측횟수 : "+ i);
+            }else if(input > keynumber){
+                alert("높습니다 추측횟수 : "+ i);
+            }else{
+                alert("잘못된 입력입니다");
+                i = i -1;
+            }
+            i = i + 1;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
