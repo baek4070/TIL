@@ -1,0 +1,25 @@
+<!-- 08_20210924_homework.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        var input;
+        var i = 1;
+        var colsCount = 1;
+        input = prompt("삼각형의 높이를 입력하세요!")
+        while (input > 0) {
+            while (colsCount > 0) {
+                document.write("*");
+                --colsCount;
+            }
+            document.write("<br/>");
+            --input;
+            colsCount = ++i;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
