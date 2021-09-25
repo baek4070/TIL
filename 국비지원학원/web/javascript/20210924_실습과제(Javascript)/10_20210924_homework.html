@@ -1,0 +1,45 @@
+<!-- 10_20210924_homework.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        var input, spaceCountTop, starCountBottom;
+        input = prompt("라인 갯수를 입력하세요");
+        var lineCount = input;
+        var starCount = 0,starCountTop = 1, spaceCountBottom = 1;
+        while (lineCount > 0) {
+            spaceCountTop = --lineCount;
+            while (spaceCountTop > 0) {
+                document.write("&nbsp")
+                --spaceCountTop;
+            }
+            while (starCountTop > 0) {
+                document.write("*");
+                --starCountTop;
+            }
+            document.write("<br/>")
+            starCount = starCount + 1;
+            starCountTop = starCount*2+1;
+        }
+        while (input > 1) {
+            spaceCountBottom = ++lineCount;
+            starCountBottom = (input-1)*2-1;
+            while (spaceCountBottom > 0) {
+                document.write("&nbsp")
+                --spaceCountBottom
+            }
+            while (starCountBottom>0) {
+                document.write("*");
+                --starCountBottom
+            }
+            document.write("<br/>")
+            --input;
+        }
+    </script>
+    
+</head>
+<body>
+</body>
+</html>
