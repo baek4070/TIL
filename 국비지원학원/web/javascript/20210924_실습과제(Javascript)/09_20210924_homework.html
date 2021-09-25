@@ -1,0 +1,36 @@
+<!-- 09_20210924_homework.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        var input;
+        var i = 1;
+        var colsCountTop = 1;
+        var maxStarCount;
+        input = prompt("삼각형의 높이를 입력하세요!")
+        maxStarCount = input;
+        while (maxStarCount > 0) {
+            while (colsCountTop > 0) {
+                document.write("*");
+                --colsCountTop;
+            }
+            document.write("<br/>");
+            --maxStarCount;
+            colsCountTop = ++i;
+        }
+        while (input > 1) {
+            var colsCountBottom = input - 1;
+            while (colsCountBottom > 0) {
+                document.write("*");
+                --colsCountBottom;
+            }
+            document.write("<br/>");
+            --input;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
