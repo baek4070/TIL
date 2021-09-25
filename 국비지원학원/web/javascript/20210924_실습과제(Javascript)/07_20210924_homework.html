@@ -1,0 +1,26 @@
+<!-- 07_20210924_homework.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        var input;
+        input = prompt("행열의 값을 입력하세요")
+        var rowsCount=input;
+        var colsCount=input;
+        while (rowsCount > 0) {
+            while (colsCount > 0) {
+                document.write("*");
+                --colsCount;
+            }
+            document.write("<br/>")
+            --rowsCount;
+            colsCount=input;
+        }
+        
+    </script>
+</head>
+<body>
+</body>
+</html>
