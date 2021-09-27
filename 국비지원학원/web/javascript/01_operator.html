@@ -1,0 +1,111 @@
+<!-- 01_operator.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        'use strict'
+        // numeric operators
+        console.log(2 + 3);  // add
+        console.log(2 - 3);  // substract
+        console.log(2 / 3);  // divide
+        console.log(2 * 3);  // multiply
+        console.log(2 % 3);  // reminder
+        console.log(2 ** 3); // exponentiation
+        console.log(2 / 0);  // infinity
+
+        // string add
+        console.log("My "+"Study");
+        console.log("My "+"Study " + 1);
+        console.log(`template string : 1 + 2 = ${1 + 2}`);
+        let text = `template string \n ''''''' "" "" ""
+            : 1   +   2 = \t\t ${1+2}`;
+        console.log(text);
+        document.write(text);
+
+        // 증감 연산자 increment & decrement operators
+        // ++ , --
+        let count = 2;
+        const beforeIncrement = ++count;
+        /*
+            count = count + 1;
+            beforeIncrement = count;
+        */
+        console.log(`beforeIncrement ${beforeIncrement} , count : ${count}`);
+
+        const incrementAfter = count++;
+        /*
+            incrementAfter = count;
+            count = count + 1;
+
+        */
+        console.log(`incrementAfter ${incrementAfter} , count : ${count}`);
+
+        // 4. 복합 대입 연산자 - assignment operators
+        let x = 3;
+        let y = 6;
+        x += y;  // x = x + y
+        console.log(`x -= y : ${x-=y} `);
+        console.log(`x *= y : ${x*=y} `);
+        console.log(`x /= y : ${x/=y} `);
+        console.log(`x %= y : ${x%=y} `);
+
+        // comparison operators : 비교 연산자
+        console.log(1 < 2);
+        console.log(1 <= 2);
+        console.log(1 > 2);
+        console.log(1 >= 2);
+        
+
+        //logical operators
+        // ||(or 또는) 논리합
+        // &&(and) 논리곱
+        // !(not 논리 부정)
+        let value1 = false;
+        let value2 = 4 > 2;
+
+        console.log(`${value1} , ${value2} : || ${value1 || value2}`);
+        /*
+            논리 합 0 - 거짓 , 1 - 참
+            0   +   0    = 0     거짓 , 꺼짐
+            0   +   1    = 1     참 , 켜짐
+            1   +   0    = 1     참 , 켜짐
+            1   +   1    = 1     참 , 켜짐
+        */
+        console.log(`${value1} , ${value2} : && ${value1 && value2}`);
+        /*
+            논리 곱 0 - 거짓 , 1 - 참
+            0   *   0    = 0     거짓 , 꺼짐
+            0   *   1    = 0     거짓 , 꺼짐
+            1   *   0    = 0     거짓 , 꺼짐
+            1   *   1    = 1     참 , 켜짐
+        */
+        // 배타연산자 논리값이 서로 틀려야 참
+        console.log(`${value1} , ${value2} : ^ ${value1 ^ value2}`);
+        console.log(`${value1} , ${!value2} : ^ ${value1 ^ !value2}`);
+
+        //EQUALITY 동등 비교 연산자
+        const strAge = "40";
+        const numAge = 40;
+        console.log(strAge == numAge)
+        console.log(strAge != numAge)
+        console.log(strAge === numAge)
+        console.log(strAge !== numAge)
+
+        const bool = true;
+        const strBool = "true";
+        console.log(bool == strBool);
+        console.log(bool != strBool);
+
+        const bool1 = true;
+        const strBoo2 = 1;
+        console.log(bool1 == strBoo2);
+        console.log(bool1 != strBoo2);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

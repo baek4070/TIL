@@ -1,0 +1,71 @@
+<!-- 01_variable.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<title>Variable</title>
+<script>
+    'use strict'
+    // let , var  (read / write)
+    // const
+    let globalVariable = "globalVariable";
+    //  block scope
+    {
+        let age;    // age 라는 변수를 선언
+        console.log(age);
+        age = 40;   // age라는 변수에 40이라는 값으로 초기화
+        console.log(globalVariable);
+    }
+
+    console.log(globalVariable);
+
+    //console.log(age);
+
+    /*
+    studentName = "최기근";
+    var studentName;
+    console.log(studentName);
+    */
+    {
+        var studentName;
+        studentName = "최기근";
+        console.log(studentName);
+    }
+    console.log(studentName);
+
+    // const - constant(상수) - read only
+    // 한번 값이 정해지면(할당) 값의 변경이 불가능한 type
+    const PI_NUM = 3.141592;
+    console.log(PI_NUM);
+    //PI_NUM = 3.14;
+
+    // type
+    const studentNum = 25;          // number
+    const averageScore = 2353/25;   // number
+    const char = 'A';               // string
+    const str = "Choi gi geun";     // string
+    const hello = "Hello "+ str;    // string
+    // ` -> 역따움표 
+    let message = `count : ${studentNum} , typeof : ${typeof studentNum}`;           // string
+    console.log(message);
+
+    let none;                   // undifined
+    none = undefined;
+
+    let nullData = null;        //값을 정하지 않았다는 걸 표현하는 data Type
+
+    let bool = true;            // true or false 논리값을 저장
+
+    // object
+    const choi = {name : "최기근" , age : 50};
+    console.log(`choi : ${choi} type : ${typeof choi}`);
+    //choi = {name : "홍길동", age : 45 , addr : "부산"}; // 오류
+    console.log(choi.name);
+    choi.name = "홍길동";
+    console.log(choi.name);
+
+</script>
+</head>
+<body>
+</body>
+</html>
