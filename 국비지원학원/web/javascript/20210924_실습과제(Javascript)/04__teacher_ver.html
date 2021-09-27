@@ -1,0 +1,41 @@
+<!-- 04_teacher_ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        let odd = 0; //홀수 합계
+        let even = 0; //짝수 합계
+        let sum = 0; //전체 합계
+
+        for(let i = 1; i <= 100; i+=2){
+            odd += i;
+        }
+        console.log("odd : " + odd);
+        for(let i = 100; i > 0; i -= 2){
+            even += i;
+            //even = even + i;
+        }
+        console.log("even : " + even);
+        sum = odd + even;
+        console.log("sum : " + sum);
+        even = 0, odd = 0, sum = 0;
+        ever = odd = sum = 0;
+        for(let i = 1; i < 101; i++){
+            if(i % 2 == 1){
+                odd += i;
+            }else{
+                even += i;
+            }
+            sum += i;
+        }
+
+        document.write(`홀수 합계 : ${odd} <br/>`)
+        document.write(`짝수 합계 : ${even} <br/>`)
+        document.write(`전체 합계 : ${sum} <br/>`)
+    </script>
+</head>
+<body>
+</body>
+</html>
