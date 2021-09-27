@@ -1,0 +1,30 @@
+<!-- 08_teacher_ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        let size = prompt("높이를 입력하세요!");
+        /*
+            size = 6;
+            
+            *
+            **
+            ***
+            ****
+            *****
+            ******
+         */
+        document.write(`높이가 ${size}인 삼각형<br/>`);
+        for(let i = 1; i <= size; i++){
+            for(let j = 0; j < i; j++){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <title></title>
     <script>
-        var input;
+/*         var input;
         var i = 1;
         var colsCountTop = 1;
         var maxStarCount;
@@ -28,8 +28,23 @@
             }
             document.write("<br/>");
             --input;
+        } */
+
+        let length = prompt("가로길이를 입력하세요!")
+        document.write(`가로 길이가 ${length}인 증감삼각형<br/>`)
+        for(let i = 1; i <= length; i++){
+            for(let j = 0; j < i; j++){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }   
+        for(i = length; i>0 ; i--){
+            for (j = i-1; j>0; j--){
+                document.write("*");
+            }
+            document.write("<br/>")
         }
-    </script>
+        </script>
 </head>
 <body>
 </body>
