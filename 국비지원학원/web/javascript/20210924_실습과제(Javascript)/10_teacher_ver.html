@@ -1,0 +1,49 @@
+<!-- 10_teacher_ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+
+        let input = prompt ("라인개수를 입력하세요.")
+        for(let i=1; i<= input; i++){
+            for (let j = input;  j> i; j--) {
+                document.write("&nbsp;");
+            }
+            for(let k=1; k <= (i*2-1); k++){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+        for(let i=input -1; i > 0; i--){
+            for (let j = input-i;  j> 0; j--) {
+                document.write("&nbsp;");
+            }
+            for(let k=0; k < (i*2-1); k++){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+
+        document.write("<hr/>");
+
+        let max = (input * 2 -1); // 출력해야할 전체 행의 개수
+        for(let i=1, count = 0; i<=max; i++){
+            if (i <= input) {
+                ++count;
+            }else{
+                --count;
+            }for(let j=1; j<= input - count; j++){
+                document.write("&nbsp;");
+            }
+            for(let k=1; k<= (count*2-1); k++){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

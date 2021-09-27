@@ -1,0 +1,57 @@
+<!-- 09_teacher_ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        /*
+            size = 6;
+            
+            *
+            **
+            ***
+            ****
+            *****
+            ******
+            *****
+            ****
+            ***
+            **
+            *
+         */
+
+        let size = prompt("높이를 입력하세요!");
+        for(let i = 1; i <= size; i++){
+            for(let j = 0; j < i; j++){
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+        for (let i = 1; i <= size; i++) {
+            for (let j = size; j > i; j--) {
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+        document.write("=====================================<br/>");
+
+        let max = size * 2 - 1; // 행의 개수
+        for(let i = 0; i < max; i++){
+            if (i < size) {
+                for(let j=0; j < i+1; j++){
+                    document.write("*");
+                }
+            }else{
+                for(let j =1; j <= max-i; j++){
+                    document.write("*");
+                }
+            }
+
+            document.write("<br/>");
+        }
+        </script>
+</head>
+<body>
+</body>
+</html>

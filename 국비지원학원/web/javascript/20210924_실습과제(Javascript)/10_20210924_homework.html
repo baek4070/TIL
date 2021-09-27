@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <title></title>
     <script>
-        var input, spaceCountTop, starCountBottom;
+/*         var input, spaceCountTop, starCountBottom;
         input = prompt("라인 갯수를 입력하세요");
         var lineCount = input;
         var starCount = 0,starCountTop = 1, spaceCountBottom = 1;
@@ -36,6 +36,37 @@
             }
             document.write("<br/>")
             --input;
+        } */
+
+        /*
+            라인갯수 = 4
+               *     공백=3 *=1
+              ***    공백=2 *=3
+             *****   공백=1 *=5
+            *******  공백=0 *=7
+             *****   공백=1 *=5
+              ***    공백=2 *=3
+               *     공백=3 *=1
+        */
+        
+        let line = prompt("라인갯수를 입력하세요");
+        for(let i = 1; i <= line; i++){
+            for(let j = line; j > i; j--){
+                document.write("&nbsp;")
+            }
+            for(let k = 0; k < i*2-1;k++){
+                document.write("*")
+            }
+            document.write("<br/>")
+        }
+        for( i = 1; i < line; i++){
+            for( j = 0; j < i; j++){
+                document.write("&nbsp;")
+            }
+            for( k = line*2; k > i*2+1;k--){
+                document.write("*")
+            }
+            document.write("<br/>")
         }
     </script>
     
