@@ -1,0 +1,33 @@
+<!-- 01_teacher_ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // 그냥 let input 으로 바로 선언과 초기화 까지 
+        /* let input = prompt("숫자를 입력해 주세요!");
+
+        if(input % 3 == 0){
+            document.write(input+"은(는) 3의 배수입니다.");
+        }else{
+            document.write(`${input} 은(는) 3의 배수가 아닙니다.`);
+        } */
+
+        while (true) {
+            let input = prompt("숫자를 입력해 주세요!");
+            // 반복문을 쓸때 벗어나는 조건을 제일먼저 설정하는게 좋다
+            if(input ==''|| isNaN(input)){
+                alert("숫자가 아닙니다. 종료합니다.");
+                break;
+            }else if(input % 3 == 0){
+                alert(input+"은(는) 3의 배수입니다.")
+            }else{
+                alert(input+"은(는) 3의 배수가 아닙니다.")
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
