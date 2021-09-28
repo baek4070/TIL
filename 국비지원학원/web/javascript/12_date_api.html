@@ -1,0 +1,36 @@
+<!-- 12_date_api.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        let startDate = new Date(0);
+        document.write(startDate+"<br/>");
+        let date = new Date();
+        let year = date.getFullYear(); //2021
+        let month = date.getMonth(); // 0~11
+        let dat = date.getDate(); // 월을 기준으로 날짜를 반환
+        // 28
+        let week = date.getDay(); // 0 ~ 6  0 == 일요일
+        let hour = date.getHours(); // 시간
+        let minute = date.getMinutes(); // 분
+        let second = date.getSeconds(); //초 
+        const weekArray = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+
+        let text = `${year}.${year}.${year}(${weekArray[week]})${hour}:${minute}:${second}`;
+        document.write(`${text}<br/>`);
+        document.write(`${date.getTime()} m/s <br/>`);
+
+        let newYear = new Date(2022,02,10,16,30,0);
+        console.log(newYear.toLocaleString());
+        let diff = newYear.getTime() - date.getTime();
+        console.log(diff);
+        diff = diff/1000/60/60/24;
+        let str = `교육기간 남은 일수 : ${parseInt(diff)}일 입니다.`
+        document.write(str);
+    </script>
+</head>
+<body>
+</body>
+</html>
