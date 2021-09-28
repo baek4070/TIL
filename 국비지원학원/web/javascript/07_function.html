@@ -1,0 +1,73 @@
+<!-- 07_function.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        func(); //선언이 호이스팅 된다.
+        
+        function func(){
+            console.log("func 함수호출");
+        }
+
+        func();
+
+        function add(num1, num2){
+            return num1 + num2;
+        }
+
+        let result= add(10,20);
+        console.log(result);
+        let anonyousFunc= function(){
+            alert("anonyousFunc 호출");
+        };
+        anonyousFunc();
+        // 재귀함수 하고함 스스로를 호출하기때문 
+        anonyousFunc = function factorial(num){
+            console.log(`factorial 호출 ${num}`);
+            /*
+            if(num <=1){
+                return num;
+            }else{
+                return num * factorial(num-1);
+            }
+            // return num * factorial(num-1);
+            */ //이거 말고 삼항연산자라는걸 쓸수 있답니다
+            // ?앞에게 참이면 : 앞에거 거짓이면 : 뒤에거 를 반환한다
+            // (조건식) ? 참 : 거짓
+            return num <=1 ? num : num * factorial(num-1); 
+        }
+        // factorial(5); //외부에서는 호출 불가능
+        result = anonyousFunc(5);
+        console.log(`factorial result : ${result}`);
+        function printResult(result){
+            console.log(`결과는 : ${result}`);
+        }
+
+        let callTest = function fac(num, callBackFunc){
+            console.log(`num : ${num}`);
+            let result = num <= 1 ? num : num*fac(num-1, callBackFunc);
+            callBackFunc(result);
+            return result;
+        }
+
+        callTest(5, printResult); // 그냥 함수를 호출 하는거지
+
+        callTest(6 , function(result){
+            console.log(`fac result : ${result}`);
+        });
+        // 즉시 실행 함수. 괄호로 함수로 감싸는게 즉시 실행하겠다는 의미
+        (function(){
+            alert("즉시 실행!");
+        })();
+
+        (function (x,y){
+            console.log(`result : ${x+y}`);
+        })(10,30);
+        
+    </script>
+</head>
+<body>
+</body>
+</html>

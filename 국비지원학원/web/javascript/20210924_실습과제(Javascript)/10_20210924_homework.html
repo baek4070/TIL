@@ -59,11 +59,12 @@
             }
             document.write("<br/>")
         }
-        for( i = 1; i < line; i++){
-            for( j = 0; j < i; j++){
+        // 변수 스코프 개념이 햇갈린다 ;; 
+        for(let i = 1; i < line; i++){
+            for(let j = 0; j < i; j++){
                 document.write("&nbsp;")
             }
-            for( k = line*2; k > i*2+1;k--){
+            for(let k = line*2; k > i*2+1;k--){
                 document.write("*")
             }
             document.write("<br/>")

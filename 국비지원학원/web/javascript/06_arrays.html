@@ -1,0 +1,52 @@
+<!-- 06_arrays.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // 동일한 종류의 데이터를 한곳에 모아두는 바구니 역할을 하는 배열
+        const array = ['A','B','CD','EF','G','H'];
+        console.log(`array 배열의 길이 : ${array.length}`);
+        // 특정 인덱스의 배열의 값 읽기
+        console.log(`4번째 인덱스의 값 : ${array[4]}`);
+        // 특정 인덱스의 배열의 값 변경
+        array[4] = "I";
+        console.log(`4번째 인덱스의 값 : ${array[4]}`);
+        console.log(array);
+        for(let i = 0; i < array.length; i++){
+            console.log(`${i}번째 array ${array[i]}`);
+        }
+
+        // for .. in - 배열이나 객체의 인덱스 번호 또는 key값을 반환
+
+        for(let key in array){
+            console.log(`${key}번째 array ${array[key]}`);
+        }
+        // 배열이나 객체에 저장된 실제 값(value)를 제공
+        for(let val of array){
+            console.log(`array value : ${val}`);
+        }
+
+        // 배열을 생성 하는 2번째 방법
+        let array2 = new Array(127,23,244,52,60); // 오브젝트의 첫글자는 대문자~
+        for(let i= 0; i < array2.length; i++){
+            console.log(`array2 ${i} : ${array2[i]}`);
+        }
+
+        let array3 = new Array();
+        array3[0] = 100;
+        array3[1] = "가";
+        array3[4] = "나";
+        for(let i = 0; i<array3.length; i++){
+            console.log(`${i} : ${array3[i]}`);
+        }
+
+        for(let x in array3){
+            console.log(array3[x]);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
