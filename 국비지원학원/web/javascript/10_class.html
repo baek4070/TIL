@@ -1,0 +1,36 @@
+<!-- 10_class.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // ES6에 추가 된 class 키워드
+        class Person{
+            //생성자
+            constructor(name, age){
+                // Fields
+                this.name = name;
+                this.age = age;
+            }
+            // methods
+            talk(message){
+                console.log(`${this.name} : ${this.age}`);
+            }
+        }
+
+        const choi = new Person('최기근',16);
+        console.log(choi.name);
+        console.log(choi.age);
+        choi.talk("잠온다...");
+
+        const sim = new Person('심현석',21);
+        console.log(sim.name);
+        console.log(sim.age);
+        sim.talk("먼저 잘께요.");
+
+    </script>
+</head>
+<body>
+</body>
+</html>
