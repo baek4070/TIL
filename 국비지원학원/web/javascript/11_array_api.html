@@ -1,0 +1,63 @@
+<!-- 11_arry_api.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // 1. 구분자가 존재하는 문자열을 배열로 변경
+        {
+            const games = 'fifa, lol, 고급시계, 디아2';
+            const result = games.split(',');
+            console.log(result);
+        }
+        // 2.배열의 내용을 특정한 구분자를 삽입하여 문자열로 변경
+        {
+            const games = ['fifa', 'lol', '고급시계', '디아2'];
+            const result = games.join(', ');
+            console.log(result);
+        }
+        // 3. 배열의 값을 정렬
+        var numbers = [10,20,40,30,50,60];
+        console.log(`${numbers}`);
+        //오름 차순 정렬
+        numbers.sort();
+        console.log(`${numbers}`);
+        // 내림 차순 정렬
+        numbers.reverse();
+        console.log(`${numbers}`);
+
+        numbers.sort(function(a,b){
+            // 뒤에 값에서 앞에 값을 뺀값이 양수면 뒤로 음수면 앞으로
+            // 내림차순
+            return b-a;
+        })
+        console.log(`${numbers}`);
+
+        // 배열의 제일 뒤쪽으로 값을 추가
+        numbers.push(90);
+        console.log(numbers);
+
+        numbers.pop(); //배열의 제일 뒤의 값을 삭제
+        console.log(numbers);
+        let item = numbers.pop();
+        console.log(numbers);
+        console.log(`imem : ${item}`);
+        // 20 추가
+        numbers.push(20);
+        console.log(numbers);
+        // 앞에서 부터 찾아들어가서 제일 처음만나는 값을 알려줌
+        let index = numbers.indexOf(20);
+        console.log(`index : ${index}`);
+        // 뒤에서 부터 찾아들어가서 제일 처음만나는 값을 알려줌
+        index = numbers.lastIndexOf(20);
+        console.log(`lasIndexOf : ${index}`);
+
+        let fileName = 'matrix1.mp4';
+        index = fileName.lastIndexOf(".");
+        console.log(index);
+    </script>
+</head>
+<body>
+</body>
+</html>
