@@ -1,0 +1,39 @@
+<!-- 08_obj.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+
+        // Object - 객체란 현실의 사물을 프로그래밍에 반영한 것
+
+        let product = {
+            // 변수에 데이터가 들어가있으면 속성 필드, 프로퍼티라 하고
+            제품명 : '오렌지',
+            분류 : '과일',
+            가격 : 5000,
+            원산지 : '국내산',
+            // 기능이 들어가있으면 메소드 라고한다
+            소비 : function(name){
+                document.write(`${name}이 ${this.제품명}을 먹었습니다.<br/>`);
+            }
+        }
+        console.log(`typeof : ${typeof product}`);
+        document.write(`product 제품명 : ${product['제품명']}<br/>`);
+        document.write(`product 원산지 : ${product.원산지}<br/>`);
+        product.소비("이순신");
+/*         window.alert('hi');
+        this.alert('hi');
+        alert('hi'); */
+        
+        product.제품명 ="딸기";
+        product.소비('바둑이');
+
+        console.log(product);
+        console.log(window);
+    </script>
+</head>
+<body>
+</body>
+</html>

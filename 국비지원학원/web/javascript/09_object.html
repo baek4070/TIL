@@ -1,0 +1,44 @@
+<!-- 09_object.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        function Car(model, speed, color){
+
+            this.model = model;
+            this.speed = speed;
+            this.color = color;
+
+            
+            this.break = function(){
+                this.speed -=10;
+            }
+            this.accel = function(){
+                this.speed += 10;
+            }
+            this.showSpeed = function(){
+                console.log(`speed : ${this.speed}`)
+            }
+        }
+        
+        
+        let myCar = new Car('520d', 0, "red");
+        console.log(myCar);
+        console.log(`myCar color : ${myCar.color}`);
+        myCar.speed = 20;
+        console.log(`myCar speed : ${myCar.speed}`);
+
+        myCar.accel();
+        myCar.accel();
+        myCar.showSpeed();
+
+        let secondCar = new Car('다마스', 0, 'pink');
+        console.log(secondCar);
+        console.log(myCar);
+    </script>
+</head>
+<body>
+</body>
+</html>
