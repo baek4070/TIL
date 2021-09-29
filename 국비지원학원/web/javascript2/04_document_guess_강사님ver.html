@@ -1,0 +1,73 @@
+<!-- 04_document_guess_강사님ver.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // 추측 횟수를 저장할 변수
+        let nGuesses = 0;
+        // 임의의 값을 저장할 변수
+
+        // let computerNum=30;
+        let computerNum = parseInt(Math.random()*100)+1;
+        console.log(computerNum);
+
+        function guess(){
+            console.log('button click!')
+            let userObj = document.getElementById("user");
+            console.log(userObj);
+            let guessObj = document.getElementById("guess");
+            console.log(guessObj);
+            let hintObj = document.getElementById("hint");
+            console.log(hintObj);
+            let number = userObj.value;
+            if(number == "" || isNaN(number) || number < 1 || number > 100){
+                alert("잘못된 값입니다. 다시 입력해주세요.")
+                reSet();
+                return; // 리턴을 만나면 함수가 종료
+            }
+            nGuesses++;
+            let hint="";
+            if(computerNum == userObj.value){
+                hint = "성공입니다.";
+            }else if(userObj.value < computerNum){
+                hint = "정답보다 작습니다"
+            }else{
+                hint = "정답보다 큽니다"
+            }
+            hintObj.value = hint;
+            guessObj.value=nGuesses;
+        }
+
+        function reSet() {
+            let input = document.querySelectorAll("input");
+            for(let i = 0; i< input.length; i++){
+                if(input[i].type != "button"){
+                    input[i].value = "";
+                    if (input[i].id == "user") {
+                        input[i].focus(); // 해당요소에 포커스 상태를 추가
+                    }
+                }
+            }
+        }
+
+        function reGame() {
+            computerNum = parseInt(Math.random()*100)+ 1;
+            nGuesses = 0;
+            reSet();
+        }
+    </script>
+</head>
+<body>
+    <h1>숫자 맞추기</h1>
+    <p>
+        임의로 생성된 숫자를 맞추는 게임 숫자는 1~100 사이
+    </p>
+    숫자 : <input type="number" id="user" placeholder="숫자입력"/>
+    <input type="button" value="확인" onclick="guess();">
+    <input type="button" value="다시하기" onclick="reGame();"><br/>
+    추측횟수 : <input type = "text" id="guess" readonly /><br/>
+    힌트 : <input type="text" id="hint" readonly />
+</body>
+</html>

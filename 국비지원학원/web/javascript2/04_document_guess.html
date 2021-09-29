@@ -1,0 +1,49 @@
+<!-- 04_document_guess.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // 추측 횟수를 저장할 변수
+        let nGuesses = 0;
+        // 임의의 값을 저장할 변수
+
+        let computerNum=30;
+        computerNum = parseInt(Math.random()*100) + 1;
+        console.log(`computerNum : ${computerNum}`);
+
+        function guess(){
+            console.log('button click!')
+            let inputNum = document.getElementById("user").value;
+            console.log(inputNum)
+            let guessNum = document.getElementById("guess");
+            let hintValue = document.getElementById("hint");
+            if (inputNum == computerNum) {
+                guessNum.value = ++nGuesses;
+                hintValue.value = "정답입니다";
+                nGuesses = 0 ;
+            }else if(inputNum > computerNum){
+                guessNum.value = ++nGuesses;
+                hintValue.value = "입력한값이 정답보다 높습니다";
+            }else{
+                guessNum.value = ++nGuesses;
+                hintValue.value = "입력한값이 정답보다 낮습니다";
+            }
+            console.log(`guessNum.value : ${guessNum.value}`);
+            console.log(`hintValue.value : ${hintValue.value}`);
+            console.log(`nGuesses : ${nGuesses}`);
+        }
+    </script>
+</head>
+<body>
+    <h1>숫자 맞추기</h1>
+    <p>
+        임의로 생성된 숫자를 맞추는 게임 숫자는 1~100 사이
+    </p>
+    숫자 : <input type="number" id="user" placeholder="숫자입력"/>
+    <input type="button" value="확인" onclick="guess();"><br/>
+    추측횟수 : <input type = "text" id="guess" readonly /><br/>
+    힌트 : <input type="text" id="hint" readonly />
+</body>
+</html>
