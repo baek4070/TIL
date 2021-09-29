@@ -1,0 +1,35 @@
+<!-- 03_document_calc.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        function calc(){
+            alert('호출');
+            // first 요소, second 요소 의 value 값을
+            // 더하여 result 요소의 value값으로 출력
+            let first = document.getElementById("first");
+            console.log(first.value);
+            let second = document.querySelector("#second");
+            console.log(second.value);
+            console.log(first.value+second.value);
+            let resultValue = parseInt(first.value) + parseInt(second.value);
+            console.log(resultValue);
+            
+            document.getElementById("result").value = resultValue;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="first" tabindex="1"/>
+    +
+    <input type="text" id="second" tabindex="2"/>
+    =
+    <input type="text" id="result" />
+    <input type="button" tapindex="3" onclick="calc();" value="결과확인"/>
+    <script>
+
+    </script>
+</body>
+</html>
