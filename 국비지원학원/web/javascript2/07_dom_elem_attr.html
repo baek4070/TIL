@@ -1,0 +1,39 @@
+<!-- 07_dom_elem_attr.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        function changeImage() {
+            let img = document.getElementById("image");
+            img.src = "img/pome.png";
+            img.width = "300";
+            img.alt = "포메리안 이미지입니다.";
+        }
+        function imageBack() {
+            // tag 요소에 name 속성 값이 부여되어 있을경우 문서 객체에서 name값으로 접근 가능.
+            document.image.src = "img/poodle.png";
+            document.image.alt = "푸들이미지 입니다.";
+            document.image.width ="120";
+        }
+    </script>
+</head>
+<body>
+    <img name="image" src="img/poodle.png" id="image" alt="푸들 이미지 입니다." width="120" data-giguen="custom Attribute"/><br/>
+    <button onclick="changeImage();">이미지변경</button>
+    <button onclick="imageBack();">이미지복원</button>
+    <button onclick="setTest();">data set attribute</button>
+    <button onclick="getTest();">data get attribute</button>
+    <script>
+        function setTest() {
+            document.image.setAttribute("data-giguen","new");
+        }
+        function getTest() {
+            let img = document.getElementById("image");
+            alert(img.getAttribute("src"));
+            console.log(img.getAttribute("data-giguen"));
+        }
+    </script>
+</body>
+</html>

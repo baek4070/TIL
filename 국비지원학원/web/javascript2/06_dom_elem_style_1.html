@@ -7,6 +7,23 @@
     <script>
         function changeStyle() {
             console.log("click event 확인!");
+            let p1 = document.querySelector("#p1");
+            p1.style.color ="pink";
+            p1.style.fontStyle ="italic";
+            p1.style.backgroundImage ="url(img/pome.png)";
+            p1.style.backgroundRepeat="no-repeat";
+            p1.style.backgroundSize="150px";
+            p1.style.width ="500px";
+            p1.style.height="150px";
+
+            /* 
+                #p1{
+                    color:pink;
+                    font-style:italick;
+                    background-image="url(img/pome.png)"
+                    ~~~
+                }
+            */
         }
     </script>
 </head>
@@ -16,5 +33,10 @@
     </p>
     <!-- button 아무것도 정의안하면 submit 기억나죠 -->
     <button type="button" onclick="changeStyle();">눌러보이소!</button>
+    <h1 id="target">View Attribute</h1>
+    <button onclick="document.querySelector('#target').style.visibility='hidden';">요소숨김</button>
+    <button onclick="document.querySelector('#target').style.visibility='visible';">요소표시</button>
+    <button onclick="document.querySelector('#target').style.visibility='block';">요소사용</button>
+    <button onclick="document.querySelector('#target').style.visibility='none';">사용안함</button>
 </body>
 </html>
