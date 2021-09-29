@@ -1,0 +1,43 @@
+<!-- 05_dom_elem_text.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script></script>
+</head>
+<body>
+    <!-- div#ex>b{여기는 div로 선언되었습니다.} -->
+    <div id="ex"><b>여기는 div로 선언되었습니다.</b></div>
+    <input type="text" id="exName" />
+    <!-- input:button[id='write' value='button'] -->
+    <input type="button" value="button" id="write">
+    <br/>
+    <a href="#" onclick="get();"> 요소 내용 출력하기 </a><br/>
+    <a href="#" onclick="set();"> 요소 내용 변경하기 </a><br/>
+    <script>
+        function set() {
+            let val = document.getElementById("exName").value;
+            let div = document.getElementById("ex");
+            // <span style='color:red;'>새로운 컨텐츠</span>
+            div.innerHTML = val;
+            div.innerText = val;
+            div.textContent = val;
+        }
+        function get() {
+            let val = document.getElementById("ex").innerHTML;
+            console.log(val);
+            val = document.getElementById("ex").innerText;
+            console.log(val);
+            val = document.getElementById("ex").textContent;
+            console.log(val);
+        }
+        document.getElementById("write").onclick = 
+        function () {
+            let exName = document.getElementById("exName");
+            // 다 로드됬을때 document.write 쓰면 다날라간다~ 
+            document.write(exName.value);
+        };
+    </script>
+</body>
+</html>
