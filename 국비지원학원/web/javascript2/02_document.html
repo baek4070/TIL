@@ -1,0 +1,51 @@
+<!-- 02_document.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <!-- form>(input:text.tagClass#selectId[value'$'])*7
+    +input:button.tagClass#selectId[value='button'] -->
+    <form action="">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="1">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="2">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="3">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="4">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="5">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="6">
+        <input type="text" name="name1" id="selectId" class="tagClass" value="7">
+        <input type="button" value="button" class="tagClass" id="selectId">
+    </form>
+
+    <script>
+        let nameArray = document.getElementsByName("name1");
+        document.write(`nameArray : ${nameArray} <br/>`);
+        document.write(`nameArray : ${nameArray.length} <br/>`);
+
+        // 태그네임이 일치하느 태그 요소들을 배열로 전환
+        let tagArray = document.getElementsByTagName("input");
+        document.write(`tagArray 0 : ${tagArray[0].value}<br/>`);
+        for(let i=0; i< tagArray.length; i++){
+            document.write(`tagArray ${i} : ${tagArray[i].value}<br/>`);
+        }
+        // class 속성값이 일치하느 태그 요소들을 배열로 전환
+        let classArray = document.getElementsByClassName("tagClass")
+        for(let i=0; i< tagArray.length; i++){
+            document.write(`classArray ${i} : ${classArray[i].value}<br/>`);
+            // 해당 태그 요소의 속성들 주에 value 속성값을 변경
+            classArray[i].value = (i*20);
+        }
+        let querySelectAll = 
+            document.querySelectorAll("input[type = 'button']");
+        document.write(
+            `querySelectAll length : ${querySelectAll.length}`
+        );
+        querySelectAll[0].value = "버든";
+    </script>
+</body>
+</html>

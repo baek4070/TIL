@@ -1,0 +1,35 @@
+<!-- 01_async_defer_external.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <!-- <script src="00_external.js"></script> -->
+    <!-- 
+        [parsing HTML]    blocked             ][parsing HTML]
+                    [fetching js][execution js]
+        
+    -->
+    <script async src="00_external.js"></script>
+    <!-- asyc 를 쓰면 파싱과 fetching 병렬로 함 
+        [parsing HTML][blocked   ][parsing HTML]
+        [fetching js][execting js]
+        parsing 이 되지않은 태그를 js가 건들일 위험이 있다 그럼 오류가 발생하겠지? 
+    --> 
+    <script defer  src="00_external.js"></script>
+    <!--  
+        [parsing HTML   ] page is ready [executing js]
+            [fetching js] 
+    -->
+</head>
+<body>
+    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus saepe hic quo culpa nemo ipsum praesentium ullam laboriosam ipsa molestiae blanditiis, omnis vero, quis odit aut consequatur dolores illum aperiam.</div>
+    <script src="00_external.js"></script>
+    <!-- 
+        사용자가 기본적인 HTML content 를 빨리 볼수 있다. 
+        ^
+        [parsing HTML][fetching js][execution js]
+    -->
+
+</body>
+</html>
