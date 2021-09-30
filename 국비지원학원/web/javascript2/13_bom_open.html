@@ -1,0 +1,26 @@
+<!-- 13_bom_open.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script></script>
+</head>
+<body>
+    <button onclick="openWindow();"> 새창 열기</button>
+    <button onclick="closeWindow();"> 새창 닫기</button>
+    <script>
+        let child;
+
+        function openWindow(){
+            // blank : 새창 -기본값
+            // _self : 현재 페이지를 대체
+            child = window.open('http://www.google.com', '_blank', 'width=300, height=300, top=200, left=100, menubars=yes, resizable=no, scrollbars=no, titlebars=yes');
+        }s
+
+        function closeWindow(){
+            child.close();
+        }
+    </script>
+</body>
+</html>

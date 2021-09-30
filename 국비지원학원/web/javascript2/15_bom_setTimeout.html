@@ -1,0 +1,46 @@
+<!-- 15_bom_setTimeout.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script></script>
+</head>
+<body>
+    <div id='clock'></div>
+    <button onclick="stopClock()">중지</button>
+    <p>
+        버튼을 누르면 3초뒤에 경고 박스가 화면에 표시됩니다.
+    </p>
+    <button onclick="showAlert()">눌러보세요!</button>
+    <script>
+        function showAlert() {
+            // winkdow.setTimeout(callBack,duration);
+            // winkdow.setTimeout(지연시간이 지난후 실행될 함수,지연시간 ms);
+            setTimeout(function () {
+                alert('setTimeout을 사용하여 표시됩니다.');
+            },3000);
+        }
+
+        let time;
+
+        function setClock() {
+            let now = new Date();
+            let hours = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+            hours = hours<10 ? "0" + hours : hours;
+            minute = minute<10 ? "0" + minute : minute;
+            second = second<10 ? "0" + second : second;
+            let str = `${hours}:${minute}:${second}`;
+            document.getElementById('clock').textContent = str;
+            time = setTimeout(setClock,1000);
+        }
+        setClock();
+
+        function stopClock() {
+            window.clearTimeout(time);
+        }
+    </script>
+</body>
+</html>

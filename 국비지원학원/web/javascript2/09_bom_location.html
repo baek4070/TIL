@@ -1,0 +1,23 @@
+<!-- 09_bom_location.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <button onclick="location.href='https://www.naver.com';">
+        네이버 href 이동
+    </button>
+    <!-- history에 정보가 남지않아서 뒤로가기가 안된다 -->
+    <button onclick="location.replace('https://www.naver.com');">
+        네이버 replace로 이동
+    </button>
+
+    <a onclick="location.href='10_bom_history.html'">내부 href 이동</a>
+    <a href="javascript:location.replace('10_bom_history.html');">내부 replace 이동</a>
+</body>
+</html>
