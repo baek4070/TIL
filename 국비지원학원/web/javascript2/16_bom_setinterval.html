@@ -1,0 +1,30 @@
+<!-- 16_bom_setinterval.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        // setInterval(실행 함수, 시간 간격);
+        let inter = setInterval(flashText,500);
+
+        function flashText() {
+            let elem = document.getElementById("target");
+            elem.style.color 
+                = (elem.style.color == "red") ? "blue" : "red";
+            elem.style.backgroundColor 
+                = (elem.style.backgroundColor == "green") ? "yellow" : "green";
+        }
+        
+        function stopTextColor() {
+            clearInterval(inter);
+        }
+    </script>
+</head>
+<body>
+    <div id="target">
+        <p>this is Paragraph</p>
+    </div>
+    <button onclick="stopTextColor();">stop</button>
+</body>
+</html>

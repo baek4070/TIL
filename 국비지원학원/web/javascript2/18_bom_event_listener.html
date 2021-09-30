@@ -1,0 +1,22 @@
+<!-- 18_bom_event_listener.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script></script>
+</head>
+<body>
+    <input type="button" value="확인" id="btn"/>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick = function () {
+            console.log("onclick 속성 이벤트 처리");
+        };
+        // btn.addEventListener('이벤트 종류', 실행 함수); 
+        btn.addEventListener('click', function () {
+            alert('버튼 클릭')
+        });
+    </script>
+</body>
+</html>

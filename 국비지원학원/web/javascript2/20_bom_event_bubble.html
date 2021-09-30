@@ -1,0 +1,28 @@
+<!-- 20_bom_event_bubble.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script></script>
+</head>
+<body>
+    <div onclick="alert('div content !!!');">
+        <a href="./19_bom_click_event.html" onclick="imageClick(event)">
+            <img src="img/apple.png"/>
+        </a>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus autem ut mollitia rem et suscipit totam, eius ex veniam quidem, consequuntur quo! Perspiciatis sequi nam harum dolorum assumenda consectetur cupiditate.</p>
+    </div>
+    <script>
+        function imageClick(e) {
+            //e == clickEvent
+            // 태그가 가지고 있는 기본이벤트를 발생시키지않게하는것이 preventDefault 이다
+            event.preventDefault();
+            // 이벤트를 전파 ㄴㄴ  부모입장에선 모름
+            event.stopPropagation();
+            alert("imageClick() event 발생!!!");
+            document.querySelector("img").width="500";
+        }
+    </script>
+</body>
+</html>

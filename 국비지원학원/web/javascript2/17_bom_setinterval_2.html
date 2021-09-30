@@ -1,0 +1,43 @@
+<!-- 17_bom_setinterval_2.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        #box{
+            position: absolute;
+            top:0;
+            left:0;
+            width:30px;
+            height:30px;
+            background-color:pink;
+            overflow:hidden;
+        }
+    </style>
+    <script>
+        let id;
+        let i =0, j=0;
+
+        id = setInterval(function () {
+            let box = document.getElementById("box");
+            i = parseInt(Math.random()*300)+30;
+            j = parseInt(Math.random()*300)+30;
+            box.style.top = i + "px";
+            box.style.left = j +"px";
+            box.style.width = i + "px";
+            box.style.height = j +"px";
+        },100)
+
+        function catchBox(a) {
+            a.textContent = "잡았다 요놈!";
+            a.style.background="red";
+            a.style.color = "white";
+            clearInterval(id);
+        }
+    </script>
+</head>
+<body>
+    <div id="box" onclick="catchBox(this);">잡아라!</div>
+</body>
+</html>

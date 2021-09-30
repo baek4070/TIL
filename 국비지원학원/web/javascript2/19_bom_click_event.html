@@ -1,0 +1,60 @@
+<!-- 19_bom_click_event.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script>
+        /* 
+            onload(문서나 tag요소가 사용할 준비가 완료 되었을때);
+            onchange(객체의 내용이 바뀌고 focus를 잃었을 때);
+            onfocus(객체가 사용할 준비 - 포커스를 얻었을때);
+            onblur(포커스를 잃었을때);
+            onclick(마우스에 의해 클릭이 되었을때);
+            ondbclick(마우스에 의해 더블 클릭 되었을 때);
+            onkeydown(키보드의 키가 눌러졌을 때);
+            onkeypress(키를 누르고 있을때);
+            onkeyup(키를 눌렀다가 떗을 때);
+            onmouseover(객체 위로 마우스가 올라 왔을때);
+            onmouseout(객체에서 마우스가 벗어 났을때);
+            onmouseenter(마우스가 객체위로 들어오는 순간);
+            onmouseleave(마우스가 객체위에서 벗어나는 순간);
+            onscroll(객체에 생성된 스크롤이 움직였을때);
+            onreset(입력태그의 리셋 버튼이 눌러졌을때);
+            onsubmit(form태그의 데이터가 서버에 전송되는 시점);
+            onresize(객체의 크기가 변경 되었을 때);
+         */
+
+        function changeColor(c) {
+            // c == 색상
+            document.body.style.backgroundColor = c;
+        }
+
+        window.onload = function(){
+            document.getElementById("v1").addEventListener("click", function(){
+                changeColor(this.value);
+            });
+
+            document.getElementById("v2").onclick = function(){
+                changeColor(this.value);
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- form>(input:radio[name="r1"]*4) -->
+    <form action="">
+        <input type="radio" name="r1" id="lightBlue" onclick="changeColor('lightblue');"/>
+        <label for="lightBlue">파랑색</label>
+        <label>
+            <input type="radio" name="r1" onclick="changeColor('lightgreen')"/> 초록색
+        </label>
+        <label>
+            <input type="radio" name="r1" id="v1" value="pink"/> 핑크색
+        </label>
+        <label>
+            <input type="radio" name="r1" id="v2" value="orange"/> 오렌지 색
+        </label>
+    </form>
+</body>
+</html>
