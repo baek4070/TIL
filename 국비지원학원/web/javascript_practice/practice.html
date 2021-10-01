@@ -12,5 +12,51 @@
     let Hello = document.querySelector("div");
     Hello.style.color="red";
     </script>
+    <br/>
+    <hr/>
+    <button onclick="elCreate();">head1 생성기</button>
+    <button onclick="elRemove();">head1 제거기</button>
+    <button onclick="randomNumCreate();">랜덤번호 붙이기</button>
+    <script>
+        
+        let i = 0; //(현재 생성된 라인의 갯수)
+        let k = 0; //(랜덤 번호를 붙힐 라인의 번호)
+        //
+        function elCreate(){
+            let h1 = document.createElement("h1");
+            h1.innerHTML = `이것은 제목입니다`;
+            h1.className = "head";
+            document.body.appendChild(h1);
+            i++;
+            console.log(i);
+            console.log(`현재 i의 값은 = ${i}`);
+            console.log(`현재 k의 값은 = ${k}`);
+        }
+        function elRemove(){
+            let h1 = document.querySelector("h1");
+            console.log(h1);
+            console.log(h1.parentNode);
+            h1.parentNode.removeChild(h1);
+            i--;
+            k--;
+            console.log(`현재 i의 값은 = ${i}`);
+            console.log(`현재 k의 값은 = ${k}`);
+        }
+        function randomNumCreate() {
+            if (k<0) {
+                k=0;
+            }else if(k>=i){
+                alert("그만눌러")
+                return
+            }
+            let h1 = document.getElementsByClassName("head")
+                h1[k].innerHTML+=(`${parseInt(Math.random()*100)}`)
+                console.log(h1.length)
+                console.log(h1)
+                k++;
+                console.log(`현재 i의 값은 = ${i}`);
+                console.log(`현재 k의 값은 = ${k}`);
+        }
+    </script>
 </body>
 </html>
