@@ -1,0 +1,72 @@
+<!-- join.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script></script>
+    <link rel="stylesheet" href="join.css"/>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">회원가입</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" id="inputId" class="input" name="아이디"/></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" id="inputPw" class="input" name="비밀번호"/></td>
+                </tr>
+                <tr>
+                    <td>비밀번호확인</td>
+                    <td><input type="password" id="inputPwCheck" class="input" name="비밀번호확인"/></td>
+                </tr>
+                <tr>
+                    <td>생년월일</td>
+                    <td><input type="text" id="inputBirthDate" class="input" name="생년월일"/></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" id="inputName" class="input" name="이름"/></td>
+                </tr>
+                <tr>
+                    <td>전화번호</td>
+                    <td><input type="text" id="inputCallNum" class="input" name="전화번호"/></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" value="회원가입" id="submit" onclick="checkList();">
+        <input type="button" value="정보수정">
+
+        <script>
+            function checkList(){
+
+                let input = document.querySelectorAll(".input");
+                for (let i = 0; i < input.length; i++) {
+                    console.log(input[i].value)
+                    if (input[i].value == "") {
+                        alert(`${input[i].name} 을 작성해주세요!`);
+                        input[i].focus();
+                    }
+                }
+                let inputPw = document.getElementById("inputPw");
+                let inputPwCheck = document.getElementById("inputPwCheck");
+                if (inputPw.value != inputPwCheck.value) {
+                    alert("비밀번호가 일치하지 않습니다!");
+                    inputPw.value=""
+                    inputPwCheck.value=""
+                    inputPw.focus();
+                }
+
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+*{
+    margin: 0 auto;
+}
+body {
+    width: 1080px;
+}
+
+div.wrap{
+    margin-top: 10px;
+    width: 400px;
+    height: 450px;
+    align-content: center;
+    border: 1px solid black;
+}
+table {
+    margin-top: 15px;
+    height: 400px;
+}
+tbody {
+    text-align: right;
+    padding-top: 25px;
+}
+th {
+    font-size: xx-large;
+}
+
+input[type="text"]{
+    width: 150px;
+    margin: 0px 40px 0 40px;
+}
+
+input[type="password"]{
+    width: 150px;
+    margin: 0px 40px 0 40px;
+}
+
+input[value="회원가입"]{
+    margin-left: 130px;
+}
