@@ -58,5 +58,29 @@
                 console.log(`현재 k의 값은 = ${k}`);
         }
     </script>
+    <br/>
+    <hr/>
+    <br/>
+    <input type = "button" id ="coffe" class="menu" value = "커피(700원)"/>
+    <input type = "button" id ="cornTea" class="menu" value = "옥수수수염차(1000원)"/>
+    <input type = "button" id ="water" class="menu" value = "물(500원)"/>
+    <br/>
+    <br/>
+    <input type="button" id = "k" class="inselt" value="1000원"/>
+    <input type="button" id = "kHalf" class="inselt" value="500원"/>
+    <input type="button" id = "h" class="inselt" value="100원"/>
+    <br/>
+    <br/>
+    <div id = remainingAmount style="font-size:xx-large;">현재금액</div>
+    <script>
+
+        let menu = document.getElementsByClassName("menu");
+        function server(c) {
+            alert(`${c}이 나왔습니다`)
+        }
+        menu[].onclick = function (){
+            server(this.name);
+        }
+    </script>
 </body>
 </html>
