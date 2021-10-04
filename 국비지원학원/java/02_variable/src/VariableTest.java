@@ -62,7 +62,9 @@ public class VariableTest {
 		double d = 3.14;
 		System.out.println(d);
 		double fNum = f+d;
-		System.out.println(fNum); // 왜 값이 지저분하노
+		System.out.println(fNum); // 왜 값이 지저분하노 
+		//프로그램은 본질적으로 소수점 계산을 완벽하게 수행하지 못한다 apu~ 어쩌구 문제라고하는데 
+		//일단은 그냥 받아들이자
 		
 		int result = 10/4;
 		System.out.println(result);
