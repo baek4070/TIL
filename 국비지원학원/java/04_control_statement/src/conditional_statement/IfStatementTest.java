@@ -1,7 +1,7 @@
 package conditional_statement;
 
 
-public class ifStatementTest {
+public class IfStatementTest {
 	
 	public static void main(String[] args) {
 		

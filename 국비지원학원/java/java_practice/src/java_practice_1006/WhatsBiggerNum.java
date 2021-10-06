@@ -2,7 +2,7 @@ package java_practice_1006;
 
 import java.util.Scanner;
 
-public class whatsBiggerNum {
+public class WhatsBiggerNum {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("첫번째 정수 : ");

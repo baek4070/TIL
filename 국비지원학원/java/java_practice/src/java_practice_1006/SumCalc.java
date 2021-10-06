@@ -1,6 +1,6 @@
 package java_practice_1006;
 
-public class sumCalc {
+public class SumCalc {
 	public static void main(String[] args) {
 	int i;
 	int sum = 0;

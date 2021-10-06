@@ -2,7 +2,7 @@ package java_practice_1006;
 
 import java.util.Scanner;
 
-public class circle_area {
+public class Circle_area {
 
 	public static void main(String[] args) {
 		double radius;

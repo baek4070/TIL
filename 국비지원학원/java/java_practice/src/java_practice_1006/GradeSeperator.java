@@ -2,7 +2,7 @@ package java_practice_1006;
 
 import java.util.Scanner;
 
-public class gradeSeperator {
+public class GradeSeperator {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		boolean isRun = true;

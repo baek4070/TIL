@@ -2,7 +2,7 @@ package java_practice_1006;
 
 import java.util.Scanner;
 
-public class average {
+public class Average {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("성적을 입력하시오:");
