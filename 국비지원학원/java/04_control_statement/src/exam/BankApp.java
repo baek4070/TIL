@@ -46,7 +46,8 @@ BankApp :while(isRun) {
 				System.out.println("잘못된 입력입니다 다시입력해주세요");
 				break;
 			}
-			
+			System.out.println("계속 진행하려면 아무글자나 입력해주세요");
+			String something = sc.next();
 //			
 //			if (selectNo == 1) {
 //				System.out.println("입금할 금액을 입력하세요");
