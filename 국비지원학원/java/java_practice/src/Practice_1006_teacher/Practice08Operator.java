@@ -1,3 +1,5 @@
+package Practice_1006_teacher;
+
 
 public class Practice08Operator {
 	public static void main(String[] args) {

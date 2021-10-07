@@ -1,3 +1,5 @@
+package Practice_1006_teacher;
+
 import java.util.Scanner;
 
 public class Practice07Pay {
