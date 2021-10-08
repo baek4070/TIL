@@ -1,4 +1,4 @@
-package array;
+package array;// 배열이 1차적(?)으로 제일 연산속도가(대게) 빠르다
 
 public class ArrayExample {
 
@@ -26,7 +26,7 @@ public class ArrayExample {
 //		arrays[0] = 10 ; //null 포인트를 가르키는데 0번 인덱스에 값을 넣지 못함. 오류나는거 확인
 //		System.out.println(arrays);
 		if (arrays == null) {
-			arrays = new int[6]; // 초기값 0 인거 확인
+			arrays = new int[6]; // 초기값 0 인거 확인, 공간에 기본값으로 자동 초기화
 		}
 		
 		arrays[5] = 80;
