@@ -61,9 +61,9 @@
     <br/>
     <hr/>
     <br/>
-    <input type = "button" id ="coffe" class="menu" value = "커피(700원)"/>
-    <input type = "button" id ="cornTea" class="menu" value = "옥수수수염차(1000원)"/>
-    <input type = "button" id ="water" class="menu" value = "물(500원)"/>
+    <input type = "button" id ="coffe" class="menu" value = "커피(700원)" alt="커피"/>
+    <input type = "button" id ="cornTea" class="menu" value = "옥수수수염차(1000원)" alt="옥수수 수염차"/>
+    <input type = "button" id ="water" class="menu" value = "물(500원)" alt="물"/>
     <br/>
     <br/>
     <input type="button" id = "k" class="inselt" value="1000원"/>
@@ -78,8 +78,8 @@
         function server(c) {
             alert(`${c}이 나왔습니다`)
         }
-        menu[].onclick = function (){
-            server(this.name);
+        menu.onclick = function (){
+            server(this.alt);
         }
     </script>
 </body>
