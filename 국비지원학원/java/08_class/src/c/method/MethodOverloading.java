@@ -1,5 +1,6 @@
 package c.method;
 
+
 public class MethodOverloading {
 
 	public void methodA() {
@@ -43,5 +44,10 @@ public class MethodOverloading {
 		System.out.println(result);
 		result = m1.methodB('A','B','C','D','E'); //매개변수의 길이가 함수를 호출하는순간 매개변수의 개수만큼 정의된다
 		System.out.println(result);
+		m1.methodA();
+		m1.methodA(1);
+		m1.methodA(1.3);
+		m1.methodA(1.3,1);
+		m1.methodA(5,1.3);
 	}
 }

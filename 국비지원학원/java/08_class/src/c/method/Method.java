@@ -16,6 +16,9 @@ public class Method {
 	double methodC(int x,int y) {
 		return x / y; 
 	}
+	int methodC(double x,int y) {
+		return (int)x / y; 
+	}
 	
 	String methodD(char a,char b,char c) {
 		return a+":"+b+":"+c;
@@ -29,7 +32,8 @@ public class Method {
 //		String s = m1.methodB(); // String s = 0; 와 다름없다 그러므로 오류 
 		double r = m1.methodC(10,30);
 		System.out.println(r);
-		
+		int t = m1.methodC(10.0,30);
+		System.out.println(t);
 		String s = m1.methodD('심', '현', '석');
 		System.out.println(s); // println( 왜 매개변수를 타입과 관계없이 다받냐?) 바로 메소드 오버로딩! ! 
 		//오버로딩 이해는 되는데 그럼 리턴타입도 다르게끔 오버로딩 가능한가 ?? 
