@@ -2,8 +2,6 @@ package object_array;
 
 import java.util.Scanner;
 
-import javax.swing.Box;
-
 public class StudentExample {
 
 	public static void main(String[] args) {
