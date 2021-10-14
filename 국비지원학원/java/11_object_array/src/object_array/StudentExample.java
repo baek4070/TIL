@@ -44,9 +44,42 @@ public class StudentExample {
 				break;
 			case 3:
 				System.out.println("학생 정보 확인");
+				if(students[0] == null) {
+					System.out.println("학생정보를 입력해주세요");
+					continue box;
+				}
+				for(Student s : students) {
+					System.out.println(s.toString());
+				}
 				break;
 			case 4:
 				System.out.println("학생 정보 분석");
+				//total , max , min , avg
+				int total = 0;		// 총점
+				int max,min;		// 최고, 최저
+				max = min = students[0].score;
+				double avg = 0;		// 평균
+				
+				Student stuMax =null;
+				Student stuMin =null;
+				
+				for (int i = 0; i < students.length; i++) {
+					int score = students[i].score;
+					total += score;
+					if (max < score) {
+						max = score;
+						stuMax = students[i];
+					}
+					if (min > score) {
+						min = score;
+						stuMin = students[i];
+					}
+				}
+				avg = (double)total/stuCount;
+				System.out.println("전체 점수 : " + total);
+				System.out.println("최고 점수 : " + stuMax.toString());
+				System.out.println("최저 점수 : " + stuMin.toString());
+				System.out.printf("평균 점수 : %.1f", avg);
 				break;
 			case 5:
 				System.out.println("종료");
