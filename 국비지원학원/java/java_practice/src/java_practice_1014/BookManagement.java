@@ -59,13 +59,18 @@ public class BookManagement {
 	// 도서 등록
 	public void  registerBook() {
 		System.out.println("1. 도서등록");
+
 		for (int i = 0; i < count; i++) {
-			if(books[i]==null)
-			System.out.println("등록할 책의 제목을 입력하세요 >");
-			books[i].setTitle(scanLine.next());
-			System.out.println("등록할 책의 저자를 입력하세요 >");
-			books[i].setAuthor(scanLine.next());
-			System.out.println("등록완료");
+			if(books[i]==null) {
+				books[i] = new Book();
+				System.out.println("등록할 책의 제목을 입력하세요 >");
+				books[i].setTitle(scanLine.next());
+				System.out.println("등록할 책의 저자를 입력하세요 >");
+				books[i].setAuthor(scanLine.next());
+				books[i].setNum(count);
+				System.out.println("등록완료");
+				System.out.println(books[i].toString());
+			}
 		}
 		count++;
 	}
@@ -73,6 +78,9 @@ public class BookManagement {
 	// 도서 목록 출력
 	public void selectBook() {
 		System.out.println("2. 도서목록");
+		for (int i = 0; i < count; i++) {
+		System.out.println(books[i].toString());
+		}
 	}
 
 	// 도서 정보 수정
