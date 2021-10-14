@@ -1,15 +1,15 @@
-package java_practice_1014;
+package GUIDE;
 
 import java.util.Scanner;
 
-public class BankApplication_teacher {
+public class BankApplication {
 	
 	// 계좌주 정보를 저장하는 배열
 	Account[] account = new Account[100];
 	
 	Scanner sc = new Scanner(System.in);
 	
-	BankApplication_teacher(){
+	BankApplication(){
 		this.run();
 	}
 	
