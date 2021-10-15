@@ -3,7 +3,7 @@ package GUIDE;
 import java.util.Scanner;
 
 public class BookManagement {
-	// 문자열 입력
+	// 문자열 입력 //nextline 한줄 // next 공백기준 한단어
 	Scanner scanLine = new Scanner(System.in);
 	// 선택번호 입력
 	Scanner scanSelectnum = new Scanner(System.in);
@@ -53,27 +53,104 @@ public class BookManagement {
 	
 	// 프로그램 종료
 	public void terminate() {
+//		isRun = false; //this해도 된다
+		this.isRun = false;
 		System.out.println("프로그램 종료");
 	}
 
 	// 도서 등록
 	public void  registerBook() {
 		System.out.println("1. 도서등록");
+		String title = getData("등록할 도서의 제목을 입력해 주세요>");
+		String author = getData("등록할 도서의 저자를 입력해 주세요>");
+		
+		for(int i=0; i<books.length; i++) {
+			if(books[i] == null) {
+//				Book book = new Book(count,title,author);
+//				books[i] = book; //이렇게 할필요 없지 ~
+				//books[i] = new Book(count, title, author);
+				Book book = new Book();
+				book.setNum(count);
+				book.setTitle(title);
+				book.setAuthor(author);
+				books[i] = book; // 일련의 과정보다 상단의 생성자가 훨씬 효율적임
+				System.out.println("등록완료");
+				count++;
+				break;
+			}
+		}
 	}
 	
 	// 도서 목록 출력
 	public void selectBook() {
 		System.out.println("2. 도서목록");
+		for(Book book : books) {
+			if (book!=null) {
+				printBookInfo(book);
+			}
+		}
 	}
 
 	// 도서 정보 수정
 	public void updateBook() {
 		System.out.println("3. 도서수정");
+		int bookNum = getSelectNum("수정 하실 책의 관리번호를 입력해주세요");
+		Book book = findBook(bookNum);
+		if(book == null) {
+			System.out.println("입력하신 번호의 책이 존재하지 않습니다");
+			return;
+		}
+		printBookInfo(book);
+		
+		boolean isUpdate = true;
+		while (isUpdate) {
+			System.out.println("==========================");
+			System.out.println("1.제목수정| 2.저자수정| 3.수정완료");
+			System.out.println("==========================");
+			selectNo = getSelectNum("번호 입력>");
+			switch (selectNo) {
+			case 1:
+				System.out.println("제목수정");
+				String title = getData("제목 입력> ");
+				book.setTitle(title);
+				System.out.println("제목 수정 완료");
+				break;
+			case 2:
+				System.out.println("저자수정");
+				String author = getData("저자 입력> ");
+				book.setAuthor(author);
+				System.out.println("저자 수정 완료");
+				break;
+			case 3:
+				System.out.println("수정완료");
+				isUpdate = false;
+				break;
+			default:
+				System.out.println("등록된 메뉴가 아닙니다.");
+			}
+		}
+		
+		System.out.println("수정완료");
 	}
 	
 	// 도서 목록에서 책 정보 삭제
 	public void deleteBook() {
 		System.out.println("4. 도서삭제");
+		int bookNum = getSelectNum("삭제할 도서의 관리번호를 입력해주세요.");
+		Book book = findBook(bookNum);
+		if (book == null) {
+			System.out.println("입력하신 관리번호의 책이 존재하지 않습니다.");
+			return;
+		}
+		//배열을 찾아들어가야지 book에 null 을주면 book 이 null이 되는거지
+		//book 이 참조하는 books[i]의 주소값이 null이 되는건 아님
+		for (int i = 0; i < books.length; i++) {
+			if (books[i] != null && books[i] == book) {
+				books[i] = null;
+				System.out.println("삭제완료");
+				return;
+			}
+		}
 	}
 	
 	// 책 정보 출력
@@ -83,6 +160,11 @@ public class BookManagement {
 	
 	// 도서관리번호로 책 정보 찾기
 	public Book findBook(int num) {
+		for(Book book : books) {
+			if(book != null && book.getNum() == num) {
+				return book;
+			}
+		}
 		return null;
 	}
 	
@@ -95,6 +177,11 @@ public class BookManagement {
 	// 번호 선택 받기
 	int getSelectNum(String message) {
 		System.out.println(message);
+		if(!scanSelectnum.hasNextInt()) {
+			System.out.println("숫자를 입력해주세요");
+			scanSelectnum.next();
+			return 0;
+		}
 		return scanSelectnum.nextInt();
 	}
 		

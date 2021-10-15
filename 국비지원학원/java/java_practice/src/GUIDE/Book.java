@@ -1,5 +1,5 @@
 package GUIDE;
-
+//데이터 클래스 //value Object, VO
 public class Book {
 	
 	// 도서관리 번호
