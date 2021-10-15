@@ -182,11 +182,7 @@ public class MemberManagement{
 	// 회원탈퇴 - 삭제 할려는 정보가 본인 정보일때만 삭제
 	private void delete() {
 		System.out.println("5.회원탈퇴");
-		if (loginMember==null) {
-			System.out.println("로그인후 이용가능합니다.");
-			return;
-		}
-		if (loginMember.equals(master)) {
+		if (loginMember==master) {
 			System.out.println("master 계정은 삭제할수 없습니다.");
 		}else if(loginMember!=null) {
 			System.out.println("비밀번호를 한번더 입력해주세요 >");
