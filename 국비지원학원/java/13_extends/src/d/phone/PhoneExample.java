@@ -22,6 +22,7 @@ public class PhoneExample {
 		dmbPhone.changeChannel(8);
 		dmbPhone.turnOffDMB();
 		dmbPhone.powerOff();
+		
 	}
 
 }

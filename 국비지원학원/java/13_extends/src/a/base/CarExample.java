@@ -1,6 +1,6 @@
 package a.base;
 
-class Car  //extends Object //모든 객체들이 상속받고 있는 녀석 
+class Car  //extends Object //모든 객체들이 상속받고 있는 녀석  //default
 {
 	
 	String company = "기아자동차";
