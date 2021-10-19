@@ -18,6 +18,6 @@ public class VIPCustomer extends GoldCustomer {
 		public String showCustomerInfo() {
 			return super.showCustomerInfo()
 					+ " 담당직원 번호는 : "+this.agentID+"입니다.";
-			
 		}
+		
 }
