@@ -21,5 +21,6 @@ public class Windows {
 		SamsungPrinter samsungPrinter = new SamsungPrinter();
 		windows.print(lgPrinter);
 		windows.print(samsungPrinter);
+		samsungPrinter.colorPrint();
 	}
 }
