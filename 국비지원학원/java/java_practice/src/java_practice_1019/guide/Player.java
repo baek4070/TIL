@@ -2,7 +2,7 @@ package java_practice_1019.guide;
 
 public class Player {
 
-	PlayerLevel level;
+	private PlayerLevel level;
 	
 	Player (){
 		getLevel();
