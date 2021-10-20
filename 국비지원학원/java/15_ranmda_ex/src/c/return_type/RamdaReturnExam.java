@@ -26,6 +26,9 @@ public class RamdaReturnExam {
 		result = i.method(10, 20, "덧셈연산");
 		System.out.println("result : "+ result);
 		
+		i = (a,b,s)-> a/b;
+		System.out.println(i.method(30, 3, "gdf"));
+		
 		/*
 		//이건 나중에 배울건데 암튼 자주 사용된다는 것입니다
 		Thread t = new Thread(()->{
