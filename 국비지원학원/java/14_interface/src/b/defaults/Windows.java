@@ -17,6 +17,7 @@ public class Windows {
 	public static void main(String[] args) {
 		Windows windows = new Windows();
 		LGPrinter lgPrinter = new LGPrinter();
+		lgPrinter.colorPrint();
 		SamsungPrinter samsungPrinter = new SamsungPrinter();
 		windows.print(lgPrinter);
 		windows.print(samsungPrinter);
