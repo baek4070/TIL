@@ -26,12 +26,11 @@ public class RamdaReturnExam {
 		result = i.method(10, 20, "덧셈연산");
 		System.out.println("result : "+ result);
 		
-		Thread t = new Thread(new Runnable() {
-			@Override
-			public void run() {
-			}
+		/*
+		//이건 나중에 배울건데 암튼 자주 사용된다는 것입니다
+		Thread t = new Thread(()->{
 		});
-		
+		*/
 		
 	}
 }
