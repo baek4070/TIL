@@ -1,7 +1,5 @@
 package f.polymorphism.method;
 
-import javax.sound.sampled.ReverbType;
-
 public class RunVehicle {
 	//메소드의 다형성
 	void runVehicle(Vehicle vehicle) {
