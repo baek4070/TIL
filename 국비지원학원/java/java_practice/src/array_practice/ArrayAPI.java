@@ -1,5 +1,7 @@
 package array_practice;
 
+import java.util.Arrays;
+
 public class ArrayAPI {
 
 	public static void main(String[] args) {
@@ -9,79 +11,53 @@ public class ArrayAPI {
 		System.out.println(scores);
 		int[] scores2 = scores; // 위치를 알려주는것임
 		System.out.println(scores2);
-		scores[0]= 80;
-		System.out.println(scores[0]);
-		System.out.println(scores2[0]); 
-		// scores[0]=80 지정해도 주소를 같게 해놓았기 떄문에 둘다 80으로 프린트 된거 확인
-		System.out.println(scores == scores2);
-		// 마찬가지로 == 연산 true
-		int a = 10;
-		int b = a;
-		b = 20;
-		System.out.println(a == b);
-		//다른 예를 보여주는것
-		System.out.println("scores의 길이 : " + scores.length);
-		
-		int[] arrays;
-		arrays = null; // null값으로 초기화
-//		arrays[0] = 10 ; //null 포인트를 가르키는데 0번 인덱스에 값을 넣지 못함. 오류나는거 확인
-//		System.out.println(arrays);
-		if (arrays == null) {
-			arrays = new int[6]; // 초기값 0 인거 확인, 공간에 기본값으로 자동 초기화
-		}
-		
-		arrays[5] = 80;
-		arrays[3] = 60;
-		
-		for(int i = 0; i < arrays.length; i++) {
-			System.out.printf("arrays[%d] : %d \n",i,arrays[i]);
-		}
-//		arrays[6] = 100;
-		
-//		arrays = null;
-//		arrays[0] = 100;
-		
-		//문자 형 배열
-		char chars[] = new char[26];
-		
-		char c = 'A';
-		
-		for(int i = 0; i < chars.length; i++, c++) {
-			chars[i] = c;
-		}
-		
-		for(int i=0; i<chars.length; i++) {
-			System.out.print("["+chars[i]+"]");
-		}
-		System.out.println();
-		
-		//실수
-		double[] doubles = new double[3];
-		doubles[1] = 3.14;
-		for(int i =0; i<doubles.length; i++) {
-			System.out.print(doubles[i]+" ");
-		}
-		System.out.println();
-		
-		//논리형 - 초기값 false
-		boolean[] tasks = new boolean[5];
-		System.out.println(tasks[tasks.length-1]);
-		
-		//참조 타입의 배열
-		
+		//-------------------배열 내용 반환 ------------------------------
+		System.out.println("scores : " + Arrays.toString(scores));
+		System.out.println("scores2 : " + Arrays.toString(scores2));
+		//-------------------배열 복제-----------------------------
+		int[] scores3 = Arrays.copyOf(scores, 8); // 원본보다 길어도 상관없음 기본값이 들어감
+		System.out.println(scores3);			  // 다른 주소를 참조함
+		System.out.println("scores3 : " + Arrays.toString(scores3));
+		System.out.println(scores3);			  // 다른 주소를 참조함
+		System.out.println("scores3 : " + Arrays.toString(scores3));
+		//-------------------배열 특정 범위만 복제 ------------------------
+										//(원본,시작인덱스,길이로 환산한 마지막 인덱스까지)
+		int[] scores4 = Arrays.copyOfRange(scores, 0, scores.length);
+		System.out.println(scores4);
+		System.out.println("scores4 : " + Arrays.toString(scores4));
+		scores4[scores.length-1]=100;
+		System.out.println("scores4 : " + Arrays.toString(scores4));
+		System.out.println("scores : " + Arrays.toString(scores));
+		//------------------- 배열 정렬 --------------------------------
+		Arrays.sort(scores4);
+		System.out.println(scores4);			// 정렬이 바뀌어도 저장 주소값은 동일한걸 확인
+		System.out.println("scores4 배열 전체정렬 : " + Arrays.toString(scores4));
+		//--------------------배열 부분 정렬 -----------------------------------
+		Arrays.sort(scores3,1,7); //(원본,시작인덱스,길이로 환산한 마지막 인덱스까지)
+		System.out.println(scores3);			  // 다른 주소를 참조함
+		System.out.println("scores3 1번쨰~7번째 부분정렬: " + Arrays.toString(scores3));
+		//----------------------스트링 타입의 배열------------------------------------
 		String[] strs;
-//		strs = {"C언어","JAVA","JavaScript","MySQL","JSP"};
-		strs = new String[]{"C언어","JAVA","JavaScript","MySQL","JSP"};
-		System.out.println(strs[0]);
+		strs = new String[]{"C언어","DAVA","JavaScript","MySQL","ASP"};
 		System.out.println(strs);
-		//strs = new String[6]; // 새로운 공간을 할당 
-		System.out.println(strs); // 주소가 다른것을 확인
-		//향상된 for 문(for Each문)
-		for(String s : strs) {
-			System.out.print(s+" ");
-		}
-		System.out.print("\n");
-		
+		System.out.println(Arrays.toString(strs));
+		//-----------------------스트링 타입 배열 복제 ----------------------------------
+		String[] strs1 = Arrays.copyOf(strs,strs.length);
+		System.out.println(strs1);
+		System.out.println("복제된 strs1 : " +Arrays.toString(strs1));
+		//-------------------스트링 타입 배열 아스키 기준 정렬--------------------------------
+		Arrays.sort(strs);
+		System.out.println(strs);
+		System.out.println("정렬된 strs : "+Arrays.toString(strs));
+		//--------------------부분 배열 값 대체---------------------------------------
+		Arrays.fill(strs, 1,3,"대체되었음");//(원본,시작인덱스,길이로 환산한 마지막 인덱스까지)
+		System.out.println(strs);
+		System.out.println("부분 대체된 strs : "+Arrays.toString(strs));
+		//--------------------전체 배열 값 대체---------------------------------------
+		Arrays.fill(strs, "전체대체");
+		System.out.println(strs);
+		System.out.println("전체대체된 strs : "+Arrays.toString(strs));
+		//--------------------스트링 타입 배열 이진탐색 ----------------------------------
 		// 이차원 배열
 		int[] array3[] = new int[2][]; // 값을 []개저장할수 있는 배열이 2개 존재한다
 		
