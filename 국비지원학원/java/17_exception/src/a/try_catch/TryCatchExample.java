@@ -24,7 +24,7 @@ public class TryCatchExample {
 			e.printStackTrace();//오류에대한 전체내용을 프린트 해줌
 			System.out.println("NumberFormatException 발생");
 		}catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println(e.getMessage());//간략하게 어떤오류인지 메시지만 출력
+			System.out.println(e.getMessage());//간략하게 어떤게 오류인지 메시지만 출력
 			System.out.println("ArrayIndexOutOfBoundsException 발생");
 		}finally {
 			System.out.println("오류가 발생하든 발생하지않든 무조건 실행");
