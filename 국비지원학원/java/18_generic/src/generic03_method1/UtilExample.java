@@ -11,7 +11,7 @@ class Util{
 public class UtilExample {
 
 	public static void main(String[] args) {
-		Box<String> box1 = Util.<String>boxing("사과");
+		Box<String> box1 = Util.boxing("사과");
 		System.out.println(box1.getType());
 		
 		Box<String> box2 = Util.<String>boxing("오렌지");
