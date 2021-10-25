@@ -23,6 +23,7 @@ public class InnerTest {
 	public static void main(String[] args) {
 //		B b = new B(); // B 클래스는 더이상 독립적인 클래스가 아니기떄문에 사용불가
 //		b.method();
+		
 	}
 
 }
