@@ -30,11 +30,10 @@ public class PropertiesExam {
 		Properties prop2 = new Properties();
 		try {
 			prop.load(new FileReader(path));
+			System.out.println(prop2.getProperty("driver"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
