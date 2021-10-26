@@ -9,6 +9,7 @@ public class ArrayListExam {
 	public static void main(String[] args) {
 		// 순서(index)가 존재하고 데이터 중복 저장이 가능한 List Collection
 		ArrayList array = new ArrayList(); // 기본값 오브젝트 타입
+		System.out.println(array.size());
 		array.add("문자열");
 		array.add(100);
 		String s = (String)array.get(0); //이렇게 안하려면 제네릭 지정해야합니다
