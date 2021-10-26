@@ -3,38 +3,73 @@ package java_practice_1025.explain3;
 import java.util.Arrays;
 
 public class ArrayTest<E> {
-
-	E[] array;
-
-	//기본생성자
-	public ArrayTest (){};
-	//capacity 길이만큼의 E 타입의 배열생성 하는 생성자
-	public ArrayTest(int capacity) {
-//		this.array[] =new E[capacity]; //타입을 모르니까 메모리 공간확보? 가안되서 인스턴스 생성불가
-		Object o =new Object[capacity];
-		//최상위 오브젝트로 먼저 생성하고 형변환
-		// 넘버 타입은 박싱 언박싱 생각하면됨 ~ !
-		this.array = (E[])o; 
-	}
+	// 저장공간
+		private int capacity;
+		// generic으로 지정된 Type의 배열
+		private E[] array;
+		// 변화 하는 배열의 길이
+		private int length;
 		
-		void add(E e) {
-			
-		}
-		
-		void remove(E e) {
-			
-		}
-		
-		int size() {
-			return array.length;
+		public ArrayTest() {
+			this(10);
 		}
 
-	@Override
+		public ArrayTest(int capacity) {
+			this.capacity = capacity;
+			array = (E[])new Object[this.capacity];
+		}
+		// E Type의 배열 array에 값 추가
+		public void add(E e) {
+			E[] newArray = this.array;
+			if(length >= capacity) {
+				newArray = Arrays.copyOf(this.array, array.length+1);
+				newArray[array.length] = e;
+				length++;
+			}else {
+				for(int i=0; i<array.length; i++) {
+					if(array[i] == null) {
+						array[i] = e;
+						length++;
+						break;
+					}
+				}
+			}
+			this.array = newArray;
+		}
+		
+		public void remove(E e) {
+			E[] newArray = this.array;
+			for(int i=0; i<array.length; i++) {
+				if(array[i]!= null && array[i].equals(e)) {
+					System.out.println("찾은 인덱스 : "+i);
+					if(length >= capacity) {
+						newArray = Arrays.copyOf(this.array, array.length-1);
+						//              원본   시작인덱스  복제배열 복제인덱스  복제할 크기
+						System.arraycopy(this.array, i+1, newArray, i, newArray.length-i);
+						length--;
+						break;
+						/*
+						for(int j=i; j<newArray.length; j++) {
+							newArray[j] = array[j+1];
+							length--;
+						}
+						*/
+					}
+				}
+			}
+			this.array = newArray;
+		}
+		
 		public String toString() {
-			return "ArrayTest [array=" + Arrays.toString(array) + "]";
+			return Arrays.toString(this.array);
 		}
-	public static void main(String[] args) {
 
+		public int size() {
+			return this.length;
+		}
+
+	public static void main(String[] args) {
+		
 		ArrayTest<String> array = new ArrayTest<>(3);
 		System.out.println(array);
 		array.add("최기근");

@@ -14,6 +14,10 @@ public class UtilExample {
 		Integer childAge = Util.getValue(childPair, "최기근");
 		System.out.println(childPair.getKey() +" : "+childAge);
 		
+		ChildPair<Integer, String> childPair2 = new ChildPair<>(20, "김기근");
+		String childAge2 = Util.getValue(childPair2, 20);
+		System.out.println(childPair2.getKey() +" : "+childAge2);
+		
 		/*
 		OtherPair<String, Integer> otherPair = new OtherPair<>("최기근", 20);
 		//OtherPair는 Pair를 상속하지 않으므로 오류가 발생해야 한다.

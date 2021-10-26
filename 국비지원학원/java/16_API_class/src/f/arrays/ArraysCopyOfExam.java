@@ -20,6 +20,7 @@ public class ArraysCopyOfExam {
 		char[] arr5 = Arrays.copyOf(arr1,arr1.length+1);
 		arr5[arr1.length] = '!';
 		System.out.println(Arrays.toString(arr5));
+		System.out.println(Arrays.toString(arr1));
 		
 	}
 
