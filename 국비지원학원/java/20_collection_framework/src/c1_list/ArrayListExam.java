@@ -63,9 +63,10 @@ public class ArrayListExam {
 		strs.add("java");
 		strs.add("JDBC");
 		strs.add("MYSQL");
+		//ArrayList 를 배열로 바꾸는법
 		String[] ss = strs.toArray(new String[strs.size()]);
 		System.out.println(Arrays.toString(ss));
-		
+		//배열을 List로 바꾸는법
 		List<String> list = Arrays.asList(ss);
 		System.out.println(list);
 	}
