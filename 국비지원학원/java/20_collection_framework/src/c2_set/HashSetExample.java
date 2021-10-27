@@ -7,10 +7,11 @@ public class HashSetExample {
 
 	public static void main(String[] args) {
 		Set<String> s1 = new HashSet<>();
-		s1.add("A");
+		boolean result= s1.add("A");
 		s1.add("D");
 		s1.add("B");
 		s1.add("C");
+		System.out.println(result);
 		
 		System.out.print("[ ");
 		Iterator<String> itr = s1.iterator();
@@ -26,6 +27,7 @@ public class HashSetExample {
 		System.out.print(s+" ");
 		}
 		System.out.println("]");
+		System.out.println(s1); // "A" 가 삭제된거 확인 
 		s1.add("A");
 		System.out.println(s1.contains("A"));
 		
