@@ -22,7 +22,7 @@ public class HashCodeExample {
 		Member member3 = new Member(name1, 20);
 		System.out.println(member1.hashCode());
 		System.out.println(member2.hashCode());
-		System.out.println(member3.hashCode()); //해시코드가 왜 age 로 출력이 되는지 모르겠음
+		System.out.println(member3.hashCode()); //해시코드가 age 로 출력되는건 Member 클래스에서 오버라이드 해놓음 
 		
 		Set<Member> setMember = new HashSet<>();
 		setMember.add(member1);
