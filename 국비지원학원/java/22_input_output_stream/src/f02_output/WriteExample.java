@@ -27,10 +27,10 @@ public class WriteExample {
 			//OutputStream 해당하는 위치에 파일이 존재하지 않으면 파일을자동으로 생성해준다 // 대신 디렉토리는 생성안해준다 오류발생! 
 //			OutputStream os = new FileOutputStream(path); //그냥 덮어쓰기
 			OutputStream os = new FileOutputStream(path,true);//이어 쓰기
-			String s = "ABC";
+			String s = "한글";
 			byte[] bytes = s.getBytes();
-			os.write(bytes, 1, 2);
-//			os.write(bytes);
+			//os.write(bytes, 1, 2);
+			os.write(bytes);
 			/*
 			for (int i = 0; i < bytes.length; i++) {
 				os.write(bytes[i]);
