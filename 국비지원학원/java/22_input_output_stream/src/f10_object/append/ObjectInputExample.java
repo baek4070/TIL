@@ -10,13 +10,20 @@ public class ObjectInputExample {
 		try {
 			FileInputStream fis = new FileInputStream("person.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			Player p = (Player)ois.readObject();
-			System.out.println(p);
+			while(true) {
+				try {
+					Player p = (Player)ois.readObject();
+					System.out.println(p);
+				} catch (Exception e) {
+					System.out.println("다 읽어옴"+e.getMessage());
+					break;
+				}
+			}
+			ois.close();
+			fis.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 }
