@@ -1,5 +1,8 @@
 package guide;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class MemberManagement extends AppBase
 {
 	
@@ -49,11 +52,21 @@ public class MemberManagement extends AppBase
 	@Override
 	protected void join() {
 		System.out.println("== 회원가입 ==");
+		ArrayList<Member> memberList = new ArrayList<>();
 		System.out.println("아이디를 입력해주세요 >");
-		String id = sc.next().trim();
+		String mId = sc.next().trim();
 		System.out.println("비밀번호를 입력해주세요 >");
+		String mPw = sc.next().trim();
 		System.out.println("비밀번호를 한번더 입력해주세요 >");
+		String mPwCheck = sc.next().trim();
 		System.out.println("이름을 입력해주세요 >");
+		String mName = sc.next().trim();
+		int mNum = number;
+		number++;
+		long time =System.currentTimeMillis();
+//		Date date = new Date(time);
+		long reg = time;
+		Member member = new Member(mNum, mName, mId, mPw, reg);
 	}
 
 	@Override
