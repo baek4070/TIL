@@ -14,6 +14,8 @@ public class Explain4 {
 			if(n == -1) break;
 			set.add(n);
 		}
+		//treeSet은 
+		//자동으로 오름차순으로 정렬되기 떄문에 처음과 마지막놈이 최소값 최대값이다
 		int min = set.first();
 		int max = set.last();
 		System.out.println(set);
