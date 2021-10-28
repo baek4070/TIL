@@ -22,12 +22,12 @@ public class BufferedExample {
 		startTime = System.nanoTime();
 		while ((data = fis.read()) != -1) {}
 		endTime = System.nanoTime();
-		System.out.printf("fis : %d ns %n",(endTime-startTime));
+		System.out.printf("fis : %d ns %n",(endTime-startTime)); // FileInputStream 으로 읽었을때 속도
 		
 		startTime = System.nanoTime();
 		while ((data = bis.read()) != -1) {}
 		endTime = System.nanoTime();
-		System.out.printf("bis : %d ns %n",(endTime-startTime));
+		System.out.printf("bis : %d ns %n",(endTime-startTime)); //BufferedInputStream 으로 읽었을때 속도
 		
 		bis.close();
 		fis.close();
