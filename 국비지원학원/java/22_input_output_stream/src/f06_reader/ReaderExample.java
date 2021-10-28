@@ -19,6 +19,9 @@ public class ReaderExample {
 		}
 		*/
 		char[] cbuf = new char[100];
+		// 반복문인데 왜 출력은 한번만 되는건가 ? ! 
+		// 한번에 100바이트 안에 다들어가니까 
+		// 출력은한번만 된다
 		while ((readData = reader.read(cbuf)) != -1 ) {
 			System.out.println(readData);
 			System.out.println(Arrays.toString(cbuf));

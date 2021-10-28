@@ -15,7 +15,7 @@ public class WriterExample {
 			char[] chars = str.toCharArray();
 			
 			System.out.println(Arrays.toString(chars));
-//			writer.write(chars);
+			writer.write(chars);
 			writer.write("김재관");
 			writer.flush();
 			writer.close();
