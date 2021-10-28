@@ -26,9 +26,11 @@ public class Explain2 {
 			int menu = sc.nextInt();
 			switch (menu) {
 			case 1 :
+				// 국가별 수도 정보를 추가 입력
 				input();
 				break;
 			case 2 :
+				//국가이름으로 수도 정보 맞추기
 				quiz();
 				break;
 			case 3 :
@@ -53,13 +55,20 @@ public class Explain2 {
 			}
 			System.out.println("수도 입력>>");
 			String capital = sc.next();
+			//입력받은 국가이름과 수도이름으로 List에 저장할
+			//Nation 객체 생성
 			Nation nation = new Nation(country, capital);
-			boolean isCheck =false;
+			//국가 이름으로 동일한 국가이름의 Nation객체가 존재하는지 확인
+			//contains함수는 동일한 객체가 존재하는지 확인할때
+			//equals method를 이용하여 확인
+			//Nation에 재정의된 equals를 통해 국가이름이 동일하면
+			//동일한 객체로 확인하도록 equals함수를 재정의해서 표현
 			if(store.contains(nation)) {
 				System.out.println(country+"는 이미 존재합니다.");
 				continue;
 			}
 			/*
+			boolean isCheck =false;
 			for (int i = 0; i < store.size(); i++) {
 				Nation na = store.get(i);
 				if (na.getCountry().equals(nation.getCountry())) {
@@ -68,13 +77,21 @@ public class Explain2 {
 				}
 			}
 			*/
+			//중복된 국가가 아니라면 List에 추가
 			store.add(nation);
 		}
 	}
 	
 	public void quiz() {
+		if (store.isEmpty()) {
+			System.out.println("모두 확인했습니다 !!");
+			return;
+		}
 		//문제를 낼 나라를 선택
+		//random 함수를 통해
+		//리스트 안에 등록된 국가 정보를 실행 시 랜덤하게 호출
 		
+		//List가 비어있다면 모든 문제를 확인한 것
 		int index = (int)(Math.random()*store.size());
 		
 		Nation nation = store.get(index);
@@ -86,11 +103,16 @@ public class Explain2 {
 		String capitalFromUser = sc.next();
 		if(answer.equals(capitalFromUser)) {
 			System.out.println("정답");
+			// 맞힌 정보는 삭제
+			store.remove(index);
 		}else {
+			// 잘못맞힌 문제는 정보를 알려줌
 			System.out.printf("아닙니다 !! %s의 수도는 %s 입니다 %n",question,answer);
 		}
 	}
 	public static void main(String[] args) {
+		// 생성자를 통해 국가별 수도 정보를 등록하고
+		// run()를 호출하여 프로그램시작
 		new Explain2().run();
 	}
 

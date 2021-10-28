@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
      또는 StringTokenizer로 처리
  *
  */
-
+// 경도, 위도 정보를 저장할 Location 객체
 class Location{
 	private double longitude;
 	private double latitude;
@@ -27,6 +27,7 @@ class Location{
 		this.longitude = longitude;
 		this.latitude = latitude;
 	}
+	//이하 getter // setter //toString()
 	public double getLongitude() {
 		return longitude;
 	}
@@ -41,7 +42,7 @@ class Location{
 	}
 	@Override
 	public String toString() {
-		return "Location [longitude=" + longitude + ", latitude=" + latitude + "]";
+		return "Location [경도=" + longitude + ", 위도=" + latitude + "]";
 	}
 	
 }
@@ -57,11 +58,16 @@ public class Explain3 {
 		System.out.println("도시, 경도, 위도를 한번에 입력해주세요.(q는 입력완료)");
 		while (true) {
 			System.out.println(">> ");
+			// , 를 구분자로 도시이름 , 경도 , 위도 를 문자열로 입력받음
 			String inputString = sc.nextLine();
+			// q 를 입력하면 등록완료
 			if (inputString.equals("q"))break;
+			//split을 이용하여 , 을 기준으로 문자열을 잘라 문자열 배열로 확인
 			String[] st = inputString.split(",");
 			System.out.println(Arrays.toString(st));
+			//split으로 완성된 배열의 인덱스에 따라 값을 하나씩 꺼내옴
 			String city = st[0].trim();
+			// 경도 위도를 문자열로 전달 받아 더블타입으로변환
 			double longitude = Double.parseDouble(st[1].trim());
 			double latitude = Double.parseDouble(st[2].trim());
 			System.out.println(city+ " " + longitude + " "+ latitude);
@@ -69,11 +75,14 @@ public class Explain3 {
 			StringTokenizer stoken = new StringTokenizer(inputString,",");
 			System.out.println(stoken.countTokens());
 			city = stoken.nextToken().trim(); // .nextToken 토큰중에 제일먼저 짤린녀석 을 가지고옴
-			longitude = Double.valueOf(stoken.nextToken().trim());
-			latitude = Double.parseDouble(stoken.nextToken().trim()); // 이게 더좋다합니다 이유는?
+			longitude = Double.valueOf(stoken.nextToken().trim()); //ref.class 타입으로 반환
+			latitude = Double.parseDouble(stoken.nextToken().trim()); //기본타입으로 반환  이게 더좋다합니다 이유는?
+			// 도시이름을 key값으로 location 객체 (value)를 저장
 			
 			manage.put(city, new Location(longitude, latitude));
 		}
+		
+		// map 안의 정보를 확인하여 출력
 		System.out.println("-----------------------------------------");
 		
 		Set<String> key = manage.keySet(); // 키묶음을 set 타입으로 가져올수있다
@@ -84,10 +93,14 @@ public class Explain3 {
 		
 		System.out.println("-----------------------------------------");
 		
+		// 도시이름이 일치하는 정보를 찾아 출력
 		while (true) {
 			System.out.println("도시 이름( q는 종료 )>>");
 			String city = sc.next();
 			if(city.equals("q")) break;
+			// key값의 equals method를 이용하여
+			// key값이 존재하는 지 확인
+			// 존재하면 정보를 가지고 와서 출력 (get(key))
 			if(manage.containsKey(city)) {
 				System.out.println(city+""+manage.get(city));
 			}else {
