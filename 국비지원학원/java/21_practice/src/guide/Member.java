@@ -1,5 +1,10 @@
 ﻿package guide;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import explain2.Nation;
+
 public class Member {
 	
 	// 회원관리번호
@@ -78,12 +83,20 @@ public class Member {
 	// 인식할 수 있도록 재정의
 	@Override
 	public boolean equals(Object o) {
+		if (o instanceof Member) {
+			Member member =(Member)o;
+			if(member.getmId().equals(this.getmId())&&member.getmPw().equals(this.getmPw())) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Member{ [mNum : "+this.mNum+"] [mName : " +this.mName +"] [ mId : " + this.mId+"] [reg : "+this.getReg()+"]}";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date(this.reg);
+		return "Member{ [mNum : "+this.mNum+"] [mName : " +this.mName +"] [ mId : " + this.mId+"] [reg : "+sdf.format(date)+"]}";
 	}
 
 }

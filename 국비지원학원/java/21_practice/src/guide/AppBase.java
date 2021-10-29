@@ -88,7 +88,7 @@ public abstract class AppBase {
 	// 회원 아이디와 비밀번호로 회원 찾기
 	protected Member findMember(Member m) {
 		for (Member member : memberList) {
-			if (Objects.equals(m, member)) {
+			if (member.equals(m)) {
 				return member;
 			}
 		}
