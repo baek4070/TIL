@@ -88,10 +88,18 @@ SELECT userID, sum(amount)
 FROM buyTbl
 GROUP by userID;
 
+# 회원별로 몃번 주문을 했는지 검색 구매횟수가 3번 이상인 정보만 검색
+SELECT userID, count(*) AS '구매횟수' FROM buyTbl 
+GROUP BY userID HAVING count(*) >= 3;
 
 
- 
-
+#  총 구매금액이 1000 이상인 사람만 userID로 그룹화 하여 아이디와 총구매금액 검색
+SELECT sum(price * amount) FROM buyTbl;
+SELECT sum(price * amount) FROM buyTbl WHERE userID = 'BBK';
+ SELECT sum(price * amount) AS '구매금액 ' FROM buyTbl 
+ GROUP BY userID
+ HAVING '구매금액' >= 1000
+ ORDER by '구매금액' DESC;
 
 
 
