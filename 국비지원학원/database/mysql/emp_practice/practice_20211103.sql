@@ -1,5 +1,7 @@
+DROP DATABASE  IF EXISTS smartweb;
+CREATE DATABASE IF NOT EXISTS smartWeb;
 
-CREATE DATABASE smartWeb;
+
 use smartWeb;
 create table dept(
 deptno int(2) primary key,		-- 부서 코드
@@ -17,6 +19,8 @@ sal int(8),						-- 급여
 comm int(8),					-- 커미션(추가수당)
 deptno int(2),					-- 근무 부서번호
 FOREIGN KEY fk_dept(deptno) REFERENCES dept(deptno));
+
+
 
 insert into dept values(10, 'ACCOUNTING', 'NEW YORK');
 insert into dept values(20, 'RESEARCH', 'DALLAS');
@@ -38,6 +42,8 @@ insert into emp values(7900, 'JAMES', 'CLERK', 7698, '1981/12/03', 950, null, 30
 insert into emp values(7902, 'FORD', 'ANALYST', 7566, '1981/12/03', 3000, null, 20);
 insert into emp values(7934, 'MILLER', 'CLERK', 7782, '1982/01/23', 1300, null, 10);
 insert into emp values(7782, 'CLARK', 'MANAGER', 7839, '1981/06/09', 2450, null, 10);
+
+commit;
 
 -- smartWeb 계정 생성 비밀번호 '12345'
 -- smartWeb을 사용 할 수 있는 모든 권한 부여
@@ -90,7 +96,7 @@ WHERE comm IN(300, 500, 1400);
 -- 사원의 사원번호, 사원명, 급여, 입사일 출력
 SELECT empno AS '사원번호', ename '사원명', sal '급여',hiredate '입사일'
 FROM emp
-WHERE hiredate BETWEEN 19870101 AND 19871231;
+WHERE hiredate BETWEEN '1987-01-01' AND '1987-12-31';
 
 
 -- 8. 이름이 F로 시작하는 사원의 사원번호, 사원명 출력
@@ -195,6 +201,7 @@ WHERE sal > (
     WHERE deptno = 30
 );
 
+
 -- 20. 영업사원(SALESMAN)들의 최소 급여보다 많이 받는 사원들의
 -- 이름과 급여, 직급을 출력하되, 영업사원은 제외
 SELECT ename '사원명', sal '급여', job '직급'
@@ -205,6 +212,7 @@ WHERE NOT job= 'SALESMAN' AND sal > (
     WHERE job = 'SALESMAN'
 );
 
+
 -- 21. 가장 최근에 입사한 사원의 입사일과 가장 오래된 사원의 입사일
 SELECT hiredate
 FROM emp
@@ -213,10 +221,13 @@ WHERE hiredate IN(
     (SELECT MIN(hiredate) FROM emp)
 );
 
+
 -- 22. 부서별 평균급여를 부서번호, 평균급여 형태로 출력
 SELECT deptno '부서번호',AVG(sal) '평균급여'
 FROM emp
 GROUP BY deptno;
+
+
 -- 23. 부서의 최소 급여와 최대 급여를 구하고, 최대 급여가 2000 이상인
 -- 부서만 출력
 SELECT *
@@ -232,14 +243,15 @@ SELECT MAX(sal)
 FROM emp 
 GROUP BY deptno;
 
+
 -- 24. 사원들 평균 급여보다 더 많은 급여를 받는 사원의
 -- 이름과 급여 출력
 SELECT ename '이름', sal '급여'
 FROM emp
 WHERE sal > (SELECT AVG(sal) FROM emp);
 
--- 25. 부서별 가장 급여가 많은 사원의 사원번호, 사원명, 급여, 부서번호
 
+-- 25. 부서별 가장 급여가 많은 사원의 사원번호, 사원명, 급여, 부서번호
 SELECT empno '사원번호',ename '사원명', sal '급여', deptno '부서번호'
 FROM emp
 WHERE sal IN(
