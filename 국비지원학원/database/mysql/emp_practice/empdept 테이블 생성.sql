@@ -17,3 +17,12 @@ sal int(8),						-- 급여
 comm int(8),					-- 커미션(추가수당)
 deptno int(2),					-- 근무 부서번호
 FOREIGN KEY fk_dept(deptno) REFERENCES dept(deptno));
+
+use smartWeb;
+DESC salgrade;
+-- 급여 등급 테이블
+CREATE TABLE salgrade(
+	grade INT(1),		-- 등급
+    losal INT(7),		-- 최소급여
+    hisal INT(7)		-- 최대급여
+);

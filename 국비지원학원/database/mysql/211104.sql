@@ -142,3 +142,193 @@ SELECT empno, ename,
 substr(hiredate,1,4),
 substr(hiredate,6,2) FROM emp;
 
+-- 9월에 입사한 사원의 사원번호, 사원명, 입사일 출력
+SELECT empno, ename, hiredate 
+FROM emp
+WHERE substr(hiredate,6,2)= '09';
+
+-- 문자의 위치를 구하는 함수
+SELECT instr('WELCOME TO MYSQL','O') FROM dual; -- 5
+SELECT instr('Welcome to Mysql','O') FROM dual; -- 대소문자 상관없음 ~ 
+SELECT instr('이것이 MySQL이다','다')FROM dual; 	-- 11 
+
+-- 공백을 제거 하는 함수
+SELECT ltrim('               MySQL'); -- 왼쪽 공백 제거
+SELECT rtrim('MySQL               '); -- 오른쪽 공백 제거 
+
+-- 양쪽에서특정 문자 제거
+SELECT trim('a' FROM'aaaaaaMySQLabaa');
+SELECT trim(' ' FROM'     MySQL ab   ');
+
+-- 문자열로 매개변수들을 묶어주는 concat()
+SELECT concat('MySQL',80,' 을',' 배웁니다.') FROM dual;
+
+-- 사원의 정보를 'SCOTT은 월급을 받습니다.' 형태로 출력
+SELECT concat(ename,'은 ', sal,'을 받습니다.') AS 'RESULT' 
+FROM emp ORDER BY sal DESC;
+
+-- 날짜 관련 함수's
+-- 현재 시간을 반환하는 sysdate(), now()
+SELECT sysdate() FROM dual;
+SELECT sysdate() - INTERVAL 1 day AS 어제,
+	   sysdate() AS 오늘,
+	   sysdate() + INTERVAL 1 day AS 내일;
+
+-- 한달전
+SELECT sysdate() - INTERVAL 1 month;
+-- 1년전
+SELECT sysdate() - INTERVAL 1 year;
+-- 10년 후
+SELECT sysdate() + INTERVAL 10 year;
+-- 현재 시간에서 1분을 더함
+-- date_add(기준시간,계산시간)
+SELECT now() , date_add(now(), INTERVAL 1 MINUTE);
+-- 시간을 뺌
+SELECT now() , date_add(now(), INTERVAL -1 MINUTE);
+SELECT now() , date_sub(now(), INTERVAL 1 HOUR);
+-- 3시간 이후
+SELECT now() , date_sub(now(), INTERVAL -3 HOUR);
+
+-- 두 시간 사이의 간격(차이)를 계산a
+-- timestamdiff(년월일,비교할 기준 시간,비교할 기준시간);
+SELECT empno, ename, hiredate, noW(),
+timestampdiff(year, hiredate, now())
+FROM emp;
+
+-- 사원들의 근무 개월 수
+SELECT empno, ename, hiredate, noW(),
+timestampdiff(month, hiredate, now())
+FROM emp;
+
+-- 날짜를 형식에 맞는 문자열로 반환하는 함수
+-- date_format
+/*
+	%Y 4자리 년도		%y 2자리 년도		%m 숫자 월(2자리)
+    %c 숫자 월(1자리) %M 긴 월(영문)		%b (짧은 월) 영문
+    %d 일자(두자리)	%e 일자(한자리)	%W (요일이름 영문)
+    %a (짧은 요일 영문)%I 시간(12시)		%H 시간(24시)
+    %i 분			%S 초	
+    %r hh:mm:ss AM,PM
+    %T hh:mm:ss
+*/
+SELECT noW(), date_format(now(), '%y/%n/%d') FROM dual;
+SELECT noW(), date_format(now(), '%y/%n/%d %T');
+
+-- 년 월 주 별로 전달한 date가 언제인지 표현하는 함수
+SELECT dayname(now()); -- 요일 이름(영문)
+-- 일요일 1 ~~ 토요일 7
+SELECT dayOfWeek(now()); -- 5(목요일)
+SELECT dayOfMonth(now()); -- 월중 날짜
+SELECT dayOfYear(now()); -- 308
+
+-- case 문
+-- 특정 속성의 값을 비교하여 다른 형태의 값으로 제공
+-- 사원 정보를 검색하여 부서번호에 따라 사원이름, 부서번호, 부서명을 출력
+SELECT ename, deptno, 
+	#데이터를 조회하다가 deptno 가 10인 데이터를 만나면 dname 이란 별칭으로 '내용'을출력하여라 ~ 
+	CASE WHEN deptno = 10 THEN 'ACCOUNTING'
+		 WHEN deptno = 20 THEN 'RESEARCH'
+         WHEN deptno = 30 THEN 'SALES'
+         WHEN deptno = 20 THEN 'OPERATINGS'
+    END AS dname
+FROM emp;
+
+-- Query문을 미리 등록 시켜놓고 필요한 것을 후에 전달하는
+-- PREPARE EXCUTE 문
+-- PREPARE 이름 FROM 'Query문';
+PREPARE mQuery FROM
+'SELECT ename, sal FROM emp ORDER BY sal LIMIT ?';
+SET @tempVal = 3;
+
+EXECUTE mQuery USING @tempVal;
+SET @tempVal = 10;
+EXECUTE mQuery USING @tempVal;
+/****************************************************************************/
+-- 사원의 부서 번호와 이름을 합쳐서 출력되게 검색
+SELECT concat(deptno,'=',ename)
+FROM emp;
+-- 사원의 이름, 입사일자를 '80/12/17에 입사한 SWITH입니다.' 형식으로 검색
+SELECT concat(date_format(hiredate,'%y/%m/%d'),'에 입사한 ',ename,'입니다.')
+FROM emp;
+-- 사원 번호가 79로 시작하는 사원들의 이름과 급여, 커미션을 검색 substr 사용
+SELECT empno,ename, sal ,comm
+FROM emp
+WHERE substr(empno,1,2)=79;
+-- 1981년 2월에 입사한 사원의 사원번호, 이름, 부서번호를 검색
+-- substr 사용
+SELECT empno,ename,deptno
+FROM emp
+WHERE substr(hiredate,1,7)='1981-02';
+-- 사원정보에서 사원들의 이름을 소문자로 직무를 대문자로 검색
+SELECT lower(ename),upper(job)
+FROM emp;
+-- 사원들의 이름을 검색하되 첫자만 대문자로 변경하여 검색
+SELECT ename, substr(ename, 1, 1) FROM emp;
+SELECT concat(substr(ename, 1, 1),
+		lower(substr(ename, 2, length(ename)-1))) AS '이름'
+FROM emp;
+
+/*********************************************/
+-- JOIN
+
+-- 크로스 조인 합쳐지는 테이블의 행 * 행 개수
+SELECT * FROM emp, dept;
+
+-- inner join  emp.deptno = dept.deptno 일치하는 것만 조인시키겠다
+SELECT emp.*, dept.*
+FROM emp, dept WHERE emp.deptno = dept.deptno;
+
+-- natural join 중복되는 속성을 기준으로 join
+SELECT * FROM emp NATURAL JOIN dept
+ORDER BY emp.empno;
+
+-- 조인을 사용해서 뉴욕에서 근무하는 사원의 이름과 급여 출력
+SELECT ename, sal 
+FROM emp, dept
+WHERE emp.deptno = dept.deptno # 어디있는 녀석인지 정확히 알려줘야함 table.record
+AND dept.loc = 'NEW YORK';
+
+-- join을 이용하여 SCOTT이 근무하는 부서이름 출력
+SELECT ename,dname
+FROM emp, dept
+WHERE emp.deptno = dept.deptno
+AND emp.ename = 'SCOTT';
+
+SELECT dname FROM emp JOIN dept
+ON dept.deptno = emp.deptno
+WHERE emp.ename = 'SCOTT';  
+-- sub query  # 결과는 동일하지만 join은 모든속성값을 사용가능하다는 차이점이 있다 
+SELECT dname FROM dept
+WHERE deptno = (
+	SELECT deptno FROM emp
+	WHERE ename = 'SCOTT'
+);
+
+-- NATURAL JOIN
+SELECT dname FROM
+emp NATURAL JOIN dept
+WHERE emp.ename = 'SCOTT';
+
+-- SELF JOIN
+-- 사원의 이름과 그사원의 매니저 이름을 출력하기
+-- ename -mgr & mgr = 사원번호 : ename
+SELECT a.ename AS 사원, b.ename AS 매니저
+FROM emp AS a, emp AS b #어떤 emp가 어떤 emp인지 모르니 별칭을 달아주자 ! 
+WHERE a.mgr = b.empno;
+
+-- SCOTT 이랑 동일한 근무지에 근무하는 사람의 사원명 출력
+-- SCOTT 제외
+SELECT a.ename , b.ename 
+FROM emp AS a, emp AS b
+WHERE a.deptno = b.deptno 
+	AND b.ename != 'SCOTT'
+    AND a.ename = 'SCOTT';
+    
+-- outer join //조인 범위에서 벗어난것도 출력해주는데 왼쪽이냐 오른쪽이냐 
+-- LEFT JOIN / RIGHT JOIN
+-- 일치하지 않는 값이라도 남아있는 테이블의 값이 존재하면 검색
+SELECT a.ename , b.ename FROM emp a RIGHT JOIN emp b
+ON a.mgr = b.empno ORDER BY a.ename DESC;
+
+SELECT a.ename , b.ename FROM emp a LEFT JOIN emp b
+ON a.mgr = b.empno ORDER BY a.ename DESC;

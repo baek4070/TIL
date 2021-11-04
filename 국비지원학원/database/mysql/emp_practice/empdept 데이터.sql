@@ -18,3 +18,11 @@ insert into emp values(7900, 'JAMES', 'CLERK', 7698, '1981/12/03', 950, null, 30
 insert into emp values(7902, 'FORD', 'ANALYST', 7566, '1981/12/03', 3000, null, 20);
 insert into emp values(7934, 'MILLER', 'CLERK', 7782, '1982/01/23', 1300, null, 10);
 insert into emp values(7782, 'CLARK', 'MANAGER', 7839, '1981/06/09', 2450, null, 10);
+
+INSERT INTO salgrade VALUES(1, 700,1200);
+INSERT INTO salgrade VALUES(2, 1201,1400);
+INSERT INTO salgrade VALUES(3, 1401,2000);
+INSERT INTO salgrade VALUES(4, 2001,3000);
+INSERT INTO salgrade VALUES(5, 3001,9999);
+
+commit;
