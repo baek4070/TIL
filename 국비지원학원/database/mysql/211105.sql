@@ -189,3 +189,110 @@ SHOW INDEXES FROM employees;
 -- 검색에 자주 사용되는 컬럼에만 생성
 -- 데이터 변경이 자주 일어나지 않는 테이블에 생성
 -- 검색쿼리에 인덱스는 영향을 받는다.
+
+/************************************************************************/
+-- 스토어 프로시져(Stored procedure)
+-- 여러 개의 쿼리 혹은 동작을 프로시저라는 개체로 묶어서 저장
+-- 프로시저 이름을 통해서 작동시키므로 내부의 쿼리를 숨길 수 있음
+-- 작성된 프로시저는 CALL 이라는 예약어를 활용해서 사용(호출)
+/*
+	CREATE PROCEDURE 프로시저 이름(매개변수....)
+		BEGIN
+			내용
+		END
+*/
+
+# DELIMITER : 구문 문자
+-- 일반 프로그램의 ';' 역할을 한다.
+-- 범위를 지정하는 함수
+use smartWeb;
+
+
+DELIMITER // 
+CREATE PROCEDURE readEmp()
+	BEGIN 
+		SELECT * FROM EMP;
+	END //
+DELIMITER ; 
+
+CALL readEmp();
+
+-- 매개변수를 전달하는 프로시저
+-- 특정 사원번호를 매개변수로 받아서 해당 사원의 정보를 검색
+-- 매개변수 선언 형식 : 'IN 매개변수명 데이터 형식'
+DELIMITER $$ 
+CREATE PROCEDURE info_emp(IN _empno INT)
+	BEGIN 
+		SELECT * FROM emp WHERE empno = _empno;
+    END $$
+DELIMITER ;
+
+-- 입력값 이상의 급여를 받는 사원의 사원번호, 이름, 입사일 ,급여
+-- 를 검색하는 프로시저
+DELIMITER $$ 
+CREATE PROCEDURE `info_sal_over` (IN _sal INT)
+BEGIN
+	SELECT empno, ename, hiredate, sal 
+    FROM emp 
+    WHERE sal >= _sal;
+    END $$
+DELIMITER ;
+
+CALL info_sal_over(1500);
+
+-- 여러개의 매개변수를 전달받는 프로시저
+-- 두개의 급여를 전달받아 두 급여사이의 급여를 받는 사원 정보
+-- 검색
+delimiter //
+CREATE PROCEDURE info_sal_between(
+	IN a_sal INT ,
+    IN b_sal INT
+)
+BEGIN 
+	SELECT * FROM emp 
+    WHERE sal BETWEEN a_sal AND b_sal;
+END //
+delimiter ;
+
+CALL info_sal_between(2000,3000);
+
+use sqlDB;
+-- 회원 이름을 입력받아서 
+-- 회원의 나이에 따라 1980년 이전이다 나이가 많으시네요.
+-- 1980년 이후 출색 아직 젊으시네요
+DELIMITER //
+CREATE PROCEDURE checkYear(
+	IN uname VARCHAR(10)
+)
+BEGIN 
+	DECLARE yearBirth INT; -- yearBirth 변수 선언
+    SELECT birthYear INTO yearBirth FROM userTbl 
+    WHERE name = uname;
+    IF (yearBirth >= 1980) THEN
+		SELECT '아직 젊으시네요.. ' AS ANSWER;
+    ELSE 
+		SELECT '나이가 지긋하시네요' AS ANSWER;
+    END IF;  
+END //
+DELIMITER ;
+
+CALL checkYear('이승기');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CALL info_emp(7369);
+
+
