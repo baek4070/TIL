@@ -83,6 +83,7 @@ WHERE stu_no=20142021;
 commit;
 
 SET foreign_key_checks = 0;
+
 DELETE FROM student;
 
 SELECT *
