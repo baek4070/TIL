@@ -7,7 +7,7 @@ import mysql.b_book.BookVO;
 // DataBase Access Object
 public interface BookDAO {
 	// 도서 삽입
-	public int insert(BookVO book);
+	int insert(BookVO book);
 	
 	// 도서 목록
 	ArrayList<BookVO> select();
@@ -18,6 +18,15 @@ public interface BookDAO {
 	// 책번호 Book 정보를 검색
 	BookVO selectBook(int num);
 	
-	//삭제
+	// 삭제
 	int delete(int num);
 }
+
+
+
+
+
+
+
+
+
