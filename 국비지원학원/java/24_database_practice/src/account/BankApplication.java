@@ -2,6 +2,7 @@ package account;
 
 import java.util.Scanner;
 
+import account.pstmt.AccountPSTMDAOImpl;
 import account.stmt.AccountSTMTDAOImpl;
 import dao.AccountDAO;
 
@@ -14,7 +15,8 @@ public class BankApplication {
 	AccountDAO dao;
 	
 	BankApplication(){
-		dao = new AccountSTMTDAOImpl();
+//		dao = new AccountSTMTDAOImpl();
+		dao = new AccountPSTMDAOImpl();
 		run();
 	}
 	
