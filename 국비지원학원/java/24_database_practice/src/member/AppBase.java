@@ -1,7 +1,8 @@
 package member;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+
+import dao.MemberDAO;
 
 
 /**
@@ -12,12 +13,6 @@ public abstract class AppBase {
 	// 사용자 입력
 	protected Scanner sc;
 
-	// 회원정보 저장
-	protected ArrayList<Member> memberList;
-
-	// 관리자 계정 -> Member 객체에 reg(회원가입일 추가 됨)
-	protected Member master;
-
 	// 로그인한 회원
 	protected Member loginMember;
 
@@ -27,21 +22,13 @@ public abstract class AppBase {
 	// 메뉴 번호 선택
 	protected int selectNo;
 	
-	// 회원번호
-	protected int number;
-
+	// 회원 테이블 관리 클래스
+	MemberDAO dao;
+	
 	// 프로그램 실행용 생성자
-	protected AppBase() {
+	protected AppBase(MemberDAO dao) {
 		sc = new Scanner(System.in);
-		memberList = new ArrayList<>();
-		// master 등록 정보를 참고하여 회원 정보 등록 
-		try {
-			master = new Member(number, "master", "root", "root", System.currentTimeMillis());
-			memberList.add(master);
-			number++;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+		this.dao = dao;
 		isRun = true;
 		isRun();
 	}

@@ -1,5 +1,8 @@
 ﻿package member;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Member {
 	
 	// 회원관리번호
@@ -66,7 +69,10 @@ public class Member {
 	// 자신이 가지고 있는  long type의 값을  2020-10-23 12:11:21 형식의 문자열이 반환 하도록 변경
 	// SimpleDateFormat 객체 활용
 	public String getReg() {
-		return null;
+		SimpleDateFormat sdf 
+			= new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+		String time = sdf.format(new Date(this.reg));
+		return time;
 	}
 
 	// System의 현재시간을 m/s으로 전달 받아 저장
