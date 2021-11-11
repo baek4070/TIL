@@ -193,10 +193,36 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return result; // 항상 첫번째로 반환값에 대해서 생각하자
 	}
-
+	// 회원 탈퇴 - 정보 삭제
 	@Override
 	public int delete(int mNum) {
-		return 0;
+		int result = 0;
+		
+		conn = DBHelper.getConnection();
+		
+		Member member = selectMember(mNum);
+				
+//		String sql = "INSERT INTO back_up_member(mNum,mName,mId,mPw,reg) VALUES(?,?,?,?,?)";
+		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, member.getmNum());
+//			pstmt.setString(2, member.getmName());
+//			pstmt.setString(3, member.getmId());
+//			pstmt.setString(4, member.getmPw());
+//			pstmt.setLong(5, member.getRealReg());
+//			pstmt.executeUpdate();
+//			DBHelper.close(pstmt);
+			
+			String sql = "DELETE FROM tbl_member WHERE mNum = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mNum);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.close(pstmt);
+		}
+		return result;
 	}
 
 }

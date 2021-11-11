@@ -190,21 +190,28 @@ public class MemberManagement extends AppBase{
 	 */
 	@Override
 	protected void delete() {
-		if (loginMember == null) {
-			System.out.println("로그인 이후에 사용할수 있습니다.");
+		if (loginMember == null || loginMember.getmId().equals("root")) {
+			System.out.println("회원정보를 찾을수 없습니다.");
 			return;
 		}
-		if (loginMember.getmId().equals("root")) {
-			// 관리자 계정
-			System.err.println("관리자 계정은 삭제 할수 없습니다");
-		}else {
-			//일반 계정
-			System.out.println("== 회원 탈퇴  ==");
-			String pw = getStringData("로그인된 사용자의 비밀번호를 입력해주세요 >");
-			if (!loginMember.getmPw().equals(pw)) {
-				System.err.println("비밀번호가 일치하지 않습니다");
-				return;
+		String pw = getStringData("탈퇴하려는 회원의 비밀번호를 입력해주세요 >");
+		if (!pw.equals(loginMember.getmPw())) {
+			System.err.println("회원정보가 일치하지 않습니다");
+			return;
+		}
+		String str = getStringData("정말로 탈퇴하시겠습니까? y/n");
+		switch (str) {
+		case "Y" : case "y" : case "ㅛ" :
+			int result = dao.delete(loginMember.getmNum());
+			if (result > 0) {
+				loginMember = null;
+				System.out.println("회원탈퇴 완료");
+			}else {
+				System.out.println("회원 탈퇴 실패");
 			}
+			break;
+		default :
+			System.out.println("탈퇴가 취소 되었습니다.");
 		}
 	}
 	

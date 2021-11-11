@@ -63,6 +63,9 @@ public class Member {
 	public void setmId(String mId) {
 		this.mId = mId;
 	}
+	public long getRealReg() {
+		return this.reg;
+	}
 
 	public String getmPw() {
 		return mPw;
