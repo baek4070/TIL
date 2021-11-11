@@ -224,6 +224,33 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return result;
 	}
+	@Override
+	public ArrayList<BackUpMember> deleteMember() {
+		ArrayList<BackUpMember> deletes = new ArrayList<>();
+		conn = DBHelper.getConnection();
+		String sql = "SELECT * FROM back_up_member ORDER BY deleteDate";
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				BackUpMember m = new BackUpMember(
+							rs.getInt(1),
+							rs.getString(2),
+							rs.getString(3),
+							rs.getString(4),
+							rs.getLong(5),
+							rs.getTimestamp(6)
+						);
+				deletes.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBHelper.close(stmt,rs);
+		}
+		
+		return deletes;
+	}
 
 }
 

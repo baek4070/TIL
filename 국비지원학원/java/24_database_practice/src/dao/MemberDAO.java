@@ -2,6 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
+import member.BackUpMember;
 import member.Member;
 
 public interface MemberDAO {
@@ -28,5 +29,8 @@ public interface MemberDAO {
 	
 	// 회원 탈퇴 - 회원 정보 삭제
 	int delete(int mNum);
+	
+	//탈퇴한 회원 목록
+	ArrayList<BackUpMember> deleteMember();
 	
 }

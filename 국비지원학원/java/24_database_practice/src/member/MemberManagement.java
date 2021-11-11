@@ -13,9 +13,9 @@ public class MemberManagement extends AppBase{
 	@Override
 	protected void isRun() {
 		while(isRun) {
-			System.out.println("=========================================================");
-			System.out.println("1.회원가입 | 2.로그인 |3.회원정보 | 4.회원정보수정 |5.회원탈퇴 |6.종료" );
-			System.out.println("=========================================================");
+			System.out.println("================================================================================");
+			System.out.println("1.회원가입 | 2.로그인 |3.회원정보 | 4.회원정보수정 |5.회원탈퇴 |6.종료 |7.탈퇴한 회원목록(관리자전용)|" );
+			System.out.println("================================================================================");
 			selectNo = getNumberData("메뉴 선택 > ");
 			
 			switch(selectNo) {
@@ -43,10 +43,29 @@ public class MemberManagement extends AppBase{
 				System.out.println("== 프로그램 종료 == ");
 				terminate();
 				break;
+			case 7 :
+				System.out.println("== 탈퇴한 회원 목록 ==");
+				deleteMember();
+				break;
 			default :
 				System.out.println("해당 메뉴가 존재 하지 않습니다.");
 			}
 		}
+	}
+	// 탈퇴한 회원 정보
+	// 관리자만 확인 가능
+	private void deleteMember() {
+		if(loginMember == null || !loginMember.getmId().equals("root")) {
+			System.err.println("확인 할 수 없는 사용자 입니다.");
+			return;
+		}
+		
+		ArrayList<BackUpMember> deletes = dao.deleteMember();
+		System.out.println("==============================");
+		for (BackUpMember m : deletes) {
+			System.out.println(m);
+		}
+		System.out.println("==============================");
 	}
 
 	@Override
