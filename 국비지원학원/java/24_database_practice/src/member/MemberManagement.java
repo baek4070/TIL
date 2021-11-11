@@ -3,6 +3,7 @@ package member;
 import java.util.ArrayList;
 
 import dao.MemberDAO;
+import util.DBHelper;
 
 public class MemberManagement extends AppBase{
 	
@@ -71,6 +72,7 @@ public class MemberManagement extends AppBase{
 	@Override
 	protected void terminate() {
 		isRun = false;
+		DBHelper.close(DBHelper.getConnection());
 	}
 
 	@Override
