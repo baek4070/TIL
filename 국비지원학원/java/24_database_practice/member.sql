@@ -8,3 +8,5 @@ CREATE TABLE tbl_member(
 
 INSERT INTO tbl_member(mName,mId,mPw)
 VALUES('관리자','root','root');
+
+SELECT * FROM tbl_member;

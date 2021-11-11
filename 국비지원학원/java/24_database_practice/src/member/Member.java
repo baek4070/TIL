@@ -16,7 +16,13 @@ public class Member {
 	//회원가입일
 	private long reg;
 	
-	
+
+	// 회원가입용
+	public Member(String mName, String mId, String mPw) {
+		this.mName = mName;
+		this.mId = mId;
+		this.mPw = mPw;
+	}
 	public Member() {}
 
 	// 회원 로그인 및 정보 검색용 생성자
@@ -25,7 +31,7 @@ public class Member {
 		this.mPw = mPw;
 	}
 
-	// 회원가입 용
+	// 회원정보 검색 용
 	public Member(int mNum, String mName, String mId, String mPw, long reg) {
 		this.mNum = mNum;
 		this.mName = mName;

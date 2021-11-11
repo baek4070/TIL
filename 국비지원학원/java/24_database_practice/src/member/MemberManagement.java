@@ -1,5 +1,7 @@
 package member;
 
+import java.util.ArrayList;
+
 import dao.MemberDAO;
 
 public class MemberManagement extends AppBase{
@@ -61,6 +63,24 @@ public class MemberManagement extends AppBase{
 		 * 회원정보 등록
 		 * 완료 시 등록된 회원 정보를 넘겨받아 출력 
 		 */
+		String mId = getStringData("사용자 정보를 입력해주세요.\n아이디를 입력해주세요 > ");
+		String mPw = getStringData("비밀번호를 입력해 주세요 > ");
+		String rePw = getStringData("비밀번호를 확인해 주세요 > ");
+		// 아이디가 존재하거나 비밀번호가 일치하지 않음
+		if(!dao.selectMember(mId) || !mPw.equals(rePw)) {
+			System.out.println("사용 할 수 없는 아이디 이거나 비밀번호가 일치하지 않습니다.");
+			return;
+		}
+		// 회원가입 진행
+		String mName = getStringData("이름을 입력해 주세요 > ");
+		Member m = dao.join(new Member(mName,mId,mPw));
+		if(m != null) {
+			System.out.println(m);
+			System.out.println("회원가입 완료");
+		}else {
+			System.out.println("정상적으로 처리되지 못하였습니다.");
+			System.out.println("다시 시도해 주세요.");
+		}
 	}
 
 	@Override
@@ -71,6 +91,21 @@ public class MemberManagement extends AppBase{
 		 * 아이디와 비밀번호가 일치하는 사용자가 존재할때
 		 * 로그인 처리 - loginMember
 		 */
+		String mId = getStringData("사용자 정보를 입력해주세요.\n아이디를 입력해주세요 > ");
+		String mPw = getStringData("비밀번호를 입력해 주세요 > ");
+		Member member = dao.selectMember(mId, mPw); 
+		if (member == null) {
+			System.out.println("일치하는 정보가 없습니다.(로그인 실패)");
+			return;
+		}
+		
+		loginMember = member;
+		System.out.println(loginMember);
+		if (loginMember.getmId().equals("root")) {
+			System.out.println("관리자 계정으로 로그인 하셨습니다.");
+		}else {
+			System.out.println("일반회원으로 로그인 하셨습니다.");
+		}
 	}
 
 	// 회원 목록 - 로그인한회원(loginMember)
@@ -79,7 +114,21 @@ public class MemberManagement extends AppBase{
 	// 비로그인 - 권한이없다고 출력
 	@Override
 	protected void select() {
-		
+		if (loginMember == null) {
+			System.err.println("로그인 이후 사용 가능합니다.");
+			return;
+		}
+		if (!loginMember.getmId().equals("root")) {
+			System.out.println("일반 회원 입니다.");
+			System.out.println(loginMember);
+		}else {
+			System.out.println("==========================");
+			ArrayList<Member> list = dao.select();
+			for(Member m: list) {
+				System.out.println(m);
+			}
+			System.out.println("==========================");
+		}
 	}
 
 	/*
@@ -93,6 +142,43 @@ public class MemberManagement extends AppBase{
 	 */
 	@Override
 	protected void update() {
+		//항상 널에 대해 먼저 생각합시다 
+		if (loginMember == null) {
+			System.out.println("로그인 이후에 사용할수 있습니다.");
+			return;
+		}
+		if (loginMember.getmId().equals("root")) {
+			// 관리자 계정
+			System.out.println("== 관리자 회원 정보 수정 ==");
+			select();
+			int mNum = getNumberData("수정할 회원번호를 입력해주세요");
+			Member member = dao.selectMember(mNum);
+			if (member == null) {
+				System.err.println("수정 할 회원의 정보가 없습니다.");
+				return;
+			}
+			String name = getStringData(mNum+"번 사용자의 수정할 이름을 입혁해주세요 >");
+			member.setmName(name);
+			int result = dao.update(member);
+			if (result != 1) {
+				System.out.println("수정 실패");
+			}else {
+				System.out.println("수정 완료");
+			}
+		}else {
+			// 일반 회원
+			System.out.println("== 내 정보 수정 ==");
+			String pw = getStringData("로그인된 사용자의 비밀번호를 입력해주세요 >");
+			if (!loginMember.getmPw().equals(pw)) {
+				System.err.println("비밀번호가 일치하지 않습니다");
+				return;
+			}
+			String name = getStringData("수정할 이름을 입력해주세요>");
+			loginMember.setmName(name);
+			int result = dao.update(loginMember);
+			String resultStr = (result != 1) ? "수정 실패":"수정완료";
+			System.out.println(resultStr);
+		}
 		
 	}
 
@@ -103,6 +189,23 @@ public class MemberManagement extends AppBase{
 	 * - 삭제된 회원 정보는 backup table에 저장 
 	 */
 	@Override
-	protected void delete() {}
-
+	protected void delete() {
+		if (loginMember == null) {
+			System.out.println("로그인 이후에 사용할수 있습니다.");
+			return;
+		}
+		if (loginMember.getmId().equals("root")) {
+			// 관리자 계정
+			System.err.println("관리자 계정은 삭제 할수 없습니다");
+		}else {
+			//일반 계정
+			System.out.println("== 회원 탈퇴  ==");
+			String pw = getStringData("로그인된 사용자의 비밀번호를 입력해주세요 >");
+			if (!loginMember.getmPw().equals(pw)) {
+				System.err.println("비밀번호가 일치하지 않습니다");
+				return;
+			}
+		}
+	}
+	
 }

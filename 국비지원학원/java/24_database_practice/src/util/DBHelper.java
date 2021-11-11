@@ -15,7 +15,7 @@ public class DBHelper {
 //	private static final String USER = "smart";
 //	private static final String PASS = "12345";
 	
-	private DBHelper() {}
+	private DBHelper() {} // 생성자를 프라이빗으로 막아놓음 ; 상속도 불가 
 	
 	private static Connection conn = null;
 	public static Connection getConnection() {
@@ -62,7 +62,7 @@ public class DBHelper {
 	// 외부자원을 사용하는 class는 자원 해제를 위해 AutoCloseable
 	// interface를 구현하고 있음.
 	// 가변형 인자열을 통해 불특정 개수의 instances를 전달 받아
-	// 자원을 해제함.
+	// 자원을 해제함.          // 가변형 인자 ? 
 	public static void close(AutoCloseable... closers) {
 		for(AutoCloseable closer : closers) {
 			try {
