@@ -1,4 +1,4 @@
-package n2_socket_server_socket;
+package n2_socket_serverSocket;
 
 import java.io.IOException;
 import java.io.InputStream;
