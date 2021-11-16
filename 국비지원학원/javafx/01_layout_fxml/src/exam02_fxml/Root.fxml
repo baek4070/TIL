@@ -9,16 +9,16 @@
 HBox Container 선언 
 HBox root = new HBox();
 -->
+<!-- padding 안쪽여백 -->
 <HBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
-	<padding><!-- 안쪽여백 -->
+	<padding>
 		<Insets top="10" right="10" bottom="10" left="10" />
 	</padding>
 	<spacing>20</spacing>
 	<!--  자식 컨트롤러 추가 -->
 	<children>
 		<!-- TextField 선언 -->
-		<TextField alignment="CENTER">
-			<!-- TextField의 폭 설정 -->
+		<TextField alignment="CENTER"><!-- TextField의 폭 설정 (이렇게 주석이 객체 생성내부에 들어가있으면 자바에서 주석인식못함 오류발생 !! )-->
 			<prefWidth>200</prefWidth>
 		</TextField>
 		<Button alignment="CENTER">
