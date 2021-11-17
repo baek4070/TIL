@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/snow.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="300.0" prefHeight="200.0" prefWidth="500.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="300.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/duke.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="500.0" rotate="180.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="200.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/duke.gif" />
+               </image>
+               <rotationAxis>
+                  <Point3D x="1.0" y="1.0" z="1.0" />
+               </rotationAxis>
+            </ImageView>
+         </children>
+         <rotationAxis>
+            <Point3D y="1.0" />
+         </rotationAxis>
+      </AnchorPane>
+   </children>
+</StackPane>
