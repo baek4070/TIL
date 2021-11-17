@@ -14,10 +14,11 @@ prefHeight="50.0"
 prefWidth="200.0" 
 spacing="20.0" 
 xmlns:fx="http://javafx.com/fxml/1" 
-xmlns="http://javafx.com/javafx/8">
+xmlns="http://javafx.com/javafx/8"
+fx:controller="e03_controller.RootController">
    <children>
       <Button fx:id="btn1" text="btn1" />
       <Button fx:id="btn2" text="btn2" />
-      <Button fx:id="btn3" text="btn3" />
+      <Button onAction="#handleBtnAction" text="btn3" />
    </children>
 </HBox>
