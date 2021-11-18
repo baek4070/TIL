@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e04_bundle.BundleController">
+   <children>
+      <Button fx:id="btnAccept" mnemonicParsing="false" text="%btn_accept" />
+      <Button fx:id="btnReload" mnemonicParsing="false" text="%btn_reload" />
+      <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#handleAction" text="%btn_cancel" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</HBox>
