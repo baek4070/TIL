@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.collections.*?>
 
 
 <BorderPane 
@@ -32,6 +33,16 @@ prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="
                     		</graphic>
                     	</MenuItem>
                         <MenuItem onAction="#handleOpen" text="열기" >
+                        	<accelerator>
+			                	<!-- ctrl + O -->
+		                		<KeyCodeCombination 
+		                			alt="UP" 
+		                			control="DOWN" 
+		                			shift="UP" 
+		                			code="O" 
+		                			meta="UP" 
+		                			shortcut="UP" />
+		                	</accelerator>
                     		<graphic>
                     			<ImageView>
                     				<image>
@@ -41,6 +52,16 @@ prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="
                     		</graphic>
                     	</MenuItem>
                         <MenuItem onAction="#handleSave" text="저장" >
+                        	<accelerator>
+			                	<!-- ctrl + S -->
+		                		<KeyCodeCombination 
+		                			alt="UP" 
+		                			control="DOWN"   
+		                			shift="UP" 
+		                			code="S" 
+		                			meta="UP" 
+		                			shortcut="UP" />
+		                	</accelerator>
                     		<graphic>
                     			<ImageView>
                     				<image>
@@ -50,7 +71,18 @@ prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="
                     		</graphic>
                     	</MenuItem>
                         <SeparatorMenuItem />
-                        <MenuItem text="닫기" />
+                        <MenuItem onAction="#handleClose" text="닫기" >
+                        	<accelerator>
+			                	<!-- ctrl + C -->
+		                		<KeyCodeCombination 
+		                			alt="UP" 
+		                			control="DOWN"   
+		                			shift="UP" 
+		                			code="C" 
+		                			meta="UP" 
+		                			shortcut="UP" />
+		                	</accelerator>
+                        </MenuItem>
                   </items>
                 </Menu>
                 <Menu text="편집" />
@@ -86,7 +118,16 @@ prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="
                 		</ImageView> 
                 	</graphic>
                 </Button>
-                <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="선택" />
+                <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="선택" >
+                	<items>
+                		<FXCollections fx:factory="observableArrayList">
+                			<String fx:value="directory chooser" />
+                			<String fx:value="Popup Window" /> 
+                			<String fx:value="Custom Window" />
+                			<String fx:value="Custom Dialog" />               			
+                		</FXCollections>
+                	</items>
+                </ComboBox>
               </items>
             </ToolBar>
          </children>
