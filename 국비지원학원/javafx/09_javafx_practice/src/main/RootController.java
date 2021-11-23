@@ -14,10 +14,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class RootController implements Initializable {
 	@FXML private TableView<StudentVO> tableView;
@@ -54,16 +57,26 @@ public class RootController implements Initializable {
 				int index = newValue.intValue();
 				System.out.println("tableView 선택 index : " + index);
 				System.out.println(studentList.get(index));
-				Stage stage = new Stage();
+				Stage stage = new Stage(StageStyle.DECORATED);
+				stage.initModality(Modality.WINDOW_MODAL);
 				Parent root = null;
+				stage.setTitle("파이 그래프");
 				try {
 					root=FXMLLoader.load(getClass().getResource("Second.fxml"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				StudentVO studentVO = tableView.getSelectionModel().getSelectedItem();
+				PieChart pieChart = (PieChart)root.lookup("#pieGraph");
+				pieChart.setData(FXCollections.observableArrayList(
+						new PieChart.Data("국어", studentVO.getKoScore()),
+						new PieChart.Data("수학", studentVO.getMathScore()),
+						new PieChart.Data("영어", studentVO.getEnScore())
+					));
 				stage.setScene(new Scene(root));
 				stage.show();
 			}
+			
 		});
 		
 	}
