@@ -116,8 +116,6 @@ public class ServerTask implements Runnable {
 					// 1|닉네임 : 메세지
 					broadCast(1,nickName+" : "+text);
 					break;
-				default:
-					break;
 				}
 			} catch (IOException e) {
 				System.out.println("client 연결 오류");
