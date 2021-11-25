@@ -13,6 +13,6 @@ prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="
       <TextArea fx:id="displayText" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Button fx:id="btnStartStop" mnemonicParsing="false" text="Start" BorderPane.alignment="CENTER" />
+      <Button fx:id="btnStartStop" mnemonicParsing="false" text="START" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

@@ -13,10 +13,14 @@ public class ChatClientMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = FXMLLoader.load(getClass().getResource("Client.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Client.fxml"));
 			Parent root = loader.load();
+			ClientController con = loader.getController();
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setResizable(false);
+			primaryStage.setOnCloseRequest(event->{
+				con.stopClient();
+			});
 			primaryStage.setTitle("CHAT CLIENT");
 			primaryStage.show();
 		} catch (IOException e) {}
