@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="350.0" prefWidth="350.0" stylesheets="@color.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="UI Implementation Test">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <Separator prefWidth="310.0">
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Separator>
+      <TextField promptText="Insert ID">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField promptText="insert Password">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </TextField>
+      <VBox>
+         <children>
+            <CheckBox mnemonicParsing="false" text="Remember Me" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" />
+         </padding>
+      </VBox>
+      <Button id="btnSignIn" mnemonicParsing="false" prefWidth="310.0" text="Sign In">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </Button>
+      <Button id="btnSignUp" mnemonicParsing="false" prefWidth="310.0" text="Sign Up" />
+   </children>
+</VBox>

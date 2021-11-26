@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Pane>
+         <children>
+            <ImageView pickOnBounds="true" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@../img/brick.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="240.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/loading.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

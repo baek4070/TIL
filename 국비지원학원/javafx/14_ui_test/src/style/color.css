@@ -1,0 +1,9 @@
+CheckBox{
+	-fx-text-fill: #792c35;
+}
+#btnSignIn{
+	-fx-text-fill: #005eff;
+}
+#btnSignUp{
+	-fx-text-fill: #399e2f;
+}
