@@ -15,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import push_man.dao.MemberDAO;
+import push_man.dao.MemberDAOImpl;
 
 public class MainController implements Initializable {
 
@@ -27,6 +29,8 @@ public class MainController implements Initializable {
 	public static MainController mc;//공유자원으로 활용할수 있도록 스태틱
 	// 전체 Client 목록
 	public static List<Client> clients;
+	
+	public static MemberDAO memberDAO;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,6 +52,7 @@ public class MainController implements Initializable {
 	
 	// Socket Server 초기화
 	public void initServer() {
+		memberDAO = new MemberDAOImpl();
 		threadPool = Executors.newFixedThreadPool(30);
 		mc = this;
 		clients = new ArrayList<>();

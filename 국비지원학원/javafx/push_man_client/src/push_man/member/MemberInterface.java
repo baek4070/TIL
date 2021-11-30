@@ -1,5 +1,7 @@
 package push_man.member;
 
+import push_man.vo.MemberVO;
+
 public interface MemberInterface {
 	// 로그인  <-> 회원가입 화면 전환
 	public void setHyperLink();
@@ -16,7 +18,9 @@ public interface MemberInterface {
 	// 회원가입 성공 유무
 	public void setJoinCheck(boolean isSuccess);
 	// 로그인 성공 여부 check
-	public void setLoginCheck();
+	public void setLoginCheck(MemberVO vo);
+	// 0 : 아이디 중복체크 | 1 : 회원가입 | 2 로그인
+	public void receiveData(MemberVO vo);
 	// 게임화면 오픈
 	public void showGameRoom();
 	
