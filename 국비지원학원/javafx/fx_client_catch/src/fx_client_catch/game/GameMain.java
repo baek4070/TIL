@@ -1,4 +1,4 @@
-package client_chat;
+package fx_client_catch.game;
 
 import java.io.IOException;
 
@@ -8,21 +8,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ChatClientMain extends Application {
+public class GameMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Client.fxml"));
-			Parent root = loader.load();
-			ClientController con = loader.getController();
-			primaryStage.setScene(new Scene(root));
+			Parent root = FXMLLoader.load(
+				getClass().getResource("Canvas.fxml")
+			);
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
-			primaryStage.setOnCloseRequest(event->{
-				con.stopClient();
-			});
-			primaryStage.setTitle("CHAT CLIENT");
 			primaryStage.show();
+
 		} catch (IOException e) {}
 	}
 

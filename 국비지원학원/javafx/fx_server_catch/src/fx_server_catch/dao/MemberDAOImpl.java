@@ -1,8 +1,9 @@
-package push_man.dao;
+package fx_server_catch.dao;
 
 import java.sql.SQLException;
 
-import push_man.vo.MemberVO;
+import fx_server_catch.vo.MemberVO;
+
 
 public class MemberDAOImpl extends DAO implements MemberDAO{
 
@@ -13,6 +14,7 @@ public class MemberDAOImpl extends DAO implements MemberDAO{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			System.out.println("아이디 체크 여부");
 			if(rs.next()) {
 				return false;
 			}

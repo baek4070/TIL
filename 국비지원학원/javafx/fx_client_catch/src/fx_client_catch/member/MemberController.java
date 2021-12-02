@@ -1,18 +1,16 @@
-package push_man.member;
+package fx_client_catch.member;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import fx_client_catch.main.ClientMain;
+import fx_client_catch.vo.MemberVO;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -23,9 +21,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import push_man.main.ClientMain;
-import push_man.vo.MemberVO;
 
 public class MemberController implements Initializable , MemberInterface{
 
@@ -231,6 +226,7 @@ public class MemberController implements Initializable , MemberInterface{
 	// 0 : 아이디 중복체크 | 1 : 회원가입 | 2 로그인
 	@Override
 	public void receiveData(MemberVO vo) {
+		System.out.println("컨트롤러 리시브 데이터");
 		// 0  아이디 중복 체크  1 회원가입 2 로그인
 		switch(vo.getOrder()) {
 		case 0 :
@@ -251,22 +247,7 @@ public class MemberController implements Initializable , MemberInterface{
 	// 게임화면 오픈
 	@Override
 	public void showGameRoom() {
-		try {
-			FXMLLoader loader = new FXMLLoader(
-			getClass().getResource("/push_man/game/Game.fxml")
-			);
-			Parent root = loader.load();
-			Stage stage = new Stage();
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.setTitle(user.getMemberName()+"님 반갑습니다.");
-			stage.setResizable(false);
-			stage.show();
-			Stage memberStage = (Stage)checkID.getScene().getWindow();
-			memberStage.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 //-------------------------------------Memberinterface 구현 끝---------------------------------------
 
