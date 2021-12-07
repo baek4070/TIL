@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
@@ -238,8 +239,12 @@ public class GameController implements Initializable, GameInterface {
 		
 		String path = String.format("stage_data/stage_%d.txt",levelNum);
 		filePath = getClass().getResource(path).getPath();
+		try {
+			filePath = java.net.URLDecoder.decode(filePath ,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		bufFile = readTextFile(filePath);
-		
 		int last = 0, row = 0, col = 0, length=0, imageType = 0;
 		// bufLine == 한줄에 대한 정보(행)
 		// bufItem == 한행에 포함이 되어있는 열 정보(숫자를 하나씩 짜름)
