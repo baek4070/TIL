@@ -2,6 +2,7 @@ package push_man.game;
 
 import java.awt.Point;
 import javafx.scene.input.KeyCode;
+import push_man.vo.ScoreVO;
 
 public interface GameInterface {
 	int COUNT_SCREEN_IMAGE_ROW = 12;	// 화면 행 개수
@@ -47,7 +48,7 @@ public interface GameInterface {
 	// 게임 클리어 체크
 	public boolean isGameComplate();
 	// 게임 성공시 사용자 알림 다이얼로그
-	public void showDialog();
+	public void showDialog(ScoreVO obj);
 }
 
 

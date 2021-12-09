@@ -62,6 +62,7 @@ public class MemberDAOImpl extends DAO implements MemberDAO{
 			pstmt.setString(1, vo.getMemberId());
 			pstmt.setString(2, vo.getMemberPw());
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				String name = rs.getString("memberName");
 				vo.setMemberName(name);
@@ -82,7 +83,6 @@ public class MemberDAOImpl extends DAO implements MemberDAO{
 	}
 
 }
-
 
 
 

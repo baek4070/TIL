@@ -64,17 +64,12 @@ public class MemberController implements Initializable , MemberInterface{
 				}
 			}
 		});
-		
 		setHyperLink();
 		setJoinEvent();
 		setLoginEvent();
 		System.out.println("완료");
-		
 	}
-	
-	
-//-------------------------------------Memberinterface 구현---------------------------------------
-	// 로그인  <-> 회원가입 화면 전환
+
 	@Override
 	public void setHyperLink() {
 		joinLinkBtn.setOnAction(e->{
@@ -95,7 +90,7 @@ public class MemberController implements Initializable , MemberInterface{
 			loginID.requestFocus();
 		});
 	}
-	// login UI 초기화
+
 	@Override
 	public void initLoginUI() {
 		Platform.runLater(()->{
@@ -104,7 +99,7 @@ public class MemberController implements Initializable , MemberInterface{
 			loginID.requestFocus();
 		});
 	}
-	// join UI 초기화
+
 	@Override
 	public void initJoinUI() {
 		Platform.runLater(()->{
@@ -115,7 +110,7 @@ public class MemberController implements Initializable , MemberInterface{
 			joinID.requestFocus();
 		});
 	}
-	// login event 초기화
+
 	@Override
 	public void setLoginEvent() {
 		loginID.setOnKeyPressed(event->{
@@ -144,10 +139,10 @@ public class MemberController implements Initializable , MemberInterface{
 				member.setOrder(2);
 				ClientMain.thread.sendData(member);
 			}
-			
 		});
+		
 	}
-	// join event 초기화
+
 	@Override
 	public void setJoinEvent() {
 		joinID.textProperty().addListener((o,b,text)->{
@@ -159,7 +154,6 @@ public class MemberController implements Initializable , MemberInterface{
 				ClientMain.thread.sendData(member);
 			}else {
 				setJoinIDCheck(false);
-			
 			}
 		});
 		
@@ -196,7 +190,7 @@ public class MemberController implements Initializable , MemberInterface{
 			checkID.setText(text);
 		});
 	}
-	// 회원가입 성공 유무
+
 	@Override
 	public void setJoinCheck(boolean isSuccess) {
 		if(isSuccess) {
@@ -211,16 +205,18 @@ public class MemberController implements Initializable , MemberInterface{
 			initJoinUI();
 		}
 	}
-	// 로그인 성공 여부 check
+
 	@Override
 	public void setLoginCheck(MemberVO vo) {
 		if(vo.isSuccess()) {
 			System.out.println("로그인 성공");
 			Platform.runLater(()->{
-				//로그인 완료된 사용자 정보 저장
+				// 로그인 완료된 사용자 정보 저장
 				user = vo;
 				// 무대 이동
-				showGameRoom();
+				//showGameRoom();
+				// 대기실로 이동
+				showWaittingRoom();
 			});
 		}else {
 			System.out.println("로그인 실패");
@@ -228,7 +224,7 @@ public class MemberController implements Initializable , MemberInterface{
 			initLoginUI();
 		}
 	}
-	// 0 : 아이디 중복체크 | 1 : 회원가입 | 2 로그인
+
 	@Override
 	public void receiveData(MemberVO vo) {
 		// 0  아이디 중복 체크  1 회원가입 2 로그인
@@ -248,7 +244,7 @@ public class MemberController implements Initializable , MemberInterface{
 			break;
 		}
 	}
-	// 게임화면 오픈
+
 	@Override
 	public void showGameRoom() {
 		try {
@@ -268,7 +264,26 @@ public class MemberController implements Initializable , MemberInterface{
 			e.printStackTrace();
 		}
 	}
-//-------------------------------------Memberinterface 구현 끝---------------------------------------
+	
+	// 대기실 오픈
+	public void showWaittingRoom() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+			getClass().getResource("/push_man/waitting_room/Waitting_room.fxml")
+			);
+			Parent root = loader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle(user.getMemberName()+"님 반갑습니다.");
+			stage.setResizable(false);
+			stage.show();
+			Stage memberStage = (Stage)checkID.getScene().getWindow();
+			memberStage.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
 

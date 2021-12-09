@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
@@ -12,7 +11,10 @@ import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
@@ -23,6 +25,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import push_man.main.ClientMain;
+import push_man.member.MemberController;
+import push_man.vo.ScoreVO;
 
 public class GameController implements Initializable, GameInterface {
 
@@ -49,9 +55,6 @@ public class GameController implements Initializable, GameInterface {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// 필드 초기화
-		initField();
-		loadDataFile(mGameLevelNum);
 		// 이전 레벨
 		btnPrev.setOnAction(event->{
 			loadDataFile(mGameLevelNum - 1);
@@ -59,6 +62,13 @@ public class GameController implements Initializable, GameInterface {
 		// 다음 레벨
 		btnNext.setOnAction(event->{
 			loadDataFile(mGameLevelNum + 1);
+		});
+		
+		// 대기실로 나가기
+		btnExit.setOnAction((event)->{
+			Platform.runLater(()->{
+				showWaittingRoom();
+			});
 		});
 		
 		// key event로  canvas 이동
@@ -196,8 +206,7 @@ public class GameController implements Initializable, GameInterface {
 		mScreenImageType 
 		= new int[COUNT_SCREEN_IMAGE_ROW][COUNT_SCREEN_IMAGE_COL];
 		// 게임 레벨 번호 초기화
-		mGameLevelNum = 1;
-		
+//		mGameLevelNum = 1;
 	}
 
 
@@ -239,12 +248,8 @@ public class GameController implements Initializable, GameInterface {
 		
 		String path = String.format("stage_data/stage_%d.txt",levelNum);
 		filePath = getClass().getResource(path).getPath();
-		try {
-			filePath = java.net.URLDecoder.decode(filePath ,"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
 		bufFile = readTextFile(filePath);
+		
 		int last = 0, row = 0, col = 0, length=0, imageType = 0;
 		// bufLine == 한줄에 대한 정보(행)
 		// bufItem == 한행에 포함이 되어있는 열 정보(숫자를 하나씩 짜름)
@@ -332,9 +337,8 @@ public class GameController implements Initializable, GameInterface {
 				clearTime += 1;
 				Platform.runLater(()->{
 					if(clearTime % 1000 == 0) {
-						time 
-						= new SimpleDateFormat("HH:mm:ss")
-							.format(clearTime);
+						time = getTime(clearTime);
+						
 						lblTime.setText(time);
 					}
 				});
@@ -347,6 +351,11 @@ public class GameController implements Initializable, GameInterface {
 		});
 		t.setDaemon(true);
 		t.start();
+	}
+	
+	public String getTime(long time) {
+		return new SimpleDateFormat("HH:mm:ss:SS")
+				.format(time);
 	}
 
 	// 푸쉬맨 현재 위치를 기준으로 이미지 정보 변경
@@ -434,7 +443,14 @@ public class GameController implements Initializable, GameInterface {
 			isTimer = false;
 			System.out.println(clearTime);
 			System.out.println("CLEAR");
-			showDialog();
+			//showDialog();
+			ScoreVO score = new ScoreVO(
+				clearTime,
+				mGameLevelNum,
+				System.currentTimeMillis(),
+				MemberController.user.getMemberNum()				
+			);
+			ClientMain.thread.sendData(score);
 		}
 	}
 
@@ -516,9 +532,9 @@ public class GameController implements Initializable, GameInterface {
 
 
 	@Override
-	public void showDialog() {
+	public void showDialog(ScoreVO obj) {
 		String message = 
-			String.format("축하합니다! %d-레벨을 클리어 했어요!", mGameLevelNum);
+			String.format("축하합니다! %d-레벨을 클리어 했어요!\n기록 : %s\n 랭킹 : %d", mGameLevelNum,getTime(obj.getScore()), obj.getRanking());
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setContentText(message);
@@ -530,6 +546,48 @@ public class GameController implements Initializable, GameInterface {
 			loadDataFile(mGameLevelNum + 1);
 			stopGame();
 		});
+	}
+
+	// 기록 정보 receive
+	public void receiveData(ScoreVO obj) {
+		Platform.runLater(()->{
+			showDialog(obj);
+		});
+	}
+	
+	// 대기실 오픈
+	public void showWaittingRoom() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+			getClass().getResource("/push_man/waitting_room/Waitting_room.fxml")
+			);
+			Parent root = loader.load();
+			Stage stage = new Stage();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setTitle(MemberController.user.getMemberName()+"님 반갑습니다.");
+			stage.setResizable(false);
+			stage.show();
+			Stage memberStage = (Stage)btnStart.getScene().getWindow();
+			memberStage.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 게임 레벨 초기화
+	public void setLevel(Integer selectedItem) {
+		System.out.println("GameLevel"+selectedItem);
+		if(selectedItem != null) {
+			this.mGameLevelNum = selectedItem;
+			
+		}else {
+			this.mGameLevelNum = 1;	
+		}
+		ClientMain.thread.gameController = this;
+		// 필드 초기화
+		initField();
+		loadDataFile(mGameLevelNum);
 	}
 }
 

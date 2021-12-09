@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MAIN JSP</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<a href="second.jsp">second</a>
+	<h1>MAIN JSP</h1>
+	<a href="second.jsp?name=최기근">SECOND</a>
 </body>
 </html>
+
+
+
+
+
+
+
+

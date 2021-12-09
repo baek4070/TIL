@@ -19,6 +19,9 @@ public class ServerMain extends Application {
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
+			primaryStage.setOnCloseRequest((event)->{
+				MainController.mc.stopServer();
+			});
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
