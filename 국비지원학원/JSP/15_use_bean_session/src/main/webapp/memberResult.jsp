@@ -25,6 +25,16 @@
 	
 	<%=session.getAttribute("vo") %>	
 	<br/>
+	<jsp:useBean id="sessionMember" class="vo.MemberVO" scope="session" >
+		<!-- 따로 밸류값을 지정하지 않으면 파라미터값을 사용함 
+		<jsp:setProperty name="sessionMember" property="id" />
+		<jsp:setProperty name="sessionMember" property="pw"/>
+		<jsp:setProperty name="sessionMember" property="name"/>
+		<jsp:setProperty name="sessionMember" property="email"/>
+		<jsp:setProperty name="sessionMember" property="addr"/> -->
+	</jsp:useBean>
+	<!-- 상단처럼 하나하나 값을 넣어주는게 아닌 이렇게 일괄으로 넣어줄수도있다 -->
+	<jsp:setProperty property="*" name="sessionMember"/>
 	<!-- jsp가 바뀌어도 session이 유지되는거 확인 -->
 	<a href="memberSession.jsp">session 확인</a> 
 </body>
