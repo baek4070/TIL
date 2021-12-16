@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource 
+		name="java/MySqlDB" 
+		auth="container" 
+		type="javax.sql.DataSource" 
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+		driverClassName="com.mysql.cj.jdbc.Driver" 
+		url="jdbc:mysql://localhost:3306/smartWeb" 
+		username="smart" 
+		password="12345"     
+		initialSize="10" 
+		maxActive="200" 
+		maxIdle="50" 
+		minIdle="10"  
+		maxWait="60000" />
+		<!-- 
+			intialSize : 커넥션풀 생성시 최초 생성 할 
+						 Connection객체의 수(default : 0)
+            maxActive(total) : 동시에 사용 할 수 있는 최대 connection 수 
+            			(default:8)
+  			maxIdle : 반납된 유휴 Connection 객체를 
+  				      유지할 수 있는 최대값(default:8)
+	        minIdle : 최소한으로 유지될 커넥션 수(default:0)
+            maxWait(maxWaitMillis) : 
+          			 할당 받을 Connection 객체가 없을때
+           			 스레드를 block시킬 시간(1/1000)
+		 -->
+		
+		
+		
+</Context>
+
+
+
+
+
+
+
+
+
+
+
