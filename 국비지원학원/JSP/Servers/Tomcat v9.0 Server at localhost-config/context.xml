@@ -26,4 +26,17 @@
     <!--
     <Manager pathname="" />
     -->
+    
+    <Resource 
+    	name="jdbc/MySqlDB"
+    	auth="container"
+    	type="javax.sql.DataSource"
+    	factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+    	driverClassName="com.mysql.cj.jdbc.Driver"
+    	username="smart"
+    	password="12345"
+    	url="jdbc:mysql://localhost:3306/smartWeb"
+    	maxActive="200"
+    	minIdle="10"
+    />
 </Context>
