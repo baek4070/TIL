@@ -11,8 +11,8 @@
 	<a href="elOperation.jsp">EL operator</a><br/>
 	<a href="jstlCore.jsp">JSTL CORE</a><br/>
 	<a href="jstlCoreTest2.jsp">JSTL CORE2</a><br/>
-	<a href="">JSTL FOMMATER</a><br/>
-	<a href="">JSTL SQL</a><br/>
-	<a href="">JSTL FINCTIONS</a><br/>
+	<a href="jstlFmtForm.jsp">JSTL FOMMATER</a><br/>
+	<a href="sqlForm.jsp">JSTL SQL</a><br/>
+	<a href="funcTest.jsp">JSTL FUNCTIONS</a><br/>
 </body>
 </html>
