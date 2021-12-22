@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03_attr.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(function(){
+		let src = $("img").attr("src");
+		alert(src);
+		$("img").attr("src","img/pome.png");
+		$("img").attr("alt","강아지 그림입니다.");
+		$("img").attr("width","150");
+		
+		$("img").attr({
+			alt : "강아지 이름입니다.",
+			src : "img/poodle.png",
+			width : 120
+		});
+		/*
+		$(".box").css("width",150);
+		$(".box").css("height",150);
+		$(".box").css("margin",10);
+		$(".box").css("background-color","red");
+		$(".box").css("float","left");
+		*/
+		var obj = {
+			width : 150,
+			height : 150,
+			margin : 10,
+			backgroundColor : "yellow",
+			float : "right"
+		};
+		$(".box").css(obj);
+	});
+</script>
+</head>
+<body>
+	<img />
+	<img />
+	<img />
+	<div>dummy</div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+</body>
+</html>
+
+
+
+
+

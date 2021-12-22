@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_class.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	div{
+		border:1px solid black;
+	}
+	
+	.warning{
+		border:1px solid gray;
+		color:white;
+		background-color:red;
+	}
+	
+</style>
+</head>
+<body>
+	<div id="box">
+		<p>쉬면석이 자냐?</p>
+	</div>
+	<button id="addClass">class 추가</button>
+	<button id="removeClass">class 삭제</button>
+	<button id="toggleClass">class toggle</button>
+	
+	<script>
+		// 미리 정의된 디자인 요소로 동적인 화면 구성을 하기 위한 메소드
+		// class 추가 or 삭제
+		$("#addClass").click(function(){
+			$("#box").addClass("warning");
+		});
+		
+		$("#removeClass").click(function(){
+			$("#box").removeClass("warning");
+		});
+		
+		$("#toggleClass").click(function(){
+			$("#box").toggleClass("warning");
+		});
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

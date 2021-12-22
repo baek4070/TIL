@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>06_hover.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	#box{
+		width:100px;
+		height:100px;
+		background-color:lightgreen;
+	}
+	
+	#box.hover{
+		background-color:lightblue;
+		border-radius:50px;
+	}
+	
+	h1:hover{
+		background-color:gray;
+		color:white;
+		cursor:pointer;
+	}
+	
+</style>
+<script>
+	$(function(){
+		//hover(마우스 올라왔을때,마우스 벗어났을때) 2가지 매개변수
+		$("#box").hover(function(){
+			// 마우스가 올라왔을때
+			$(this).addClass("hover");
+		}, function(){
+			// 마우스가 벗어났을때
+			$(this).removeClass("hover")
+		});
+		
+		$("h2").hover(function(){
+			$(this).css({
+				backgroundColor:"lightblue",
+				color : "white",
+			});
+		}, function(){
+			$(this).css({
+				backgroundColor:"lightgreen",
+				color : "black",
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="box"></div>
+	<h1>hover 1</h1>
+	<h1>hover 2</h1>
+	<h1>hover 3</h1>
+	<h2>hover 4</h2>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

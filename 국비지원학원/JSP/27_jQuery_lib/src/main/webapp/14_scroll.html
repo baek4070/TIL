@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>14_scroll.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	#target{
+		width:2000px;
+		min-height:500px;
+		border:1px solid red;
+		overflow:hidden;
+	}
+	.dummy{
+		float:left;
+		width:2000px;
+		height:500px;
+		border:1px solid blue;
+	}
+	
+	.appendLeftBox{
+		float:left;
+		width:500px;
+		height:500px;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+	<div id="target">
+		<div class="dummy">dummy</div>	
+	</div>
+	
+	<script>
+		let number = 0;
+	
+		$(window).scroll(function(){
+			// scrollX 시작 좌표 $(this).scrollTop();
+			// scrollX 시작 좌표
+			var scrollLeft = $(this).scrollLeft();
+			// 스크롤바를 갖는 window의 폭
+			var windowWidth = $(this).width();
+			// 문서의 전체 폭
+			var contentWidth = $(document).width();
+			
+			console.log(`scrollLeft : ${scrollLeft}`);
+			console.log(`windowWidth : ${windowWidth}`);
+			console.log(`contentWidth : ${contentWidth}`);
+			if(scrollLeft + windowWidth +1 >= contentWidth ){
+				console.log("호출");
+				let el = `<div class='appendLeftBox'><h2>추가된 컨텐츠-${number}</h2></div>`;
+				let width = $("#target").width();
+				$("#target").width(width+508);
+				$("#target").append(el);
+				number++;
+			}
+		});
+		
+	
+	</script>
+	
+	
+</body>
+</html>
+
+
+
+
+

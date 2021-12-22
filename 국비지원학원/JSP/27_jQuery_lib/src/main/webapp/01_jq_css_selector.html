@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	//window.onload == function(){}
+	$(function(){
+		console.log('문서준비완료!');
+		//$("#h1") == document.getElementById("h1");
+		//id값은 항상 하나의 요소만 적용됩니다. 제이쿼리 역시 동일합니다
+		$("#h1").css("background-color","yellow");
+		$("#h1").css("color","lightgreen");
+		//$("h1") == document.getElementsByTagName("h1");		
+		$("h1").css("color","yellow");
+		$("h1").css("background-color","lightgreen");
+	});
+	
+</script>
+</head>
+<body>
+	<h1 class="h1">Header 1</h1>
+	<h1 class="h1">Header 2</h1>
+	<h1 id="h1" class="h1">Header 3</h1>
+	<h1 id="h1">Header 4</h1>
+	<script>
+	//$(".h1") == document.getElementsByClassName("h1");
+	$(".h1").css("color","white");
+	$(".h1").css("backgroundColor","red")
+	</script>
+</body>
+</html>

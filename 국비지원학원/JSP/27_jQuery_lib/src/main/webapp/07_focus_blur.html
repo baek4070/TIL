@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>07_focus_blur.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(function(){
+		/*
+		//focus를 얻었을때
+		$("input").focus(function(){
+			$(this).css("backgroundColor","lightgreen");
+		});
+		//focus를 잃었을때
+		$("input").blur(function(){
+			$(this).css("backgroundColor","");
+		});
+		*/
+		// event chain
+		// onclick onload onmousereave
+		$("input").on("focus",function(){
+			$(this).css("backgroundColor","lightgreen");
+		}).on("blur",function(){
+			$(this).css("backgroundColor","");
+		});
+		
+		//해당 요소에 focus 부여
+		$("#uid").focus();
+		//keydown event
+		//입력 tag에 키보드의 키가 눌러졌을때 이벤트 감지
+		$("#uid").keydown(function(event){
+			console.log(event.keyCode);
+			if(event.keyCode == 13){
+				$("#upw").focus();
+			}
+		});
+		$("#upw").keydown(function(event){
+			if(event.keyCode == 13){
+				$("form").submit();
+			}
+		})
+	});
+</script>
+</head>
+<body>
+	<h1>FOCUS test</h1>
+	<form>
+		ID : <input type="text" name="u_id" id="uid" />
+		PW : <input type="password" name="u_pw" id="upw"/>
+		<input type="button" value="전송" />
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

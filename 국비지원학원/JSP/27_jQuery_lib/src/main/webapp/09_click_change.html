@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>09_click_change.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<input type="password" id="pass"/>
+	<label>
+		<input type="checkbox" id="chk"/>
+		<span>비밀번호 보기</span>
+	</label> <br/>
+	<select id="lunch">
+		<option value="스테이크">스테이크</option>
+		<option value="컵라면">컵라면</option>
+		<option value="양념갈비">양념갈비</option>
+		<option value="돈까스">돈까스</option>
+	</select>
+	
+	<script>
+	$("#lunch").change(function(){
+		// $(this).val() == this.value
+		alert($(this).val());
+	});
+	/*
+		$("#chk").click(function(){
+			if($(this).is(":checked")){
+				$("#pass").attr("type","text");
+			}else{
+				$("#pass").attr("type","password");
+			}
+		});
+	*/
+	$("#chk").on("change",function(){
+		let isCheck = $(this).is(":checked");
+		console.log("ischeck : "+isCheck);
+		let value = "text";
+		if(!isCheck){
+			value="password";
+		}
+		$("#pass").attr("type",value);
+	});
+	
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

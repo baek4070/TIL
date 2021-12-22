@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>13_drag.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	#box{
+		width:600px;
+		height:600px;
+		background-color:lightblue;
+	}
+</style>
+</head>
+<body>
+<h1 id="log"></h1>
+<div id="box"></div>
+<input type="file" id="testFile"/>
+
+<script>
+	$("#box").on("dragenter" , function(event){
+		$("#log").html("dragenter");
+		console.log("dragenter");
+		event.preventDefault();
+	});
+	
+	$("#box").on("dragover" , function(event){
+		$("#log").html("dragover");
+		console.log("dragover");
+		event.preventDefault();
+	});
+	
+	$("#box").on("drop" , function(event){
+		event.preventDefault();
+		console.log(event);
+		let files = event.originalEvent.dataTransfer.files;
+		console.log(files);
+		
+		for(let i = 0; i < files.length; i++){
+			console.log(files[i].name);
+		}
+	});
+	
+	
+	$("#testFile").on("change",function(){
+		console.log(this.files);
+		$("#log").html(this.files[0].name+"");
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

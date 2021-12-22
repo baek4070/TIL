@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>10_prepend_append.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<a href="http://www.naver.com">네이버</a>
+	<br/>
+	<p>동해물과 백두산이 마르고 닳도록...</p>
+	<br/>
+	<button id="pre">prepend</button>
+	<button id="appe">append</button>
+	<button id="bef">before</button>
+	<button id="after">after</button>
+	<button id="html">html</button>
+	<br/>
+		
+	<h3>value</h3>
+	<input type="text" id="target" />
+	<button id="get">get</button>
+	<button id="set">set</button>
+	
+	<script>
+		$("p").css("border","1px solid black");
+		
+		$("#html").click(function(){
+			let value = $("p").html(); 
+			$("p").html("<b style='color:red;'>HTML</b>"+value);
+		});
+		// 기존 content 앞에 매개변수로 넘겨받은 content 추가
+		$("#pre").click(function(){
+			$("p").prepend("<b style='color:red;'> prepend </b>");
+		});
+		
+		// 기존 content 뒤에 content 추가
+		$("#appe").click(function(){
+			$("p").append("<b style='color:blue;'> append </b>");
+		});
+		
+		// 대상 tag 요소 앞에 content 추가
+		$("#bef").click(function(){
+			$("p").before("<b style='color:pink;'> before </b>");
+		});
+		// 대상 tag 요소 뒤에 content 추가 
+		$("#after").click(function(){
+			$("p").after("<b style='color:lightgreen;'> after </b>");
+		});
+		
+		$("#get").click(function(){
+			// javascript
+			var value = document.getElementById("target").value;
+			console.log(`value : ${value}`);
+			// jQuery
+			value = $("#target").val();
+			alert(value);
+		});
+		
+		$("#set").click(function(){
+			// documenet.getElementById("target").value = '추가';
+			$("#target").val("jQuery value 추가");
+		});
+		
+		
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

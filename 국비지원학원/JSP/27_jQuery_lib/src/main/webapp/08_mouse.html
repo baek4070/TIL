@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>08_mouse.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(function(){
+		/*
+		$(".box").css({
+			width : 100,
+			height : 100,
+			background : "yellow"
+		}).on("click" ,function(){
+			// 마우스 클릭
+			$(this).css("background-color","red");
+		}).on("mouseover",function(){
+			// 마우스가 올라왔을때
+			$(this).css("background-color","blue");
+		}).on("mouseout",function(){
+			// 마우스가 벗어났을때
+			$(this).css("background-color","yellow");
+		});
+		*/
+		
+		$(".box").css({
+			width : 100,
+			height: 100,
+			background : "red"
+		}).on({
+			click : function(){
+				$(this).css("background","yellow");
+			},
+			mouseenter : function(){
+				$(this).css("background","blue");
+			},
+			mouseleave : function(){
+				$(this).css("background","red");
+			}
+		});
+		
+		$(document).mousemove(function(e){
+			console.log("Move Move");
+			let x = e.pageX;
+			let y = e.pageY;
+			$("#log").text("x : "+x +",y : "+y);
+		});
+		
+		
+	});
+</script>
+</head>
+<body>
+<div class="box"><p>mouse</p></div>
+<div id="log"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04_text_html.html</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(function(){
+		// innerText == textContent == text() 그냥 문자열로 출력이 되고
+		$("h1:nth-child(1)").text("<a href='#'>text()</a>");
+		// innerHTML == html() html이 적용되서 출력이 도비니다 
+		$("h1:nth-child(2)").html("<a href='#'>html()</a>");
+		
+		$("#text").click(function(){
+			let value = $("#target").text();
+			alert(value);
+		});
+		
+		$("#html").click(function(){
+			alert($("#target").html());
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>h1 - 1</h1>
+	<h1>h1 - 2</h1>
+	<p id ="target">이것은 <b>하나의</b><strong>단락</strong> 입니다.</p>
+	<button id="text">text</button>
+	<button id="html">html</button>
+</body>
+</html>
