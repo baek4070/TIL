@@ -9,6 +9,19 @@
 	 * 기능 : 크기 변경 
 	 * 함수 : css() / width(), height()
 	 */
+	 $(function (){
+			$("input[type=button]").click(function(){
+				//$("#target").css("width",300);
+				//$("#target").css("height",300);
+				//$("#target").css({width:300,height:300});
+				//$("#target").animate({width:300,height:300},1000); 
+				//$("#target").width(300);
+				//$("#target").height(300);
+				//chain 이 가능하다
+				$("#target").height(300).width(300);
+			});
+		});
+	 
 </script>
 
 </head>

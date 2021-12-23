@@ -9,7 +9,17 @@
 	 * 기능 : background 변경
 	 * eq or nth-child
 	 */
-
+	$(function(){
+		$("#run").click(function(){
+			//$("div.target:nth-child(2)").css("background","yellow");
+			//여러개 요소는 배열형태로 저장함 ! 그렇기 때문에 eq(인덱스) 인덱스 번호에 해당하는 요소를 찾는다. 
+			//당연히0 부터 시작해서 1씩증가 
+			
+			//$(".target").eq(1).css("background","yellow");
+			// 음수는 뒤에서 부터 검색 시작 값은 -1 부터 1씩 감소
+			$(".target").eq(-2).css("background","yellow");
+		});
+	});
 </script>
 
 </head>

@@ -7,8 +7,23 @@
 	/**
 	 * 대상 : div 내부 div
 	 * 기능 : div(.child) 개수 출력 
+	 * 함수 : alert() , children(), size() or length
 	*/
-
+	$(function(){
+		$("input[type=button]").click(function(){
+			var count = 0;
+			count = $("#target > .child").length;
+			console.log("length : " + count);
+			var child = $("#target").children(".child");
+			count = child.length;
+			console.log("children length : " + count);
+			
+			count = $("#target > .chcild").size();
+			console.log("size : " + count);
+			count = $("#target").children(".child").size();
+			alert("size : " + count);
+		});
+	});
 </script>
 
 </head>

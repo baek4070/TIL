@@ -9,7 +9,12 @@
 	 * 기능 : 체크해제
 	 * 함수 : removeAttr() or attr()
 	 */
-
+	$(function(){
+		$("input[value=run]").click(function(){
+			//$(".target input[type=checkbox]").removeAttr("checked");
+			$(".target input[type=checkbox]").attr("checked",false);
+		});
+	});
 </script>
 
 </head>

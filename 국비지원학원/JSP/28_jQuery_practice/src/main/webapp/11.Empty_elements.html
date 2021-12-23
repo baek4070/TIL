@@ -9,6 +9,16 @@
 	 * 기능 : child 요소 전체 제거 
 	 * 함수 : empty() or children(), remove(), text()
 	 */
+	 $(function(){
+		 $("input[type=button]").click(function(){
+			 // A.remove() A요소를 문서에서 제거
+			 //$("#target > .child").remove();
+			 // A.empty() A요소 내부의 컨텐츠를 제거
+			 //$("#target > .child").empty();
+//			 $("#target").html("#target<br><br><br>message1<br>message2");
+			 $("#target").children(".child").remove();
+		 });
+	 });
 
 </script>
 

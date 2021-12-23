@@ -9,7 +9,18 @@
  * 기능 : 태그 변경 (h2 => h3)
  * 함수 : html(), replace()
  */
-
+	$(function(){
+		$("input[type=button]").click(function(){
+			// "ABCDEF".replace('A','B')
+			// A문자를 B문자로 치환
+			console.log("ABCDEF".replace('A','B'));	
+			
+			var html = $("#target").html();
+//			var result = html.replace("h2","h3");
+			var result = html.replaceAll("h2","h3");
+			$("#target").html(result);
+		});
+	});
 </script>
 
 </head>

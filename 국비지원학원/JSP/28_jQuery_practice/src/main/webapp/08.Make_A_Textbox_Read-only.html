@@ -9,7 +9,11 @@
 	 * 기능 : 속성을 readonly로 변경 
 	 * 함수 : attr
 	 */
-
+	$(function(){
+		$("input[type=button]").click(function(){
+			$("#target input").attr("readonly","readonly");
+		});
+	});
 </script>
 
 </head>

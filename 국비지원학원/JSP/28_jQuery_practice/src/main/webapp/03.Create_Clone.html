@@ -8,12 +8,18 @@
 	 * 대상 : div
 	 * 기능 : 복사 & 추가
 	 * 함수 : clone(), insertAfter()
+	 * A.insertAfter(B); B요소뒤에 A를 추가
+	 * A.insertbefore(B);B요소앞에 A를 추가
 	 */
-	 $(function(){
-		$("$run").click(function(){
-			$("#target").insertAfter(
-				$("div").clone()		
-			);
+	$(function(){
+		// A.clone(); A tag element 요소를 복제
+		/*
+			let el = $("#target").clone();
+			console.log(el);
+			el.insertAfter($("#target"));
+		*/
+		$("#run").click(function(){
+			$("#target").clone().insertAfter($("#target"));
 		})
 	});
 </script>

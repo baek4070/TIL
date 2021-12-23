@@ -9,7 +9,19 @@
  * 기능 : 문자열 변경 (cat => dog)
  * 함수 : html(), split(), join()
  */
-
+	$(function(){
+		$("input[type=button]").click(function(){
+			var text = "A,B,C,D,E,F".split(",");
+			for(var i=0; i<text.length; i++){
+				console.log(i+":"+text[i]);
+			}
+			var test = text.join("|");
+			console.log(test);
+			var html = $("#target").html().split("cat");
+			//$("#target").html(html.join("dog"));
+			$("#target").html($("#target").html().replaceAll("cat","dog"));			
+		});
+	});
 </script>
 
 </head>

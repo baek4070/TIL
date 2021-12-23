@@ -9,7 +9,20 @@
 	 * 기능 : 마지막 item 선택 
 	 * 함수 : prop(), last()
 	 */
-
+	$(function (){
+		$("input[type=button]").click(function(){
+			//last() 선택된 요소들 중에 마지막 요소
+			//$("select > option").last().prop("selected",true);
+			//first() 선택된 요소들 중에 첫번째 요소
+			$("select > option").first().attr("selected",true);
+			
+			var href = $("#comment");
+			// 안에 들어가 있는 value 값
+			alert(href.attr("href"));
+			// 실제 경로로 이동이 가능한 자원의 위치
+			alert(href.prop("href"));
+		});
+	});
 
 </script>
 
