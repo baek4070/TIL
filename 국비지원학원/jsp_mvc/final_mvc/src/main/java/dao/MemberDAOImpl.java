@@ -17,7 +17,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public boolean memberJoin(MemberVO member) {
 		conn = DBCPUtil.getConnection();
-		String sql = "INSERT INTO mmvc_member(id,pass,name,age,gender) "
+		String sql = "INSERT INTO mvc_member(id,pass,name,age,gender) "
 				   + " VALUES(?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -66,24 +66,86 @@ public class MemberDAOImpl implements MemberDAO {
 		}finally {
 			DBCPUtil.close(rs,pstmt,conn);
 		}
-		
-		
 		return member;
 	}
 
 	@Override
 	public boolean memberUpdate(MemberVO member) {
-		return false;
+		boolean isUpdate = false;
+		String sql = "UPDATE mvc_member SET "
+				   + " pass = ? , "
+				   + " name = ? , "
+				   + " age = ? , "
+				   + " gender = ? , "
+				   + " updatedate = now() "
+				   + " WHERE num = ? ";
+		conn = DBCPUtil.getConnection();
+		// alt + s + w 예외처리
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getPass());
+			pstmt.setString(2, member.getName());
+			pstmt.setInt(3, member.getAge());
+			pstmt.setString(4, member.getGender());
+			pstmt.setInt(5, member.getNum());
+			
+			int result = pstmt.executeUpdate();
+			if(result > 0) isUpdate = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(rs,pstmt,conn);
+		}
+		return isUpdate;
 	}
 
 	@Override
 	public MemberVO getMemberById(String id) {
-		return null;
+		System.out.println("getMemberById : " + id);
+		MemberVO member = null;
+		conn = DBCPUtil.getConnection();
+		String sql = "SELECT * FROM mvc_member "
+				   + " WHERE id = ?";
+		// AND joinYN != 'N' 
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberVO();
+				member.setNum(rs.getInt("num"));
+				member.setId(rs.getString("id"));
+				member.setPass(rs.getString("pass"));
+				member.setName(rs.getString("name"));
+				member.setAge(rs.getInt("age"));
+				member.setGender(rs.getString("gender"));
+				member.setRegdate(rs.getTimestamp("regdate"));
+				member.setUpdatedate(rs.getTimestamp("updatedate"));
+			}
+		} catch (SQLException e) {
+		}finally {
+			DBCPUtil.close(rs,pstmt,conn);
+		}
+		System.out.println("member : " + member);
+		return member;
 	}
 
 	@Override
 	public void withDrawMember(int num) {
-
+		String sql = "UPDATE mvc_member SET "
+					+" joinYN = 'N' "
+					+" WHERE num = ? ";
+		
+		conn = DBCPUtil.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBCPUtil.close(conn,pstmt);
+		}
 	}
 
 	@Override

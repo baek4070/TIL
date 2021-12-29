@@ -3,8 +3,8 @@ package vo;
 import java.util.Date;
 
 public class MemberVO {
-
-	private int	num;
+	
+	private int num;
 	private String id;
 	private String pass;
 	private String name;
@@ -14,11 +14,8 @@ public class MemberVO {
 	private Date regdate;
 	private Date updatedate;
 	
-	
-	
-	public MemberVO() {
-	}
-	
+	public MemberVO() {}
+
 	public MemberVO(String id, String pass, String name, int age, String gender) {
 		this.id = id;
 		this.pass = pass;
@@ -27,9 +24,8 @@ public class MemberVO {
 		this.gender = gender;
 	}
 	
-	//회원가입용 생성자
 	public MemberVO(int num, String id, String pass, String name, int age, String gender, String joinYN, Date regdate,
-			Date ipdatedate) {
+			Date updatedate) {
 		this.num = num;
 		this.id = id;
 		this.pass = pass;
@@ -40,8 +36,7 @@ public class MemberVO {
 		this.regdate = regdate;
 		this.updatedate = updatedate;
 	}
-	
-	//getter & setter & toString
+	// getter & setter & toString
 	public int getNum() {
 		return num;
 	}
@@ -103,5 +98,13 @@ public class MemberVO {
 				+ "]";
 	}
 	
-	
 }
+
+
+
+
+
+
+
+
+

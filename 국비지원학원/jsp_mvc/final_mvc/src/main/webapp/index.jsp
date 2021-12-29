@@ -8,7 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:forward page="test"/>
+<!-- 
 <a href="test">test</a>
 <a href="test1">test1</a>
+ -->
 </body>
 </html>

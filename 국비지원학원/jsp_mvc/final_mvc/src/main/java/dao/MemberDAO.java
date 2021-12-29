@@ -18,7 +18,7 @@ public interface MemberDAO {
 	// id 값으로 사용자 정보 확인 - cookie 자동 로그인
 	MemberVO getMemberById(String id);
 	
-	//회원 탈퇴 처리 = joinYN - 'N'
+	// 회원 탈퇴 처리 - joinYN - 'N'
 	void withDrawMember(int num);
 	
 	/**
@@ -27,13 +27,13 @@ public interface MemberDAO {
 	// 사용자 정보 확인
 	boolean checkMember(String id, String name);
 	
-	//코드 등록
+	// 코드 등록
 	void addPassCode(String id, String code);
 	
-	//코드 확인
-	public boolean checkPassCode(String id,String code);
+	// 코드 확인
+	public boolean checkPassCode(String id, String code);
 	
-	//비밀번호 변경
+	// 비밀번호 변경
 	public void changePass(String id, String pass);
 	
 }
