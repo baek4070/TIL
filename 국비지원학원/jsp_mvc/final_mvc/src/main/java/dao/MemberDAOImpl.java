@@ -106,7 +106,7 @@ public class MemberDAOImpl implements MemberDAO {
 		conn = DBCPUtil.getConnection();
 		String sql = "SELECT * FROM mvc_member "
 				   + " WHERE id = ?";
-		// AND joinYN != 'N' 
+		//  AND joinYN != 'N' 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -132,10 +132,10 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void withDrawMember(int num) {
+		
 		String sql = "UPDATE mvc_member SET "
 					+" joinYN = 'N' "
 					+" WHERE num = ? ";
-		
 		conn = DBCPUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -144,28 +144,105 @@ public class MemberDAOImpl implements MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			DBCPUtil.close(conn,pstmt);
+			DBCPUtil.close(pstmt,conn);
 		}
 	}
 
 	@Override
 	public boolean checkMember(String id, String name) {
-		return false;
+		boolean isCheck = false;
+		String sql = "SELECT * FROM mvc_member "
+				   + " WHERE id = ? AND name = ? AND joinYN = 'Y'";
+		try {
+			conn = DBCPUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isCheck = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(rs,pstmt,conn);
+		}
+		return isCheck;
 	}
 
 	@Override
 	public void addPassCode(String id, String code) {
-
+		
+		conn = DBCPUtil.getConnection();
+		String sql = "SELECT * FROM test_code WHERE id = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				// 코드 수정
+				sql = "UPDATE test_code SET code = ? WHERE id = ? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, code);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+			}else {
+				// 코드 등록
+				sql = "INSERT INTO test_code VALUES(?,?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, code);
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(rs,pstmt,conn);
+		}
 	}
 
 	@Override
 	public boolean checkPassCode(String id, String code) {
-		return false;
+		boolean isCheck = false;
+		String sql = "SELECT * FROM test_code WHERE id = ? AND code = ?";
+		conn = DBCPUtil.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, code);
+			rs = pstmt.executeQuery();
+			if(rs.next()) isCheck = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBCPUtil.close(rs,pstmt,conn);
+		}
+		
+		return isCheck;
 	}
 
 	@Override
 	public void changePass(String id, String pass) {
-
+		conn = DBCPUtil.getConnection();
+		String sql = "UPDATE mvc_member SET pass = ? WHERE id = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pass);
+			pstmt.setString(2, id);
+			int result = pstmt.executeUpdate();
+			if(result > 0) {
+				sql = "DELETE FROM test_code WHERE id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(pstmt,conn);
+		}
+		
 	}
 
 }

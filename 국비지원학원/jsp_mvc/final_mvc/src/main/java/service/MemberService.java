@@ -49,14 +49,14 @@ public interface MemberService {
 	 * @param request id(email), code
 	 * @param response - 인증 - 비밀번호 변경 페이지 이동
 	 */
-	void changePassCode(HttpServletRequest requst,
+	void changePassCode(HttpServletRequest request,
 			HttpServletResponse response);
 	
 	/**
 	 * @param requst - id(email) , code , pass
 	 * @param response - 비밀번호 변경 - login
 	 */
-	void changePass(HttpServletRequest requst,
+	void changePass(HttpServletRequest request,
 			HttpServletResponse response);
 	
 	/**

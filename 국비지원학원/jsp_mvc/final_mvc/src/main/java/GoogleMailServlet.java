@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.GoogleAuthenticator;
+
 @WebServlet("/mailTest")
 public class GoogleMailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -57,9 +59,11 @@ public class GoogleMailServlet extends HttpServlet {
 		// TLS - 587 , SSL - 465
 		System.out.println(p);
 		
-		Authenticator auth = new MyAuthentication();
+		//Authenticator auth = new MyAuthentication();
+		//Session session = Session.getDefaultInstance(p,auth);
 		
-		Session session = Session.getDefaultInstance(p,auth);
+		GoogleAuthenticator auth = new GoogleAuthenticator();
+		Session session = Session.getDefaultInstance(auth.getProperties(),auth);
 		
 		
 		try {
