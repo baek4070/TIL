@@ -39,7 +39,6 @@ public class ManagementController extends HttpServlet {
 		if(nextPage != null) {
 			request.getRequestDispatcher(nextPage).forward(request, response);
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

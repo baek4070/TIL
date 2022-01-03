@@ -1,17 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<a href="test">test</a> <br/>
-<textarea id="editor"></textarea>
-<input type="button" id="btn"  value="확인"/>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- notice_write.jsp -->
+<jsp:include page="../../common/header.jsp"/>
+<section>
+	<form action="noticeWrite.do" method="POST">
+		<input type="hidden" name="notice_author" value="${member.name}"/>
+		<table>
+			<tr>
+				<th colspan="2"><h1>공지글 작성</h1></th>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td>${member.name}</td>
+			</tr>
+			<tr>
+				<td>카테고리</td>
+				<td>
+					<select name="notice_category">
+						<option value="공지" selected>공지</option>
+						<option value="알림">알림</option>
+						<option value="이벤트">이벤트</option>
+						<option value="당첨">당첨</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td>
+					<input type="text" name="notice_title" />
+				</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>
+					<textarea name="notice_content" id="editor"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="작성완료"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</section>
 <script src="https://cdn.tiny.cloud/1/82ubugvq9p4ukktpdfxo6tc3oglykfj5kh7u4xi5uh1sw4s3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
 	var plugins = ["textcolor", "link", "image"];
@@ -55,25 +88,7 @@
     /* image upload end */
     });
   </script>
-	<%-- <jsp:forward page="test" /> --%>
-	<!-- 
-<a href="test1">test1</a>
- -->
- <script>
-	$(function(){
-		$("#btn").click(function(){
-			var content = tinymce.activeEditor.getContent();
-			console.log(content);
-		});
-	});
-</script>
-</body>
-</html>
-
-
-
-
-
+<jsp:include page="../../common/footer.jsp"/>
 
 
 

@@ -23,27 +23,23 @@
 	<header>
 		<div>
 			<ul>
-				<li><a href="test">HOME</a></li>
+				<li><a href="${path}">HOME</a></li>
 				<c:choose>
 					<c:when test="${!empty sessionScope.member}">
-						<li><a href="info.mc">${sessionScope.member.name}</a></li>
-						<c:if test="${member.id eq 'admin'}">
-							<li><a href="managementPage.mm">회원관리</a></li>
-						</c:if>
-						<li><a href="logOut.mc">로그아웃</a></li>
+						<li><a href="#">${sessionScope.member.name}</a></li>
+						<li><a href="logout.mc">로그아웃</a></li>
 					</c:when>
 					<c:otherwise>
 						<li><a href="login.mc">로그인</a></li>
 						<li><a href="join.mc">회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="mailTest">Google SMTP Test</a></li>
 			</ul>
 		</div>
 		<div>
 			<ul>
-				<li><a href="noticeSearch.do">공지사항</a></li>
-				<li><a href="">질문과답변</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">질문과답변</a></li>
 			</ul>
 		</div>
 	</header>
