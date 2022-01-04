@@ -32,6 +32,68 @@ DESC test_code;
 
 SELECT * FROM test_code;
 
+-- 공지형 게시판 table
+DROP TABLE notice_board;
+CREATE TABLE notice_board(
+	notice_num int primary key auto_increment,  -- 게시물 번호
+	notice_category VARCHAR(20) ,				-- 게시물 분류
+	notice_author VARCHAR(50),					-- 게시글 작성자
+	notice_title VARCHAR(100),					-- 게시글 제목
+	notice_content LONGTEXT ,					-- 게시글 내용
+	notice_date TIMESTAMP default now() 		-- 게시글 작성 시간
+);
+
+SELECT * FROM notice_board ORDER BY notice_num DESC limit 1;
+
+DELETE FROM notice_board WHERE notice_num = 2 OR notice_num = 3;
+commit;
+
+INSERT INTO notice_board(
+notice_category,
+notice_author,
+notice_title,
+notice_content)
+SELECT notice_category,
+notice_author,
+notice_title,
+notice_content FROM notice_board; 
+
+SELECT * FROM notice_board 
+WHERE notice_title LIKE '%게시글%' 
+ORDER BY notice_num DESC limit 0, 10;
+
+-- 질문과 답변 - 답변형 게시판
+DROP TABLE qna_board;
+CREATE TABLE qna_board(
+	qna_num INT PRIMARY KEY auto_increment,
+	qna_name VARCHAR(30) NOT NULL,
+	qna_title VARCHAR(100) NOT NULL,
+	qna_content LONGTEXT NOT NULL,
+	qna_file VARCHAR(100),
+	qna_file_origin VARCHAR(100),
+	qna_re_ref INT NOT NULL,
+	qna_re_lev INT NOT NULL,
+	qna_re_seq INT NOT NULL,
+	qna_writer_num INT,
+	qna_readcount INT DEFAULT 0,
+	qna_date TIMESTAMP DEFAULT now(),
+	FOREIGN KEY(qna_writer_num) REFERENCES mvc_member(num)
+);
+
+ALTER TABLE qna_board 
+ADD qna_delete char(1) DEFAULT 'N' AFTER qna_readcount;
+
+DESC qna_board;
+SELECT * FROM qna_board; 
+
+
+
+
+
+
+
+
+
 
 
 
