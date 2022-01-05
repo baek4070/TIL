@@ -24,8 +24,9 @@ public interface QNABoardService {
 	// 게시물 조회수 증가
 	public void updateReadCount(HttpServletRequest request);
 	
-	// 파일 다운로드 처리
-	public void fileDown(HttpServletRequest request, HttpServletResponse response);
+	// 파일 다운로드 요청 처리
+	public void fileDown(HttpServletRequest request,
+					     HttpServletResponse response);
 	
 	// 답변글 작성 화면 요청
 	public BoardVO boardReply(HttpServletRequest request);
@@ -34,14 +35,25 @@ public interface QNABoardService {
 	public BoardVO boardReplySubmit(HttpServletRequest request);
 	
 	// 수정 페이지 요청 시 수정할 게시물 정보 전달
-	public BoardVO getBoardVOByUpdate(HttpServletRequest request);
+	public BoardVO getBoardVOByUpdate(HttpServletRequest request); 
 	
 	// 게시글 수정 요청
-	public void boardUpdate(HttpServletRequest request, HttpServletResponse response);
+	public void boardUpdate(HttpServletRequest request, 
+							HttpServletResponse response);
 	
 	// 게시글 삭제 요청
-	public void boardDelete(HttpServletRequest request, HttpServletResponse response);
+	public void boardDelete(HttpServletRequest request, 
+							HttpServletResponse response);
 }
+
+
+
+
+
+
+
+
+
 
 
 

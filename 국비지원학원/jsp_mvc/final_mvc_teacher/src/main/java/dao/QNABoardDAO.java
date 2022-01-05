@@ -13,7 +13,7 @@ public interface QNABoardDAO {
 	// 게시물 목록
 	public ArrayList<BoardVO> getBoardList(Criteria cri);
 	
-	// 게시물 작성 요청
+	// 게시물 작성요청
 	public void boardWrite(BoardVO vo);
 	
 	// 게시물 한개의 정보 요청
@@ -28,8 +28,19 @@ public interface QNABoardDAO {
 	// 게시글 수정
 	public boolean boardUpdate(BoardVO vo);
 	
-	// 게시글 수정
+	// 게시글 삭제
 	public boolean boardDelete(int qna_num, int qna_writer_num);
-	
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

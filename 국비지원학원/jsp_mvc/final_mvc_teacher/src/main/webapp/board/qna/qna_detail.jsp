@@ -21,6 +21,19 @@
 				<div>${boardVO.qna_content}</div>
 			</td>
 		</tr>
+		<c:if test="${!empty boardVO.qna_file}">
+			<tr>
+				<td>첨부파일</td>
+				<td>
+					<a href="file_down.bo?qna_file=${boardVO.qna_file}">${boardVO.qna_file_origin}</a>
+					<hr/>
+					<a href="resources/upload/${boardVO.qna_file}" 
+					   download="${boardVO.qna_file_origin}">
+						${boardVO.qna_file_origin}
+					</a>
+				</td>
+			</tr>
+		</c:if>
 		<tr>
 			<td colspan="2">
 				<c:if test="${!empty member}">

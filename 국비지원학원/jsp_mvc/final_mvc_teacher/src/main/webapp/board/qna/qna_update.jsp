@@ -1,45 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- notice_write.jsp -->
 <jsp:include page="../../common/header.jsp"/>
+<!-- qna_update.jsp -->
 <section>
-	<form action="noticeWrite.do" method="POST">
-		<input type="hidden" name="notice_author" value="${member.name}"/>
+	<form action="boardUpdate.bo" method="POST">
+		<input type="hidden" name="qna_num" value="${boardVO.qna_num}"/>
+		<input type="hidden" name="qna_name" value="${member.name}"/>
+		<input type="hidden" name="qna_writer_num" value="${member.num}"/>  
 		<table>
 			<tr>
-				<th colspan="2"><h1>공지글 작성</h1></th>
+				<td colspan="2"><h1>${boardVO.qna_num}번 게시글 수정</h1></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
 				<td>${member.name}</td>
 			</tr>
 			<tr>
-				<td>카테고리</td>
-				<td>
-					<select name="notice_category">
-						<option value="공지" selected>공지</option>
-						<option value="알림">알림</option>
-						<option value="이벤트">이벤트</option>
-						<option value="당첨">당첨</option>
-					</select>
-				</td>
+				<td>글 제목</td>
+				<td><input type="text" name="qna_title" value="${boardVO.qna_title}" required /></td>
 			</tr>
 			<tr>
-				<td>제목</td>
+				<td>글내용</td>
 				<td>
-					<input type="text" name="notice_title" />
-				</td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td>
-					<textarea name="notice_content" id="editor"></textarea>
+					<textarea id="editor" name="qna_content">${boardVO.qna_content}</textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="작성완료"/>
+					<input type="submit" value="수정완료"/>
 				</td>
 			</tr>
 		</table>
@@ -89,6 +78,7 @@
     });
   </script>
 <jsp:include page="../../common/footer.jsp"/>
+
 
 
 

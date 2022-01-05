@@ -70,6 +70,8 @@ public class QNABoardDAOImpl implements QNABoardDAO {
 		vo.setQna_re_lev(rs.getInt("qna_re_lev"));
 		vo.setQna_re_seq(rs.getInt("qna_re_seq"));
 		vo.setQna_writer_num(rs.getInt("qna_writer_num"));
+		// 게시글 삭제 여부 확인 추가
+		vo.setQna_delete(rs.getString("qna_delete"));
 		vo.setQna_readcount(rs.getInt("qna_readcount"));
 		vo.setQna_date(rs.getTimestamp("qna_date"));
 		return vo;
@@ -187,12 +189,58 @@ public class QNABoardDAOImpl implements QNABoardDAO {
 
 	@Override
 	public boolean boardUpdate(BoardVO vo) {
+		// 게시글 수정 요청 DAO
+		conn = DBCPUtil.getConnection();
+		String sql = "UPDATE qna_board SET "
+				   + " qna_name = ? , "
+				   + " qna_title = ? , "
+				   + " qna_content = ? "
+				   + " WHERE qna_num = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getQna_name());
+			pstmt.setString(2, vo.getQna_title());
+			pstmt.setString(3, vo.getQna_content());
+			pstmt.setInt(4, vo.getQna_num());
+			if(pstmt.executeUpdate() > 0) {
+				return true;
+			};
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(pstmt,conn);
+		}
 		return false;
 	}
 
 	@Override
 	public boolean boardDelete(int qna_num, int qna_writer_num) {
+		conn = DBCPUtil.getConnection();
+		String sql = "UPDATE qna_board SET "
+					+" qna_delete = 'Y' "
+					+" WHERE qna_num = ? "
+					+" AND qna_writer_num = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qna_num);
+			pstmt.setInt(2, qna_writer_num);
+			if(pstmt.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBCPUtil.close(pstmt,conn);
+		}
 		return false;
 	}
 
 }
+
+
+
+
+
+
+
+

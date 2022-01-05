@@ -3,13 +3,12 @@ package vo;
 import java.util.Date;
 
 public class BoardVO {
-
 	private int qna_num;
 	private String qna_name;
 	private String qna_title;
 	private String qna_content;
 	private String qna_file;
-	private String qna_file_origin;
+	private String  qna_file_origin;
 	private int qna_re_ref;
 	private int qna_re_lev;
 	private int qna_re_seq;
@@ -18,7 +17,7 @@ public class BoardVO {
 	private String qna_delete;
 	private Date qna_date;
 	
-	//getter && setter && toString
+	// getter setter toString
 	
 	public int getQna_num() {
 		return qna_num;
@@ -106,6 +105,5 @@ public class BoardVO {
 				+ qna_writer_num + ", qna_readcount=" + qna_readcount + ", qna_delete=" + qna_delete + ", qna_date="
 				+ qna_date + "]";
 	}
-	
 	
 }

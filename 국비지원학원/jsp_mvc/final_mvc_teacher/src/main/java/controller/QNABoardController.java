@@ -32,16 +32,19 @@ public class QNABoardController extends HttpServlet {
 		
 		if(command.equals("boardList.bo")) {
 			// 목록 페이지 요청
-			
 			ArrayList<BoardVO> list = service.getBoardList(request);
 			request.setAttribute("list", list);
 			nextPage = "/board/qna/qna_list.jsp";
 		}else if(command.equals("boardWrite.bo")) {
 			// 목록 작성 페이지 요청
 			nextPage = "/board/qna/qna_write.jsp";
+			
 		}else if(command.equals("boardWriteSubmit.bo")) {
 			System.out.println("게시글 등록 요청-원본글");
-			service.boardWrite(request);
+			// 일반 for data 게시글 등록
+			//service.boardWrite(request);
+			// 첨부파일과 함께 게시글 등록
+			service.boardWriteFile(request);
 			response.sendRedirect("boardList.bo");
 		}else if(command.equals("boardDetail.bo")) {
 			// 게시글 상세보기 요청
@@ -66,6 +69,20 @@ public class QNABoardController extends HttpServlet {
 			// 답변글 작성 요청
 			service.boardReplySubmit(request);
 			response.sendRedirect("boardList.bo");
+		}else if(command.equals("boardUpdateForm.bo")) {
+			// 게시글 수정 페이지 요청
+			BoardVO board = service.getBoardVOByUpdate(request);
+			request.setAttribute("boardVO", board);
+			nextPage = "/board/qna/qna_update.jsp";
+		}else if(command.equals("boardUpdate.bo")) {
+			// 게시글 수정 요청
+			service.boardUpdate(request, response);
+		}else if(command.equals("boardDelete.bo")) {
+			// 게시글 삭제 요청
+			service.boardDelete(request, response);
+		}else if(command.equals("file_down.bo")) {
+			System.out.println("file 다운로드 요청");
+			service.fileDown(request, response);
 		}
 		
 		if(nextPage != null) {

@@ -4,7 +4,8 @@
 <jsp:include page="../../common/header.jsp"/>
 <!-- qna_write.jsp -->
 <section>
-	<form action="boardWriteSubmit.bo" method="POST">
+	<form action="boardWriteSubmit.bo" method="POST" 
+	enctype="multipart/form-data">
 		<input type="hidden" name="qna_name" value="${member.name}"/>
 		<input type="hidden" name="qna_writer_num" value="${member.num}"/>  
 		<table>
@@ -23,6 +24,12 @@
 				<td>글내용</td>
 				<td>
 					<textarea id="editor" name="qna_content"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>첨부파일</td>
+				<td>
+					<input type="file" name="qna_file"/>
 				</td>
 			</tr>
 			<tr>

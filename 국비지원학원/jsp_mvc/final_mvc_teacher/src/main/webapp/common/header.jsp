@@ -37,13 +37,17 @@
 						<li><a href="join.mc">회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
+				<!-- 
 				<li><a href="mailTest">Google SMTP Test</a></li>
+				 -->
 			</ul>
 		</div>
 		<div>
 			<ul>
 				<li><a href="noticeSearch.do">공지사항</a></li>
 				<li><a href="boardList.bo">질문과답변</a></li>
+				<li><a href="javascript.test">javascript</a></li>
+				<li><a href="jQuery.test">jQuery</a></li>
 			</ul>
 		</div>
 	</header>
