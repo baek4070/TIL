@@ -58,13 +58,15 @@
 			alert('XMLHttp 객체 생성 실패');
 			return false;
 		}
+		
 		console.log('생성완료');
 		
 		var name = document.getElementById("name").value;
 		var age = document.getElementById("age").value;
 		
-		httpRequest.open('GET',url+"?name="+name+"&age="+age);
-		httpRequest.onreadystatechange = setContents;
+		console.log(httpRequest.readyState);
+		httpRequest.onreadystatechange = setContents;			
+		httpRequest.open('GET',url+"?name="+name+"&age="+age,false);
 		httpRequest.send();
 	}
 	

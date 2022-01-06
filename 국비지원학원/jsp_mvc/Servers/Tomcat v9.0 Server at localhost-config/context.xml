@@ -26,7 +26,8 @@
     <!--
     <Manager pathname="" />
     -->
-    <Resource 
+ 
+  <Resource 
     	name="jdbc/MySqlDB"
     	auth="container"
     	type="javax.sql.DataSource"

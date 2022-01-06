@@ -1,6 +1,10 @@
-/prop/
-/util/
-/service/
-/dao/
+/GoogleMailServlet$MyAuthentication.class
+/GoogleMailServlet.class
+/ResponseServlet.class
+/ServletTest.class
 /controller/
+/dao/
+/prop/
+/service/
+/util/
 /vo/

@@ -2,15 +2,15 @@
 DROP TABLE mvc_member;
 
 CREATE TABLE mvc_member(
-	num INT primary key auto_increment,		--회원번호
-	id VARCHAR(50) UNIQUE NOT NULL,			--아이디(email)
-	pass VARCHAR(100) NOT NULL,				--비밀번호
-	name VARCHAR(50) ,						--이름
-	age INT(3) default 1,					--나이
-	gender VARCHAR(10) ,					--성별
-	joinYN char(1) default 'Y',				--탈퇴여부
-	regdate TIMESTAMP default now(),		--회원가입일
-	updatedate TIMESTAMP default now()		--회원정보수정일
+	num INT primary key auto_increment,	
+	id VARCHAR(50) UNIQUE NOT NULL,		
+	pass VARCHAR(100) NOT NULL,			
+	name VARCHAR(50) ,						
+	age INT(3) default 1,					
+	gender VARCHAR(10) ,					
+	joinYN char(1) default 'Y',				
+	regdate TIMESTAMP default now(),	
+	updatedate TIMESTAMP default now()		
 );
 
 INSERT INTO mvc_member(id,pass,name,gender) 
@@ -35,12 +35,12 @@ SELECT * FROM test_code;
 -- 공지형 게시판 table
 DROP TABLE notice_board;
 CREATE TABLE notice_board(
-	notice_num int primary key auto_increment,  -- 게시물 번호
-	notice_category VARCHAR(20) ,				-- 게시물 분류
-	notice_author VARCHAR(50),					-- 게시글 작성자
-	notice_title VARCHAR(100),					-- 게시글 제목
-	notice_content LONGTEXT ,					-- 게시글 내용
-	notice_date TIMESTAMP default now() 		-- 게시글 작성 시간
+	notice_num int primary key auto_increment, 
+	notice_category VARCHAR(20) ,				
+	notice_author VARCHAR(50),					
+	notice_title VARCHAR(100),				
+	notice_content LONGTEXT ,					
+	notice_date TIMESTAMP default now() 		
 );
 
 SELECT * FROM notice_board ORDER BY notice_num DESC limit 1;

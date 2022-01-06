@@ -4,7 +4,8 @@
 <jsp:include page="../../common/header.jsp"/>
 <!-- qna_write.jsp -->
 <section>
-	<form action="boardWriteSubmit.bo" method="POST" 
+	<!-- enctype="application/x-www-form-urlencoded" > -->
+	<form action="boardWriteSubmit.bo" method="POST"
 	enctype="multipart/form-data">
 		<input type="hidden" name="qna_name" value="${member.name}"/>
 		<input type="hidden" name="qna_writer_num" value="${member.num}"/>  
