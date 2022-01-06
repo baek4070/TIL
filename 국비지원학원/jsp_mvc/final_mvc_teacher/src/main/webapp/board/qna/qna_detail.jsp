@@ -48,6 +48,7 @@
 		</tr>
 	</table>
 </section>
+<jsp:include page="../comment/comment.jsp"/>
 <jsp:include page="../../common/footer.jsp"/>
 
 

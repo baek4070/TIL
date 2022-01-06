@@ -84,7 +84,22 @@ ALTER TABLE qna_board
 ADD qna_delete char(1) DEFAULT 'N' AFTER qna_readcount;
 
 DESC qna_board;
-SELECT * FROM qna_board; 
+SELECT * FROM qna_board;
+
+-- 게시글에 대한 댓글을 저장할 테이블
+DROP TABLE qna_comment;
+CREATE TABLE qna_comment(
+	comment_num INT auto_increment,
+	comment_id VARCHAR(50),
+	comment_name VARCHAR(50),
+	comment_content VARCHAR(300),
+	comment_date TIMESTAMP DEFAULT now(),
+	comment_delete char(1),
+	comment_board_num INT,
+	PRIMARY KEY (comment_num),
+	FOREIGN KEY(comment_board_num)
+	REFERENCES qna_board(qna_num)
+);
 
 
 
