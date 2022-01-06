@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.CommentService;
+import service.CommentServiceImpl;
 import service.MemberService;
 import service.QNABoardService;
 import service.QNABoardServiceImpl;
@@ -19,6 +23,7 @@ public class QNABoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	QNABoardService service = new QNABoardServiceImpl();
+	CommentService cs = new CommentServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -57,6 +62,11 @@ public class QNABoardController extends HttpServlet {
 			// 게시물 정보 전달
 			BoardVO vo = service.getBoardVO(request);
 			request.setAttribute("boardVO", vo);
+			
+			// 게시글의 댓글 정보
+			Map<String , Object> hm = cs.getCommentList(request);
+			request.setAttribute("hm", hm);
+			
 			nextPage = "/board/qna/qna_detail.jsp";
 		}else if(command.equals("boardReplyForm.bo")) {
 			// 답변글 작성 페이지 요청
@@ -83,6 +93,36 @@ public class QNABoardController extends HttpServlet {
 		}else if(command.equals("file_down.bo")) {
 			System.out.println("file 다운로드 요청");
 			service.fileDown(request, response);
+		}else if(command.equals("commentWrite.bo")) {
+			// 댓글 삽입 요청
+			String qna_num = request.getParameter("qna_num");
+			boolean isSuccess = cs.insertComment(request);
+			if(isSuccess) {
+				// 삽입 성공
+				response.sendRedirect("boardDetail.bo?qna_num="+qna_num);
+			}else {
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.print("<script>");
+				out.print("alert('삽입 실패');");
+				out.print("history.back();");
+				out.print("</script>");
+			}
+			return;
+		}else if(command.equals("commentDelete.bo")){
+			//댓글 삭제 요청
+			String qna_num = request.getParameter("qna_num");
+			boolean isSuccess = cs.deleteComment(request);
+			if(isSuccess) {
+				response.sendRedirect("boardRead.bo?qna_num="+qna_num);
+			}else {
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.print("<script>");
+				out.print("alert('삭제 실패');");
+				out.print("history.back();");
+				out.print("</script>");
+			}
 		}
 		
 		if(nextPage != null) {

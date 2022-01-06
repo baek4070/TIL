@@ -24,6 +24,18 @@ public class CommentVO {
 		this.comment_board_num = comment_board_num;
 	}
 	
+	
+	public CommentVO(int comment_num, String comment_id, String comment_name, String comment_content, Date comment_date,
+			String comment_delete, int comment_board_num) {
+		this.comment_num = comment_num;
+		this.comment_id = comment_id;
+		this.comment_name = comment_name;
+		this.comment_content = comment_content;
+		this.comment_date = comment_date;
+		this.comment_delete = comment_delete;
+		this.comment_board_num = comment_board_num;
+	}
+
 	// setter && getter && toString
 	public int getComment_num() {
 		return comment_num;

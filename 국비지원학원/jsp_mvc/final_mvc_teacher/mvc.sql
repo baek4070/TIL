@@ -101,6 +101,9 @@ CREATE TABLE qna_comment(
 	REFERENCES qna_board(qna_num)
 );
 
+SELECT * FROM qna_comment;
+
+
 
 
 
