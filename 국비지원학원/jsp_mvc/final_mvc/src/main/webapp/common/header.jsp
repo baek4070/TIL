@@ -42,7 +42,7 @@
 		<div>
 			<ul>
 				<li><a href="">공지사항</a></li>
-				<li><a href="">질문과답변</a></li>
+				<li><a href="boardList.bo">질문과답변</a></li>
 			</ul>
 		</div>
 	</header>
