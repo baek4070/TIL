@@ -42,7 +42,7 @@ CREATE TABLE notice_board(
 	notice_content LONGTEXT ,					
 	notice_date TIMESTAMP default now() 		
 );
-
+SELECT * FROM notice_board ORDER BY notice_date ;
 SELECT * FROM notice_board ORDER BY notice_num DESC limit 1;
 
 DELETE FROM notice_board WHERE notice_num = 2 OR notice_num = 3;
