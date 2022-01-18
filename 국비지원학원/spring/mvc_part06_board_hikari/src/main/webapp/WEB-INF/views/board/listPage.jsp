@@ -9,7 +9,7 @@
 <title>listPage.jsp</title>
 </head>
 <body>
-	<h3>BOARD LIST PAGE</h3>
+	<h3>BOARD LIST PAGE - ${pm.totalCount}</h3>
 	<form action="register" method="GET">
 		<button>NEW BOARD</button>
 	</form>
@@ -22,11 +22,64 @@
 			<th>REGDATE</th>
 			<th>VIEWCNT</th>
 		</tr>
-		<!-- 게시글 목록 -->
-		
-		<!-- 페이징 블럭 -->
-		
+		<c:choose>
+			<c:when test="${!empty list}">
+				<!-- 게시글 목록 -->
+				<c:forEach var="board" items="${list}">
+					<tr>
+						<td>${board.bno}</td>
+						<td>${board.title}</td>
+						<td>${board.writer}</td>
+						<td>${board.regdate}</td>
+						<td>${board.viewcnt}</td>
+					</tr>
+				</c:forEach>
+				<!-- 페이징 블럭 -->
+				<tr>
+					<th colspan="5" id="pagination">
+						<c:if test="${pm.prev}">
+							<a href="${pm.startPage-1}">[이전]</a>
+						</c:if>
+						<c:forEach var="i"
+						 begin="${pm.startPage}"
+						 end="${pm.endPage}">
+							<a href="${i}">[${i}]</a>
+						</c:forEach>
+						<c:if test="${pm.next}">
+							<a href="${pm.endPage+1}">[다음]</a>
+						</c:if>
+					</th>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<th colspan="5"> 등록된 게시물이 없습니다. </th>
+				</tr>
+			</c:otherwise>
+		</c:choose>
 	</table>
+	<form id="listForm">
+		<input type="hidden" name="page" value="${pm.cri.page}"/>
+		<input type="hidden" name="perPageNum" value="${pm.cri.perPageNum}"/>
+	</form>
+	<script src="http://code.jquery.com/jquery-latest.min.js">
+	</script>
+	<script>
+	
+		var result = '${result}';
+
+	
+		$("#pagination a").on("click",function(event){
+			// a tag의 기본 이벤트 (hyperlink) 이벤트 무시
+			event.preventDefault();
+			var targetPage = $(this).attr("href");
+			// alert(targetPage);
+			var listForm = $("#listForm");
+			listForm.find("[name='page']").val(targetPage);
+			listForm.attr("action","listPage");
+			listForm.submit();
+		});
+	</script>
 </body>
 </html>
 

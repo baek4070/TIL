@@ -8,7 +8,8 @@
 </head>
 <body>
 	<h3>REGISTER BOARD PAGE</h3>
-	<form action="POST">
+	
+	<form action="register" method="POST">
 		<div>
 			<label>Title</label>
 			<input type="text" name="title"
