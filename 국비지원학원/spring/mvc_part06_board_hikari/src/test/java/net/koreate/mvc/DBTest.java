@@ -11,11 +11,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import net.koreate.mvc.board.dao.BoardDAO;
 import net.koreate.mvc.board.vo.BoardVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-		locations= {"classpath:/context/root-context.xml"}
+	locations= {"classpath:/context/root-context.xml"}
 )
 public class DBTest {
 	
@@ -45,7 +46,7 @@ public class DBTest {
 	}
 	
 	@Inject
-	net.koreate.mvc.board.dao.BoardDAO dao;
+	BoardDAO dao;
 	
 	@Test
 	public void test3() throws Exception{

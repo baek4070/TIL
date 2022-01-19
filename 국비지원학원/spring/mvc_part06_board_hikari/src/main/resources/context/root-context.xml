@@ -36,7 +36,7 @@
 	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
-	
+	<!-- mybatis 설정 -->
 	<bean id="factory" 
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds"/>

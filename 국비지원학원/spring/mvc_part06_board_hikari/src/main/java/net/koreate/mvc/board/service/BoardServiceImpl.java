@@ -14,22 +14,21 @@ import net.koreate.mvc.common.util.Criteria;
 import net.koreate.mvc.common.util.PageMaker;
 
 @Service
-public class BoardServiceImpl 
-implements BoardService<BoardVO, PageMaker, Criteria> {
-
+public class BoardServiceImpl
+	implements BoardService<BoardVO,PageMaker,Criteria>{
 	
 	@Inject
 	BoardDAO dao;
-	
+
 	@Override
 	public String register(BoardVO model) throws Exception {
-		int result = dao.create(model);
+		int result = dao.create(replace(model));
 		System.out.println(result);
 		return getMessage(result);
 	}
 	
 	private String getMessage(int result) {
-		return (result > 0) ? "SUCCESS" : "FAILED";
+		return (result > 0 ) ? "SUCCESS" : "FAILED";
 	}
 	
 	public String replaceScript(String text) {
@@ -50,24 +49,27 @@ implements BoardService<BoardVO, PageMaker, Criteria> {
 		return model;
 	}
 	
+
 	@Override
 	public String modify(BoardVO model) throws Exception {
-		return null;
+		int result = dao.update(replace(model));
+		return getMessage(result);
 	}
 
 	@Override
 	public String remove(int bno) throws Exception {
-		return null;
+		int result = dao.delete(bno);
+		return getMessage(result);
 	}
 
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		return null;
+		return dao.read(bno);
 	}
 
 	@Override
 	public void updateViewCnt(int bno) throws Exception {
-		
+		dao.updateCnt(bno);
 	}
 
 	@Override
@@ -81,7 +83,7 @@ implements BoardService<BoardVO, PageMaker, Criteria> {
 	public PageMaker getPageMaker(Criteria cri) throws Exception {
 		int totalCount = dao.listCount();
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);;
+		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(totalCount);
 		System.out.println(pageMaker);
 		return pageMaker;
@@ -89,7 +91,16 @@ implements BoardService<BoardVO, PageMaker, Criteria> {
 
 	@Override
 	public Map<String, Object> getListModel(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 }
+
+
+
+
+
+
+
+

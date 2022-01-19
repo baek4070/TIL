@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="read" parameterType="int" 
 					  resultType="boardVO">
-	  SELECT * FROM tbl_baord WHERE bno = #{bno}
+	  SELECT * FROM tbl_board WHERE bno = #{bno}
     </select>
     
     <update id="update" parameterType="boardVO">
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM tbl_board bno = #{bno}
+		DELETE FROM tbl_board WHERE bno = #{bno}
 	</delete>
 	
 	<update id="updateCnt" parameterType="int">

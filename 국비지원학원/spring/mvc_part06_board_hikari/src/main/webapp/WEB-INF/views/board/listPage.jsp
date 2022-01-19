@@ -28,9 +28,9 @@
 				<c:forEach var="board" items="${list}">
 					<tr>
 						<td>${board.bno}</td>
-						<td>${board.title}</td>
+						<td><a href="readPage${pm.query(pm.cri.page)}&bno=${board.bno}">${board.title}</a></td>
 						<td>${board.writer}</td>
-						<td>${board.regdate}</td>
+						<td><f:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regdate}"/></td>
 						<td>${board.viewcnt}</td>
 					</tr>
 				</c:forEach>
@@ -65,10 +65,9 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js">
 	</script>
 	<script>
-	
 		var result = '${result}';
-
-	
+		if(result != '')alert(result);
+		
 		$("#pagination a").on("click",function(event){
 			// a tag의 기본 이벤트 (hyperlink) 이벤트 무시
 			event.preventDefault();
