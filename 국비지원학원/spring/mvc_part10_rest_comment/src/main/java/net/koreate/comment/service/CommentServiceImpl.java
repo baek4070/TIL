@@ -24,32 +24,32 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public String addComment(CommentVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		int result = dao.add(vo);
+		return result > 0 ? "SUCCESS" : "FAILED";
 	}
 
 	@Override
 	public String updateComment(CommentVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.update(vo) > 0 ? "SUCCESS" : "FAILED";
 	}
 
 	@Override
 	public String deleteComment(int cno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.delete(cno) > 0 ? "SUCCESS" : "FAILED";
 	}
 
 	@Override
 	public List<CommentVO> commentListPage(int bno, Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.listPage(bno, cri);
 	}
 
 	@Override
 	public PageMaker getPageMaker(Criteria cri, int bno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		int totalCount = dao.totalCount(bno);
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(totalCount);
+		return pageMaker;
 	}
 
 }
