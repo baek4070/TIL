@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ana.mapper.RomRegMapper">
+
+	<resultMap id="RomVOResult" type="com.ana.domain.RomVO">
+		<result column="ROM_NUM" property="romNum" />
+		<result column="ACM_NUM" property="acmNum" />
+		<result column="ROM_NAME" property="romName" />
+		<result column="ROM_CAPA" property="romCapa" />
+		<result column="BED_TYPE" property="bedType" />
+		<result column="BED_CNT" property="bedCnt" />
+		<result column="ROM_SIZE" property="romSize" />
+		<result column="ROM_PRICE" property="romPrice" />
+		<result column="ROM_PURL" property="romPurl" />
+		<result column="ROM_PNAME" property="romPname" />
+		
+		<result column="ROM_TYPE" property="romType" />
+		<result column="ROM_ACTI" property="romActi" />
+
+		<result column="ROM_STATUS" property="romStatus" />
+		<result column="ROM_OPTCODE" property="romOptcode" />
+		<result column="ROM_REGDATE" property="romRegdate" />
+		<result column="ROM_UPDATEDATE" property="romUpdatedate" />
+
+	</resultMap>
+
+	<!-- 호스트단 -->
+	<!-- 한숙소에 포함되어있는 객실 다 가져오기 -->
+	<select id="getList" resultMap="RomVOResult">
+		<![CDATA[
+		select * from TROM where ACM_NUM=#{acmNum}
+		]]>
+	</select>
+	
+	<select id="getRomList" resultType="String">
+		<![CDATA[
+		select rom_num from TROM where ACM_NUM=#{acmNum}
+		]]>
+	</select>
+	
+	
+	<!-- 객실 하나하나의 정보 가져오기 -->
+	<select id="getRom" resultMap="RomVOResult">
+		select * from TROM where ROM_NUM =#{romNum}
+	</select>
+	
+	
+	<!-- 객실추가하기 -->
+	<insert id="registerRom">
+		<selectKey keyProperty="romNum" order="BEFORE"
+			resultType="String">
+			select concat('R',SEQ_TROM.nextval) from dual
+		</selectKey>
+
+		insert into TROM(ACM_NUM, ROM_NUM, ROM_NAME, ROM_CAPA, 
+		BED_TYPE,BED_CNT, ROM_SIZE, ROM_PRICE,	ROM_PURL, ROM_PNAME,ROM_TYPE,
+		ROM_OPTCODE)
+		values (#{acmNum},#{romNum},#{romName},#{romCapa},
+		#{bedType}, #{bedCnt}, #{romSize}, #{romPrice}, #{romPurl},#{romPname}, #{romType},
+		#{romOptcode})
+	</insert>
+	
+	
+	<!-- 객실 삭제 -->
+	<delete id="remove">
+		delete from trom where rom_Num = #{romNum}
+	</delete>
+
+	
+
+	<!-- 객실 수정 -->
+	<update id="modiRom">
+		update trom set
+		rom_type=#{romType},
+		rom_capa=#{romCapa},
+		bed_type=#{bedType},
+		bed_cnt=#{bedCnt},
+		rom_size=#{romSize},
+		rom_price=#{romPrice},
+		rom_pname=#{romPname},
+		rom_purl=#{romPurl}
+		where rom_Num = #{romNum} 
+	</update>
+
+	<!-- ********** 어드민단 ********** -->
+	<select id="getRomsize" resultType="int">
+	select count(*) from trom
+	where acm_num=#{acmNum}
+	</select>
+	
+	 <update id="moditoRomActive">
+		update trom 
+		set rom_acti=#{romActi}, rom_status=#{romStatus}
+		where acm_Num = #{acmNum} 
+	</update>
+	<select id="getRomwithAcm" resultMap="RomVOResult">
+		select * from TROM where acm_NUM =#{acmNum}
+	</select>
+	
+</mapper>

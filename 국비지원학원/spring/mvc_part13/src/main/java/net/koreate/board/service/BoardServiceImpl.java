@@ -1,0 +1,87 @@
+package net.koreate.board.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import net.koreate.board.dao.BoardDAO;
+import net.koreate.board.vo.BoardVO;
+import net.koreate.common.utils.Criteria;
+import net.koreate.common.utils.PageMaker;
+
+@Service
+public class BoardServiceImpl implements BoardService {
+	
+	@Inject
+	BoardDAO dao;
+
+	@Transactional
+	@Override
+	public void regist(BoardVO vo) throws Exception {
+		// INSERT title, content, uno
+		dao.regist(vo);
+		// 등록된 원본 글 번호로 origin 번호 수정
+		dao.updateOrigin();
+	}
+
+	@Override
+	public List<BoardVO> listReply(Criteria cri) throws Exception {
+		return dao.listReply(cri);
+	}
+
+	@Override
+	public PageMaker getPageMaker(Criteria cri) throws Exception {
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setDisplayPageNum(5);
+		int totalCount = dao.listCount(cri);
+		pageMaker.setTotalCount(totalCount);
+		return pageMaker;
+	}
+
+
+
+
+
+
+
+
+
+	@Override
+	public void updateCnt(int bno) throws Exception {
+		dao.updateCnt(bno);
+	}
+
+	@Override
+	public BoardVO read(int bno) throws Exception {
+		return dao.read(bno);
+	}
+
+	@Transactional
+	@Override
+	public void replyRegister(BoardVO vo) throws Exception {
+		// 기존 글들의 seq 정렬 순서 값이 원본글 보다
+		// 큰 값을 가진 글이 존재하면 1씩 증가한 값으로 수정
+		dao.updateReply(vo);
+		// 원본글 의 origin 값 , depth+1 , seq + 1한 값으로
+		// 답변글 INSERT
+		vo.setDepth(vo.getDepth()+1);
+		vo.setSeq(vo.getSeq()+1);
+		System.out.println("등록된 답변글 정보 : " + vo);
+		dao.replyRegister(vo);
+	}
+
+	@Override
+	public void modify(BoardVO vo) throws Exception {
+
+	}
+
+	@Override
+	public void remove(int bno) throws Exception {
+
+	}
+
+}

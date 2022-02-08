@@ -219,7 +219,7 @@
 						console.log("일반 파일");
 						str += "<div>";
 						str += "<a href='displayFile?fileName="+result+"'>";
-						str += "<img src='${path}/resources/img/file.png"' />";
+						str += "<img src='${path}/resources/img/file.png' />";
 						str += getOriginalName(result);
 						str +="</a>";
 						str += "</div>";

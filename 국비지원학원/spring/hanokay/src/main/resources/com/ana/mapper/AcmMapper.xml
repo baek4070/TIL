@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ana.mapper.AcmMapper">
+	
+	<resultMap id="AcmVOResult" type="com.ana.domain.AcmVO">
+		<result column="acm_Num" property="acmNum" />
+		<result column="acm_Name" property="acmName" />
+		<result column="acm_City" property="acmCity" />
+		<result column="acm_Distr" property="acmDistr" />
+		<result column="acm_Detailaddr" property="acmDetailaddr" />
+		
+		<result column="rep_Phone" property="repPhone" />
+		<result column="biz_Regnum" property="bizRegnum" />
+		<result column="checkin_Time" property="checkinTime" />
+		<result column="checkout_Time" property="checkoutTime" />
+		<result column="acm_Regdate" property="acmRegdate" />
+		
+		<result column="acm_Updatedate" property="acmUpdatedate" />
+		<result column="SUB_PHONE" property="subPhone" />
+		<result column="acm_Fax" property="acmFax" />
+		<result column="acm_Email" property="acmEmail" />
+		<result column="acm_Desc" property="acmDesc" />
+		
+		<result column="acm_Purl" property="acmPurl" />
+		<result column="ACM_PNAME" property="acmPname" />
+		<result column="latitude" property="latitude" />
+		<result column="longitude" property="longitude" />
+		<result column="ACM_TYPE" property="acmType" />
+		
+		<result column="ACM_ACTI" property="acmActi" />
+		<result column="ACM_STATUS" property="acmStatus" />
+		<result column="ACM_OPTCODE" property="acmOptcode" />
+		<result column="ACM_price" property="acmPrice" />
+	</resultMap>
+	
+	<!-- 숙소 상세페이지: 숙소 정보와 사진을 불러온다 -->
+	<!-- 예약 확인 페이지: 객실정보 확인을 위해 숙소 정보를 불러온다-->
+	<select id="read" resultMap="AcmVOResult">
+		select * from tacm where acm_Num = #{acmNum}
+	</select>
+
+	<delete id="delete">
+		delete from tacm where acm_Num = #{acmNum}
+	</delete>
+
+	<update id="update">
+		update tacm
+		set acm_Name=#{acmName},
+		acm_City=#{acmCity},
+		acm_Distr=#{acmDistr},
+		acm_Detailaddr=#{acmDetailaddr},
+		rep_Phone=#{repPhone},
+		biz_Regnum=#{bizRegnum},
+		checkin_Time=#{checkinTime},
+		checkout_Time=#{checkoutTime},
+		acm_Updatedate = sysdate
+		where acm_Num =
+		#{acmNum}
+	</update>
+
+	<select id="getList" resultMap="AcmVOResult">
+
+select * from tacm
+
+	</select>
+
+	<insert id="insert">
+		INSERT INTO TACM(acm_Num, acm_Name, acm_City,
+		acm_Distr, acm_Detailaddr,
+		rep_Phone, biz_Regnum, checkin_Time,
+		checkout_Time)
+		VALUES(concat('A',seq_tacm.nextval),#{acmName},#{acmCity},
+		#{acmDistr}, #{acmDetailaddr},#{repPhone},
+		#{bizRegnum},#{checkinTime},#{checkoutTime})
+	</insert>
+
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="acmNum" order="BEFORE"
+			resultType="String">
+			select concat('A',seq_tacm.nextval) from dual
+		</selectKey>
+
+		INSERT INTO TACM(acm_Num, acm_Name, acm_City, acm_Distr,
+		acm_Detailaddr,
+		rep_Phone, biz_Regnum, checkin_Time, checkout_Time)
+		VALUES(#{acmNum},#{acmName},#{acmCity}, #{acmDistr},
+		#{acmDetailaddr},#{repPhone},
+		#{bizRegnum},#{checkinTime},#{checkoutTime})
+	</insert>
+	
+<!-- 체크인,아웃 기간과 겹치게 예약한 방번호 추출 -->
+<select id="getRomNum" resultType="String">
+<![CDATA[
+select ROM_NUM
+from TBOOKING
+where (CHECKIN_DATE <=#{cri.in} and #{cri.out} <= CHECKOUT_DATE) or (CHECKIN_DATE<=#{cri.in} and CHECKOUT_DATE>#{cri.in})
+or (CHECKIN_DATE<#{cri.out} and CHECKOUT_DATE>=#{cri.out}) or (CHECKIN_DATE>=#{cri.in} and CHECKOUT_DATE <=#{cri.out})
+	]]>
+</select>
+
+<!-- 인원수를 만족하고 예약불가인 방번호리스트에 없는 방을 가진 숙소번호 추출 
+<select id="getAcmNum" resultType="String">
+<![CDATA[
+select distinct acm_num
+	from trom
+	where (rom_capa >= to_number(#{person})) and
+	]]>
+	ROM_NUM not in
+   <foreach collection='romNum' index='index' item='romNum' open='(' close=')' separator=','>
+      #{romNum}
+   </foreach>
+</select>-->
+
+<sql id="cri">
+		<trim prefix="(" suffix=") AND " prefixOverrides="AND">
+			<foreach item='type' collection="cri.typeArr">
+				<trim prefix="AND">
+					<choose>
+						<when test="type == 'A'.toString()">
+							acm_city||acm_distr||acm_detailaddr like '%'||#{cri.keyword}||'%'
+						</when>
+						<when test="type == 'T'.toString()">
+							acm_city like '%'||#{cri.city}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							acm_distr like '%'||#{cri.distr}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							acm_detailaddr like '%'||#{cri.detail}||'%'
+						</when>
+						<when test="type == 'F'.toString()">
+							bitand(acm_optcode,#{cri.acmOpt})=#{cri.acmOpt}
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 151~161줄: 인원수를 만족하고 예약가능한 방(예약불가인 방번호리스트에 없는 방)을 가진 숙소를 추출--> 
+	<!-- 164: 검색 타입에 따라 조건절 추가 -->
+	<!-- 168~170: 페이징 처리-->
+<select id="getListPaging" resultMap="AcmVOResult">
+<![CDATA[
+select 
+    acm_purl, acm_pname, acm_num, acm_name, acm_city, acm_distr, acm_detailaddr, rep_phone,acm_desc, latitude, longitude, ACM_OPTCODE, acm_price
+from 
+(
+   select /*+INDEX_DESC(to_number(substr(acm_num,2))) */
+      rownum rn, acm_purl, acm_pname, acm_num, acm_name, acm_city, acm_distr, acm_detailaddr, rep_phone,acm_desc, latitude, longitude, ACM_OPTCODE, acm_price
+   from
+      (select a.acm_purl, a.acm_pname, a.acm_num, a.acm_name, a.acm_city, a.acm_distr, a.acm_detailaddr, a.rep_phone, a.acm_desc, a.latitude, a.longitude, a.ACM_OPTCODE, min(r.rom_price) acm_price
+        from tacm a, trom r
+        where a.acm_num = r.acm_num and (rom_capa >= to_number(#{cri.person})) and ACM_ACTI='ACTIVE' and ROM_ACTI='ACTIVE' and (rom_price BETWEEN #{cri.minPrice} and #{cri.maxPrice}) and 
+        ]]>
+           ROM_NUM not in 
+        	<foreach collection='romNum' index='index' item='romNum' open='(' close=')' separator=','>
+      		#{romNum}
+   			</foreach>
+        group by a.acm_purl, a.acm_pname, a.acm_num, a.acm_name, a.acm_city, a.acm_distr, a.acm_detailaddr, a.rep_phone, a.acm_desc, a.latitude, a.longitude, a.ACM_OPTCODE
+        order by to_number(substr(a.acm_num,2)))
+   where 
+
+<include refid="cri"></include>
+
+      <![CDATA[
+       rownum<= #{cri.pageNum} * #{cri.amount}
+       )
+   where rn> (#{cri.pageNum}-1) * #{cri.amount}
+]]>   
+</select>
+
+<select id="getTotalCount" resultType="int">
+<![CDATA[
+select 
+    count(*)
+from 
+(
+   select
+      rownum rn, acm_purl, acm_pname, acm_num, acm_name, acm_city, acm_distr, acm_detailaddr, rep_phone,acm_desc, latitude, longitude, ACM_OPTCODE, acm_price
+   from
+      (select a.acm_purl, a.acm_pname, a.acm_num, a.acm_name, a.acm_city, a.acm_distr, a.acm_detailaddr, a.rep_phone, a.acm_desc, a.latitude, a.longitude, a.ACM_OPTCODE, min(r.rom_price) acm_price
+        from tacm a, trom r
+        where a.acm_num = r.acm_num and (rom_capa >= to_number(#{cri.person}))  and ACM_ACTI='ACTIVE' and ROM_ACTI='ACTIVE' and (rom_price BETWEEN #{cri.minPrice} and #{cri.maxPrice}) and  
+        ]]>
+           ROM_NUM not in 
+        	<foreach collection='romNum' index='index' item='romNum' open='(' close=')' separator=','>
+      		#{romNum}
+   			</foreach>
+        group by a.acm_purl, a.acm_pname, a.acm_num, a.acm_name, a.acm_city, a.acm_distr, a.acm_detailaddr, a.rep_phone, a.acm_desc, a.latitude, a.longitude, a.ACM_OPTCODE
+        )
+   where 
+  <include refid="cri"></include>
+  <![CDATA[
+   rownum>0)
+]]>
+</select>
+
+<select id="getSeoulList" resultMap="AcmVOResult">
+SELECT * FROM TACM where acm_city = '서울'
+</select>
+</mapper>
