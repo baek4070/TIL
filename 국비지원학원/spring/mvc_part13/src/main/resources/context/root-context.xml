@@ -24,6 +24,10 @@
 	
 	<mybatis-spring:scan base-package="net.koreate.*.dao"/>
 	
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg value="resources/upload"/>
+	</bean>
+	
 </beans>
 
 

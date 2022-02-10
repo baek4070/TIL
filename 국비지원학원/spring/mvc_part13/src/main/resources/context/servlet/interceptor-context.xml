@@ -29,6 +29,23 @@
 			<mapping path="/user/signUpPost"/>
 			<beans:bean class="net.koreate.common.interceptor.SignUpInterceptor"/>		
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/board/*"/>
+			<exclude-mapping path="/board/listReply"/>
+			<exclude-mapping path="/board/readPage"/>
+			<exclude-mapping path="/board/read"/>
+			<beans:bean 
+			class="net.koreate.common.interceptor.AuthInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/read"/>
+			<beans:bean class="net.koreate.common.interceptor.CteateTokenInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/remove"/>
+			<beans:bean class="net.koreate.common.interceptor.CheckTokenInterceptor"/>
+		</interceptor>
 	</interceptors>
 
 </beans:beans>

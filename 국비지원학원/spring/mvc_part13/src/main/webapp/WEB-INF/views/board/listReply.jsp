@@ -41,7 +41,7 @@
 							<tr>
 								<td>${board.bno}</td>
 								<td>
-									<a href="readPage?bno=${board.bno}">
+									<a href="readPage${pm.search(pm.cri.page)}&bno=${board.bno}">
 										<c:forEach var="i" begin="1" end="${board.depth}">
 											&nbsp;&nbsp;&nbsp;&nbsp;
 										</c:forEach>
@@ -82,7 +82,7 @@
 			<th colspan="5">
 				<c:forEach var="i" begin="${pm.startPage}" 
 								   end="${pm.endPage}">
-				   <a href="listReply?page=${i}">[${i}]</a>
+				   <a href="listReply${pm.search(i)}">[${i}]</a>
 				</c:forEach>
 			</th>
 		</tr>

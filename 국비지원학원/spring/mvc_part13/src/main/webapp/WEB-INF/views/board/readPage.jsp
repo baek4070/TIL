@@ -37,7 +37,12 @@
 	</div>
 	
 	<form id="readForm">
+		<input type="hidden" name="csrf_token" value="${csrf_token}"/>
 		<input type="hidden" name="bno" value="${board.bno}"/>
+		<input type="hidden" name="page" value="${cri.page}"/>
+		<input type="hidden" name="perPageNum" value="${cri.perPageNum}"/>
+		<input type="hidden" name="searchType" value="${cri.searchType}"/>
+		<input type="hidden" name="keyword" value="${cri.keyword}"/>
 	</form>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -49,6 +54,23 @@
 	// 답변글 작성
 	$("#replyBtn").click(function(){
 		formObj.attr("action","replyRegister").submit();
+	});
+	
+	// 게시글 수정
+	$("#modifyBtn").click(function(){
+		formObj.attr("action","modifyPage").submit();
+	});
+	
+	// 삭제 요청
+	$("#deleteBtn").click(function(){
+		var isDelete = confirm("게시글을 삭제하시겠습니까?");
+		if(isDelete){
+			formObj.attr("action","remove");
+			formObj.attr("method","post");
+			formObj.submit();
+		}else{
+			alert("삭제 요청이 취소되었습니다.");
+		}
 	});
 	
 </script>

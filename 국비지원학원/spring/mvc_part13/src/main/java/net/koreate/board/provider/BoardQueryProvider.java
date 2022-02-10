@@ -6,6 +6,14 @@ import org.apache.ibatis.jdbc.SQL;
 public class BoardQueryProvider {
 	
 	public String searchSelectSql(Criteria cri) {
+		
+		String queryString = "SELECT B.*, U.uname AS writer FROM ";
+		queryString += "re_tbl_board AS B NATURAL JOIN tbl_user AS U";
+		if(cri.getSearchType() != null && 
+			!cri.getSearchType().equals("n")) {
+			queryString += " WHERE ..";
+		}
+		
 		/*
 		SQL sql = new SQL();
 		// SELECT ( * ) FROM 
@@ -19,10 +27,11 @@ public class BoardQueryProvider {
 		*/
 		SQL sql = new SQL();
 		sql.SELECT("B.* , U.uname AS writer");
-		sql.FROM("re_tbl_board AS B");
+		sql.FROM("re_tbl_board AS B NATURAL JOIN tbl_user AS U");
+		/*
 		sql.JOIN("tbl_user AS U");
 		sql.WHERE("B.uno = U.uno");
-		
+		*/
 		getSearchWhere(cri,sql);
 		
 		sql.ORDER_BY("B.origin DESC, B.seq ASC");

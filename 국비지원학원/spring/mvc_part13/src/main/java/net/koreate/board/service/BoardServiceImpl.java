@@ -76,12 +76,20 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void modify(BoardVO vo) throws Exception {
-
+		// re_tbl_board 정보 수정
+		dao.modify(vo);
 	}
 
 	@Override
 	public void remove(int bno) throws Exception {
-
+		// 게시글 삭제
+		dao.remove(bno);
 	}
 
 }
+
+
+
+
+
+

@@ -1,5 +1,8 @@
 package net.koreate.common.utils;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -54,6 +57,19 @@ public class PageMaker {
 	public void setCri(Criteria cri) {
 		this.cri = cri;
 		calc();
+	}
+	
+	public String search(int page) {
+		UriComponents uri 
+		= UriComponentsBuilder.newInstance()
+		 .queryParam("page",page)
+		 .queryParam("perPageNum", cri.getPerPageNum())
+		 .queryParam("searchType", cri.getSearchType())
+		 .queryParam("keyword", cri.getKeyword())
+		 .build();
+		String queryString = uri.toUriString();
+		System.out.println(queryString);
+		return queryString;
 	}
 	
 }

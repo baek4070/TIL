@@ -24,8 +24,7 @@ public interface BoardDAO {
 	// 게시글 목록 검색
 	/*
 	@Select("SELECT B.*, U.uname AS writer "
-		+ " FROM re_tbl_board AS B NATURAL JOIN tbl_user AS U"
-//		+ " <if test=''>"
+		+ " FROM re_tbl_board AS B NATURAL JOIN tbl_user AS U" 
 		+ " ORDER BY B.origin DESC , B.seq ASC limit #{pageStart}, #{perPageNum}")
 	*/
 	@SelectProvider(type=BoardQueryProvider.class,
@@ -55,8 +54,22 @@ public interface BoardDAO {
 
 	// re_tbl_board 전체 게시물 수
 	//@Select("SELECT count(*) FROM re_tbl_board")
-	@SelectProvider(type=BoardQueryProvider.class, method="searchSelectCount")
+	@SelectProvider(type=BoardQueryProvider.class,
+				 	method="searchSelectCount")
 	int listCount(Criteria cri) throws Exception;
+
+	// re_tbl_board title,content,updatedate 수정
+	@Update("UPDATE re_tbl_board SET "
+			+ " title = #{title} ,"
+			+ " content = #{content} ,"
+			+ " updatedate = now() "
+			+ " WHERE bno = #{bno}")
+	void modify(BoardVO vo)throws Exception;
+
+	// 게시글 삭제 처리 showboard = 'N'
+	@Update("UPDATE re_tbl_board SET showboard = 'N' "
+			+ " WHERE bno = #{bno}")
+	void remove(int bno) throws Exception;
 	
 	
 	
