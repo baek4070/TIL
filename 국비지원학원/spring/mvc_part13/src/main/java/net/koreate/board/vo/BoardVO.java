@@ -1,6 +1,7 @@
 package net.koreate.board.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -19,5 +20,11 @@ public class BoardVO {
 	private int viewcnt;
 	private String showboard;
 	private int uno;
+	
+	// 첨부파일 목록
+	private List<String> files;
+	
 }
+
+
 

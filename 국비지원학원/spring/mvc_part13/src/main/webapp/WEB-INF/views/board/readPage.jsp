@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>board/readPage.jsp</title>
+<style>
+	.uploadList{
+		width:100%;
+	}
+	
+	.uploadList li{
+		text-algn:center;
+		float:left;
+		padding:20px;
+		list-style:none;
+	}
+</style>
 </head>
 <body>
 	<h1><a href="${pageContext.request.contextPath}">HOME</a></h1>
@@ -24,6 +37,35 @@
 			<td>${board.content}</td>
 		</tr>
 	</table>
+	<hr/>
+	<div>
+		<c:set var="path" value="${pageContext.request.contextPath}"/>
+		<ul class="uploadList">
+			<c:forEach var="file" items="${board.files}">
+				<li data-src='${file}'>
+					<c:choose>
+						<c:when test="${fn:contains(file,'s_')}">
+							<img src="${path}/displayFile?fileName=${file}"/>
+							<div>
+								<a target="_blank" href="${path}/displayFile?fileName=${fn:replace(file,'s_','')}">
+									${fn:substringAfter(fn:substringAfter(file,"s_"),"_")}
+								</a>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<img src="${path}/resources/img/file.png"/>
+							<div>
+								<a href="${path}/displayFile?fileName=${file}">
+									${fn:substringAfter(file,"_")}
+								</a>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</li>
+			</c:forEach>
+		</ul>
+	</div>
+	<div style="clear:both;"></div>
 	<hr/>
 	<div>
 		<c:if test="${!empty userInfo}">
@@ -65,6 +107,24 @@
 	$("#deleteBtn").click(function(){
 		var isDelete = confirm("게시글을 삭제하시겠습니까?");
 		if(isDelete){
+			var arr = [];
+			$(".uploadList li").each(function(){
+				var fileName = $(this).attr("data-src"); 
+				arr.push(fileName);
+			});
+			console.log(arr.length);
+			if(arr.length > 0){
+				// post 방식의 ajax 요청 처리
+				// $.post(url, parameters, callback함수);
+				$.post(
+					"${pageContext.request.contextPath}/deleteAllFiles",
+					{files : arr},
+					function(result){
+						alert(result);
+					}
+				);
+			}
+			
 			formObj.attr("action","remove");
 			formObj.attr("method","post");
 			formObj.submit();

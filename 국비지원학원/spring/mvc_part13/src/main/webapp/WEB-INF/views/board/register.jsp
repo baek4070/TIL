@@ -13,6 +13,22 @@
 		background-color:lightgray;
 		margin:auto;
 	}
+	
+	.uploadList{
+		width :100%;
+	}
+	
+	.uploadList li{
+		float:left;
+		padding:20px;
+		list-style:none;
+	}
+	
+	.uploadList li a{
+		text-decoration:none;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -90,16 +106,88 @@
 			contentType : false,
 			success : function(result){
 				console.log(result);
+				for(var i= 0; i < result.length; i++){
+					console.log(result[i]);
+					var fileInfo = getFileInfo(result[i]);
+					console.log(fileInfo);
+					var html = "<li>";
+					html +="<img src='"+fileInfo.imgSrc+"' alt='attachment'/>";
+					html +="<div>";
+					html +="<a href='"+fileInfo.getLink+"'>";
+					html +=fileInfo.fileName;
+					html +="</a>";
+					html +="</div>";
+					html +="<div>"
+					html +="<a href='"+fileInfo.fullName+"' class='delBtn'>X</a>"
+					html +="</div>"
+					html +="</li>";
+					$(".uploadList").append(html);
+				}
 			},
 			error : function(res){
 				alert(res.responseText);
 			}
 		});
-		
-		
 	});
-
+	
+	// image type check
+	function checkImageType(fileName){
+		return fileName.indexOf("s_") > 0 ? true : false;
+	}
+	
+	function getFileInfo(fullName){
+		var imgSrc, fileName, getLink;
+		// 이미지 인지 확인
+		if(checkImageType(fullName)){
+			// 이미지 파일
+			// 파일 정보 요청 url displayFile
+			//imgSrc = contextPath+"/displayFile?fileName="+fullName;
+			imgSrc = contextPath+"/resources/upload"+fullName;
+			// 다운로드 요청 - image일 경우 원본 이미지 출력
+			getLink = contextPath+"/displayFile?fileName="+fullName.replace("s_","");
+		}else{
+			// 일반 파일
+			imgSrc = contextPath+"/resources/img/file.png";
+			// 다운로드 요청
+			getLink = contextPath+"/displayFile?fileName="+fullName;
+		}
+		
+		fileName = fullName.substr(fullName.lastIndexOf("_")+1);
+		return {
+					fileName : fileName,
+					imgSrc : imgSrc,
+					fullName : fullName,
+					getLink : getLink
+				};
+	}
+	
+	$(".uploadList").on("click",".delBtn", function(event){
+		event.preventDefault();
+		var target = $(this);
+		
+		$.ajax({
+			type : "POST",
+			url : contextPath+"/deleteFile",
+			data : {
+				fileName : target.attr("href")
+			},
+			success : function(data){
+				console.log(data);
+				// .delBtn 
+				// closest 대상을 기준으로 가장 가까운 조상을 탐색
+				target.closest("li").remove();
+			}
+		});
+	});
+	
 	$("#saveBtn").click(function(){
+		var str = "";
+		var fileList = $(".uploadList .delBtn");
+		$(fileList).each(function(index){
+			var fullName = $(this).attr("href");
+			str += "<input type='hidden' name='files["+index+"]' value='"+fullName+"' />";
+		});
+		$("#registerForm").append(str);
 		$("#registerForm").submit();
 	});
 </script>

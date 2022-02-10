@@ -25,6 +25,16 @@ public class BoardServiceImpl implements BoardService {
 		dao.regist(vo);
 		// 등록된 원본 글 번호로 origin 번호 수정
 		dao.updateOrigin();
+		
+		// 업로드 된 파일 정보 저장
+		List<String> files = vo.getFiles();
+		if(files == null) {
+			return;
+		}
+		for(String fullName : files) {
+			dao.addAttach(fullName);
+		}
+		
 	}
 
 	@Override
@@ -57,7 +67,11 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		return dao.read(bno);
+		BoardVO vo = dao.read(bno);
+		List<String> fileList = dao.getAttach(bno);
+		vo.setFiles(fileList);
+		System.out.println(vo);
+		return vo;
 	}
 
 	@Transactional
@@ -78,10 +92,27 @@ public class BoardServiceImpl implements BoardService {
 	public void modify(BoardVO vo) throws Exception {
 		// re_tbl_board 정보 수정
 		dao.modify(vo);
+		
+		// 기존 첨부 파일 정보 삭제
+		dao.deleteAttach(vo.getBno());
+		
+		List<String> fileList = vo.getFiles();
+		if(fileList == null || fileList.isEmpty()) {
+			return;
+		}
+		
+		for(String fullName : fileList) {
+			dao.replaceAttach(vo.getBno(), fullName);
+		}
+		
+		
 	}
 
 	@Override
 	public void remove(int bno) throws Exception {
+		// 첨부파일 목록 삭제
+		dao.deleteAttach(bno);
+		
 		// 게시글 삭제
 		dao.remove(bno);
 	}

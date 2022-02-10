@@ -9,12 +9,16 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import net.koreate.common.utils.FileUtil;
 
 @RestController
 public class FileController {
@@ -43,16 +47,57 @@ public class FileController {
 		
 		System.out.println(file);
 		List<String> fileList = new ArrayList<>();
-		for(MultipartFile files : file) {
-			String origin = files.getOriginalFilename();
-			System.out.println(origin);
-			File f = new File(uploadPath,origin);
-			files.transferTo(f);
-			//FileCopyUtils.copy(files.getBytes(), f);
-			fileList.add(origin);
+		
+		try {
+			for(MultipartFile files : file) {
+				String fileName = FileUtil.uploadFile(uploadPath, files);
+				fileList.add(fileName);
+			}
+			entity = new ResponseEntity<>(fileList,HttpStatus.OK);
+		} catch (Exception e) {
+			HttpHeaders header = new HttpHeaders();
+			header.add("Content-Type","text/plain;charset=utf-8");
+			entity = new ResponseEntity<>(
+						e.getMessage(),
+						header,
+						HttpStatus.BAD_REQUEST);
 		}
-		entity = new ResponseEntity<>(fileList,HttpStatus.OK);
 		return entity;
+	}
+	
+	@GetMapping("displayFile")
+	public ResponseEntity<byte[]> displayFile(
+				String fileName
+			)throws Exception{
+		byte[] bytes = FileUtil.displayFile(uploadPath,fileName);
+		HttpHeaders header = FileUtil.getHeader(fileName);
+		return new ResponseEntity<>(bytes,header,HttpStatus.OK);
+	}
+	
+	@PostMapping("deleteFile")
+	public ResponseEntity<String> deleteFile(
+								String fileName
+									)throws Exception{
+		boolean isDeleted = FileUtil.deleteFile(uploadPath,fileName);
+		if(isDeleted) {
+			return new ResponseEntity<>("DELETED",HttpStatus.OK);
+		}
+		return new ResponseEntity<>("FAILED",HttpStatus.BAD_REQUEST);
+	}
+	
+	@PostMapping("/deleteAllFiles")
+	public ResponseEntity<String> deleteAllFiles(
+			@RequestParam("files[]") List<String> files
+			)throws Exception{
+		boolean isDeleted = false;
+		for(String s : files) {
+			System.out.println("deleteAllFiles : " + s);
+			isDeleted = FileUtil.deleteFile(uploadPath, s);
+		}
+		if(isDeleted) {
+			return new ResponseEntity<>("DELETED",HttpStatus.OK);
+		}
+		return new ResponseEntity<>("FAILED",HttpStatus.OK);
 	}
 	
 }
