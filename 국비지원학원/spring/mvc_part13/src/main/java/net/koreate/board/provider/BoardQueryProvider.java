@@ -6,14 +6,14 @@ import org.apache.ibatis.jdbc.SQL;
 public class BoardQueryProvider {
 	
 	public String searchSelectSql(Criteria cri) {
-		
+		/*
 		String queryString = "SELECT B.*, U.uname AS writer FROM ";
 		queryString += "re_tbl_board AS B NATURAL JOIN tbl_user AS U";
 		if(cri.getSearchType() != null && 
 			!cri.getSearchType().equals("n")) {
 			queryString += " WHERE ..";
 		}
-		
+		*/
 		/*
 		SQL sql = new SQL();
 		// SELECT ( * ) FROM 

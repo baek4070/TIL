@@ -6,7 +6,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -161,8 +164,54 @@ public class FileUtil {
 		return isDeleted;
 	}
 	
-	
+	// task에서 테이블에 존재하지 않는 파일 목록 삭제
+	public static void removeList(String uploadPath,
+								String realPath,
+								List<String> list) {
+		
+		// 삭제할 파일 목록
+		List<String> removeList = new ArrayList<>();
+		
+		// 비교할 폴더 정보 어제 날짜 폴더
+		File file = new File(uploadPath,realPath);
+		System.out.println(file.getPath());
+		if(file.exists()) {
+			System.out.println("폴더 존재");
+			List<File> files = Arrays.asList(file.listFiles());
+			for(File f : files) {
+				String fileName = f.getName();
+				realPath = realPath.replace(File.separatorChar, '/');
+				String removeFilePath = realPath+fileName;
+				String thumbnail = realPath+"s_"+fileName;
+				System.out.println("removeFilePath : " + removeFilePath);
+				System.out.println("thumbnail : " + thumbnail);
+				
+				if(!list.contains(removeFilePath)
+					&&
+				   !list.contains(thumbnail)) {
+					removeList.add(removeFilePath);
+				}
+			} // end for
+			
+			// 삭제할 파일 목록 확인
+			for(String s : removeList) {
+				System.out.println("removeFile : " + s);
+				new File(
+						uploadPath+(s).replace('/', File.separatorChar)
+					).delete();
+			}
+			
+			
+			
+		}
+	}
 }
+
+
+
+
+
+
 
 
 

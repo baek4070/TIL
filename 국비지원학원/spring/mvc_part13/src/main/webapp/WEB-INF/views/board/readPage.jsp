@@ -87,6 +87,10 @@
 		<input type="hidden" name="keyword" value="${cri.keyword}"/>
 	</form>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<br/>
+<hr/>
+<%@ include file="../comment/comment.jsp" %>
+<br/>
 <script>
 	var formObj = $("#readForm");
 	// 게시글 목록

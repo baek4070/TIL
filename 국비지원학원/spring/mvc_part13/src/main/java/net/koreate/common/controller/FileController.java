@@ -87,7 +87,8 @@ public class FileController {
 	
 	@PostMapping("/deleteAllFiles")
 	public ResponseEntity<String> deleteAllFiles(
-			@RequestParam("files[]") List<String> files
+			 @RequestParam("files[]") // List<String> files
+			 String files[]
 			)throws Exception{
 		boolean isDeleted = false;
 		for(String s : files) {

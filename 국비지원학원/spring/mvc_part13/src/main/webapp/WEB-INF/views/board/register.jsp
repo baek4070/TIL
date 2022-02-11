@@ -62,7 +62,7 @@
 		<div>
 			<label>FILE DROP HERE</label>
 			<div class="fileDrop">
-			
+				
 			</div>		
 		</div>
 		<div>
@@ -141,8 +141,8 @@
 		if(checkImageType(fullName)){
 			// 이미지 파일
 			// 파일 정보 요청 url displayFile
-			//imgSrc = contextPath+"/displayFile?fileName="+fullName;
-			imgSrc = contextPath+"/resources/upload"+fullName;
+			imgSrc = contextPath+"/displayFile?fileName="+fullName;
+			//imgSrc = contextPath+"/resources/upload"+fullName;
 			// 다운로드 요청 - image일 경우 원본 이미지 출력
 			getLink = contextPath+"/displayFile?fileName="+fullName.replace("s_","");
 		}else{
