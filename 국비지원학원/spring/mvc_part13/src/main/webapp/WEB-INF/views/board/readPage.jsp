@@ -89,8 +89,9 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <br/>
 <hr/>
-<%@ include file="../comment/comment.jsp" %>
 <br/>
+<%@ include file="../comment/comment.jsp" %>
+<%-- <jsp:include page="../comment/comment.jsp"/> --%>
 <script>
 	var formObj = $("#readForm");
 	// 게시글 목록

@@ -21,7 +21,7 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Override
 	public void addComment(CommentVO vo) throws Exception {
-
+		dao.addComment(vo);
 	}
 
 	@Override
@@ -45,11 +45,12 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public void modifyComment(CommentVO vo) throws Exception {
-
+		dao.modifyComment(vo);
 	}
 
 	@Override
 	public void removeComment(int cno) throws Exception {
+		// TODO Auto-generated method stub
 
 	}
 
