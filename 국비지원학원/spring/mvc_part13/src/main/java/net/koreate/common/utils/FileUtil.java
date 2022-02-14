@@ -200,9 +200,6 @@ public class FileUtil {
 						uploadPath+(s).replace('/', File.separatorChar)
 					).delete();
 			}
-			
-			
-			
 		}
 	}
 }

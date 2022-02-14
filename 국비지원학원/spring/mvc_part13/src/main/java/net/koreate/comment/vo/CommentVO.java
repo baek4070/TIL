@@ -3,9 +3,9 @@ package net.koreate.comment.vo;
 import java.util.Date;
 
 import lombok.Data;
-
 @Data
 public class CommentVO {
+	
 	private int cno;
 	private int bno;
 	private String commentText;
@@ -13,4 +13,6 @@ public class CommentVO {
 	private Date regdate;
 	private Date updatedate;
 	private int uno;
+	
 }
+
