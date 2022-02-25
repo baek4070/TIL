@@ -10,9 +10,10 @@ import net.koreate.user.vo.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService {
+	
 	@Inject
 	UserDAO dao;
-		
+
 	@Override
 	public void signUp(UserVO vo) throws Exception {
 		dao.signUp(vo);
@@ -20,12 +21,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserVO signIn(LoginDTO dto) throws Exception {
-		return null;
+		return dao.signIn(dto);
 	}
 
 	@Override
 	public UserVO getUserById(String uid) throws Exception {
-		return null;
+		return dao.getUserByID(uid);
 	}
 
 }
+
+
+
+
+

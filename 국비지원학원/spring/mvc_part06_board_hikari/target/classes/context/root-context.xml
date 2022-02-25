@@ -40,8 +40,7 @@
 	<bean id="factory" 
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds"/>
-		<property name="typeAliasesPackage" value="net.koreate.mvc.*.vo, net.koreate.mvc.common.util"/>
-		<property name="mapperLocations" value="classpath:mybatis/*Mapper.xml"/>
+		
 	</bean>
 	
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">

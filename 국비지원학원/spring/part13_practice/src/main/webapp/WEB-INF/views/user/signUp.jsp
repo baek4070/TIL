@@ -51,5 +51,29 @@
 			</form>
 		</article>
 	 </div>
+<script>
+	var msg = '${message}';
+	if(msg != ''){
+		alert(msg);
+	}
+</script>	 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,10 +4,54 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>user/signIn.jsp</title>
+<style>
+	.alertDiv{
+		display:none;
+		position:absolute;
+		width:100%;
+		height:100%;
+		background-color:rgba(0,0,0,0.8);
+		top:0;
+		left:0;
+		text-align:center;
+	}
+	
+	.contentWrap{
+		border:1px solid white;
+		border-top-left-radius:10px;
+		border-top-right-radius:10px;
+		position:absolute;
+		width:410px;
+		height:200px;
+		top:50%;
+		left:50%;
+		margin-top:-100px;
+		margin-left:-205px;
+		color:white;
+	}
+	
+	.textWrap{
+		padding:15px;
+		height:120px;
+		line-height:120px;
+	}
+	
+	.close{
+		width:100%;
+		color:black;
+		background-color:white;
+		line-height:50px;
+		font-weight:bold;
+	}
+	
+	.close:hover{
+		cursor:pointer;
+	}
+</style>
 </head>
 <body>
-<div class="wrap">
+	<div class="wrap">
 		<div>
 			<h1><a href="/">MAIN</a></h1>
 		</div>
@@ -43,7 +87,7 @@
 			</form>
 		</article>
 	 </div>
-	 	 <div class="alertDiv" id="alertDiv">
+	 <div class="alertDiv" id="alertDiv">
 	 	<div class="contentWrap">
 			<div class="textWrap" id="textWrap">
 				<span id="message"></span> <br/>
@@ -52,26 +96,64 @@
 			<div id="closeBtn" class="close">닫기</div>
 	 	</div>
 	 </div>
-	 
-	  <script>
+	 <script>
 	 	var msg = '${message}';
+	 	var time = '${time}';
 	 	var alertDiv = document.getElementById("alertDiv");
+	 	var interval;
 	 	
 	 	if(msg != ''){
+	 		alertDiv.style.display = "block";
 	 		document.getElementById("message").innerHTML = msg;
+	 		if(time != ''){
+	 			time = Number(time);
+	 			document.getElementById("textWrap").style.lineHeight="60px";
+	 			getTime();
+	 			interval = setInterval(getTime,1000);
 	 		}
 	 	}
 	 	
 	 	document.getElementById("closeBtn").onclick = stop;
 	 	
 	 	function stop(){
+	 		clearInterval(interval);
 	 		alertDiv.style.display = "none";
 	 	}
 	 	
-	 	
+	 	function getTime(){
+	 		time -= 1000;
+	 		if(time < 0 ){
+	 			stop();
+	 		}
+	 		var date = new Date(time);
+	 		var min = date.getMinutes();
+	 		var second = date.getSeconds();
+	 		min = 10 > min ? "0"+min : min;
+	 		second = 10 > second ? "0"+second : second; 
+			var timeStr = min+":"+second;
+			document.getElementById("time").innerHTML ="남은시간 - "+timeStr;
+	 	}
 	 	
 	 	
 	 	
 	 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
