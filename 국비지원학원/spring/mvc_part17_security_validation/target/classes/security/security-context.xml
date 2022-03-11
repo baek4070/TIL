@@ -28,7 +28,9 @@
 		
 	<bean id="accessDeniedHandler"
 	class="net.koreate.sec.security.CustomAccessDeniedHandler"/>
-
+	
+	<security:http pattern="/resources/**" security="none" />
+	
 	<security:http auto-config="true">
 	
 		<!-- 권한 불충분 핸들러 -->
@@ -50,6 +52,7 @@
 			remember-me-cookie="userCookie"
 			remember-me-parameter="rememberme"
 			token-validity-seconds="604800" />
+			
 		<!-- 
 			error-if-maximum-exceeded="true" 
 		     	이미 로그인 한 대상이 있을 경우 2차 로그인 방지
@@ -68,9 +71,22 @@
 		 				 logout-success-url="/" 
 		 				 delete-cookies="userCookie, JSESSIONID"/>
 		 				 
+		<security:intercept-url pattern="/mngt/user/**" 
+		access="hasRole('ROLE_MASTER')"/> 				 
 		<security:intercept-url pattern="/mngt/**" 
-								access="hasAnyRole('ROLE_MEMBERSHIP','ROME_MASTER')"/> 				 
-		 
+		access="hasAnyRole('ROLE_MEMBERSHIP','ROLE_MASTER')"/> 
+						 
+		<!-- <security:intercept-url pattern="/**" 
+								access="isAuthenticated()"/> -->
+		<security:intercept-url pattern="/user/logout" 
+						access="authenticated"/>
+		<security:intercept-url pattern="/user/**" 
+						access="isAnonymous()"/>
+		<security:intercept-url pattern="/logOff" 
+					access="isAnonymous()"/>
+		<security:intercept-url pattern="/**" 
+								access="authenticated"/>						
+
 	</security:http>
 	
 	<security:authentication-manager>

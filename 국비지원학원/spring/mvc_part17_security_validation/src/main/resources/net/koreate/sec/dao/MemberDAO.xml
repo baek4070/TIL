@@ -90,6 +90,39 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		ORDER BY u_no DESC
 	</select>
 	
+	<!-- void deleteYN(ValidationMemberVO vo); -->
+	<update id="deleteYN" 
+	parameterType="net.koreate.sec.vo.ValidationMemberVO">
+		UPDATE validation_member SET 
+		u_withdraw = #{u_withdraw} 
+		WHERE u_id = #{u_id}
+	</update>
+	
+	<!-- List<AuthVO> getAuthList(String u_id)  -->
+	<select id="getAuthList" 
+			parameterType="String" 
+			resultType="net.koreate.sec.vo.AuthVO">
+		SELECT * FROM validation_member_auth 
+		WHERE u_id = #{u_id}		
+	</select>
+	<!-- 
+	// 권한 부여
+	void insertMemberAuth(AuthVO vo) throws Exception; -->
+	<insert id="insertMemberAuth" 
+	parameterType="net.koreate.sec.vo.AuthVO">
+		INSERT INTO validation_member_auth  
+		VALUES(#{u_id}, #{u_auth})
+	</insert>
+	
+	<!-- 
+	// 권한 회수
+	void deleteAuth(AuthVO auth) throws Exception;
+	 -->
+	<delete id="deleteAuth" 
+	parameterType="net.koreate.sec.vo.AuthVO">
+		DELETE FROM validation_member_auth 
+		WHERE u_id = #{u_id} AND u_auth = #{u_auth}
+	</delete>
 	
 </mapper>
 

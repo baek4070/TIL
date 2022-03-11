@@ -59,7 +59,9 @@
 						${member.u_name}
 					</a>
 					</li>
+					<sec:authorize access="hasAnyRole('ROLE_MEMBERSHIP','ROLE_MASTER')">
 					<li><a href="${path}/mngt/main">MANAGEMENT</a></li>
+					</sec:authorize>
 					<li><a href="${path}/user/logout">로그아웃</a></li>
 				</sec:authorize>
 				<!-- 익명 사용자 -->

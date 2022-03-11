@@ -48,14 +48,27 @@ public class MemberServiceImpl
 
 	@Override
 	public void deleteYN(ValidationMemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
-
+		dao.deleteYN(vo);
 	}
 
 	@Override
 	public List<AuthVO> updateAuth(AuthVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<AuthVO> list = dao.getAuthList(vo.getU_id());
+		boolean isNull = true;
+		for(AuthVO auth : list) {
+			if(vo.getU_auth().equals(auth.getU_auth())) {
+				// 해당 사용자의 권한 삭제
+				dao.deleteAuth(auth);
+				isNull = false;
+				break;
+			}
+		}
+		
+		// 권한이 존재하지 않을때 권한 추가
+		if(isNull) dao.insertMemberAuth(vo);
+		
+		// 변경된 권한 리스트 반환
+		return dao.getAuthList(vo.getU_id());
 	}
 
 	@Override
